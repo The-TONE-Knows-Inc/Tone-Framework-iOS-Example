@@ -28,7 +28,7 @@ struct ContentView: View {
                 
                 GeometryReader{ geo in
                     ZStack {
-                        if model.thereClients ?? false {
+                        if model.thereClients ?? false && menuData.clients.count > 0 {
                             AsyncImages(
                                 url: URL(string: menuData.clients.filter({ client in
                                     return client.name == menuData.selectedMenu

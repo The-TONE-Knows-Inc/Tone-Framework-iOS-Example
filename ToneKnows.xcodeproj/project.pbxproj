@@ -20,6 +20,7 @@
 		5B9331BE27A9A51B00C61580 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9331BD27A9A51B00C61580 /* ContentViewModel.swift */; };
 		5B9331C027A9A8CB00C61580 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9331BF27A9A8CB00C61580 /* Home.swift */; };
 		5B9331C327A9A93000C61580 /* Drower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9331C227A9A93000C61580 /* Drower.swift */; };
+		5BA3D64C27AC3F8600471D32 /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA3D64B27AC3F8600471D32 /* frequency_tables.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		5B9331BD27A9A51B00C61580 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		5B9331BF27A9A8CB00C61580 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		5B9331C227A9A93000C61580 /* Drower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drower.swift; sourceTree = "<group>"; };
+		5BA3D64B27AC3F8600471D32 /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = frequency_tables.json; path = "../../Framework-Core-Swift-iOS/ToneDemoApp/frequency_tables.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		5B9331A827A9A02700C61580 /* ToneKnows */ = {
 			isa = PBXGroup;
 			children = (
+				5BA3D64B27AC3F8600471D32 /* frequency_tables.json */,
 				5B64855427ABB53B00378FBC /* GoogleService-Info.plist */,
 				5B9331BC27A9A27200C61580 /* Info.plist */,
 				5B9331BB27A9A1A400C61580 /* ViewModel */,
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B9331B127A9A02900C61580 /* Preview Assets.xcassets in Resources */,
+				5BA3D64C27AC3F8600471D32 /* frequency_tables.json in Resources */,
 				5B9331AE27A9A02900C61580 /* Assets.xcassets in Resources */,
 				5B64855527ABB53B00378FBC /* GoogleService-Info.plist in Resources */,
 			);

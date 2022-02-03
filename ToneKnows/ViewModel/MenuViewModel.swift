@@ -24,6 +24,7 @@ class MenuViewModel: ObservableObject {
                     let client = Client(data: document.data())
                     self.clients.append(client!)
                 }
+                self.selectedMenu = self.clients.first?.name ?? ""
                 NotificationCenter.default.post(name: NSNotification.Name("get_clients"), object: true)
             }
         }
