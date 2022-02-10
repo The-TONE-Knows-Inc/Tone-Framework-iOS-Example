@@ -39,7 +39,7 @@ struct Drower: View {
                 .padding(.top, 5)
             VStack(spacing:18) {
                 ForEach(menuData.clients, id: \.clientID) { result in
-                    MenuButtons(name: result.name, image: result.icon, selectedMenu: $menuData.selectedMenu, animation: animation)
+                    MenuButtons(clientID: result.clientID, name: result.name, image: result.icon, selectedMenu: $menuData.selectedMenu)
                 }
             }
             .padding(.leading)
@@ -76,6 +76,7 @@ struct DrowerCloseButton: View {
         Button(action:{
             withAnimation(.easeInOut){
                 menuData.showDrawer.toggle()
+                
             }
         },label:{
             VStack(spacing: 5){

@@ -31,14 +31,10 @@ struct Home: View {
                     }.sheet(isPresented: $showingDetail){
                         SheetDetailView(showingDetail: $showingDetail, url: model.newNotification ?? "")
                     }
-                    /*.onReceive(NotificationCenter.default.publisher(for: model.notificationName), perform: { _ in
-                        print("Received notification: \(model.newNotification ?? "")")
+                    .onReceive(NotificationCenter.default.publisher(for: model.notificationName), perform: { _ in
                         showingDetail.toggle()
                     })
-                     */
-                }
-               
-                Text(menuData.selectedMenu)
+                }                               
             }
             .frame(width: UIScreen.main.bounds.width)
         }

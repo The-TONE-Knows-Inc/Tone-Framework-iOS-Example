@@ -8,65 +8,34 @@
 import SwiftUI
 import Combine
 import Foundation
-import ToneListen
+//import ToneListen
 
 struct ContentView: View {
     init() {
-        UITabBar.appearance().isHidden = true
-        let toneFramework = ToneFramework()
-        toneFramework.start()
+        //UITabBar.appearance().isHidden = true
+        
     }
     @StateObject var menuData = MenuViewModel()
-    @State var showingDetail = false
-    @ObservedObject var model = ContentViewModel()
+
     @Namespace var animation
     
     var body: some View {
-        HStack(spacing:0){
-            Drower(animation: animation)
-            TabView(selection: $menuData.selectedMenu){
-                
-                GeometryReader{ geo in
-                    ZStack {
-                        if model.thereClients ?? false && menuData.clients.count > 0 {
-                            AsyncImages(
-                                url: URL(string: menuData.clients.filter({ client in
-                                    return client.name == menuData.selectedMenu
-                                }).first?.image ?? "")!,
-                                        placeholder: Text("")
-                            ).aspectRatio(contentMode: .fit)
-                        }
-                    }.sheet(isPresented: $showingDetail){
-                        SheetDetailView(showingDetail: $showingDetail, url: model.newNotification ?? "")
+            TabView {
+                DemoView()
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("Demo")
                     }
-                    
-                    .onReceive(NotificationCenter.default.publisher(for: model.notificationName), perform: { _ in
-                        print("Received notification: \(model.newNotification ?? "")")
-                        showingDetail.toggle()
-                    })
-                    
-                     
+                ClientsView()
+                    .tabItem {
+                        Image(systemName: "person.crop.circle")
+                        Text("Clients")
+                    }
                 }
-               
-                Text(menuData.selectedMenu)
-                
-            }
-            .frame(width: UIScreen.main.bounds.width)
-        }
-        .onAppear(perform: {
-            menuData.loadImageFromStorage()
-        })
-        .frame(width: UIScreen.main.bounds.width)
-        .offset(x: menuData.showDrawer ? 125: -125)
-        .overlay(
-            ZStack {
-                if !menuData.showDrawer {
-                    DrowerCloseButton(animation: animation)
-                        .padding()
-                }
-            },
-            alignment: .topLeading
-        )
+            .tabViewStyle(PageTabViewStyle())
+            
+            
+       // .frame(width: UIScreen.main.bounds.width)
         .environmentObject(menuData)
         
         
@@ -139,7 +108,8 @@ struct AsyncImages<Placeholder: View>: View {
                     Image(uiImage: loader.image!)
                         .resizable()
                         .scaledToFit()
-                        //.edgesIgnoringSafeArea(.all)
+                        //.frame(width: 50, height: 50, alignment: .trailing)
+                        .edgesIgnoringSafeArea(.all)
                         
 
                 } else {
@@ -155,5 +125,42 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         
         ContentView()
+    }
+}
+
+
+
+struct ImageViewController: View {
+    @ObservedObject var url: LoadUrlImage
+
+    init(imageUrl: String) {
+        url = LoadUrlImage(imageURL: imageUrl)
+    }
+
+    var body: some View {
+          Image(uiImage: UIImage(data: self.url.data) ?? UIImage())
+              .resizable()
+              .clipped()
+    }
+}
+
+class LoadUrlImage: ObservableObject {
+    @Published var data = Data()
+    init(imageURL: String) {
+        let cache = URLCache.shared
+        let request = URLRequest(url: URL(string: imageURL)!, cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad, timeoutInterval: 60.0)
+        if let data = cache.cachedResponse(for: request)?.data {
+            self.data = data
+        } else {
+            URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                if let data = data, let response = response {
+                let cachedData = CachedURLResponse(response: response, data: data)
+                                    cache.storeCachedResponse(cachedData, for: request)
+                    DispatchQueue.main.async {
+                        self.data = data
+                    }
+                }
+            }).resume()
+        }
     }
 }
