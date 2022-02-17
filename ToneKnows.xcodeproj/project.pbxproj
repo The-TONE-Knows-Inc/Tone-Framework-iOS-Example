@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		5B0F21E527AB2A0900B953E8 /* MenuButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F21E427AB2A0900B953E8 /* MenuButtons.swift */; };
 		5B0F21E727AB2BA700B953E8 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F21E627AB2BA700B953E8 /* MenuViewModel.swift */; };
+		5B269ADC27BD8A2F003976BC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5B269ADB27BD8A2F003976BC /* Realm */; };
+		5B269ADE27BD8A2F003976BC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B269ADD27BD8A2F003976BC /* RealmSwift */; };
+		5B269AE127BD8C68003976BC /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B269AE027BD8C68003976BC /* Tone.swift */; };
+		5B269AEE27BD9983003976BC /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B269AED27BD9983003976BC /* frequency_tables.json */; };
+		5B269AF827BE118F003976BC /* ListActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B269AF727BE118F003976BC /* ListActionsView.swift */; };
+		5B269AFB27BE4498003976BC /* ToneLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 5B269AFA27BE4498003976BC /* ToneLibrary */; };
 		5B64855527ABB53B00378FBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B64855427ABB53B00378FBC /* GoogleService-Info.plist */; };
 		5B64855927ABB6E800378FBC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5B64855827ABB6E800378FBC /* FirebaseFirestore */; };
 		5B64855B27ABB6E800378FBC /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5B64855A27ABB6E800378FBC /* FirebaseFirestoreCombine-Community */; };
 		5B8F62F327B50B3500EA84BC /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F62F227B50B3400EA84BC /* ClientsView.swift */; };
 		5B8F62F527B50B5600EA84BC /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F62F427B50B5600EA84BC /* DemoView.swift */; };
 		5B8F62F827B5317C00EA84BC /* FetchImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8F62F727B5317C00EA84BC /* FetchImage */; };
-		5B8F62FB27B5340E00EA84BC /* ToneLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8F62FA27B5340E00EA84BC /* ToneLibrary */; };
 		5B9331AA27A9A02700C61580 /* ToneKnowsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9331A927A9A02700C61580 /* ToneKnowsApp.swift */; };
 		5B9331AC27A9A02700C61580 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9331AB27A9A02700C61580 /* ContentView.swift */; };
 		5B9331AE27A9A02900C61580 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9331AD27A9A02900C61580 /* Assets.xcassets */; };
 		5B9331B127A9A02900C61580 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9331B027A9A02900C61580 /* Preview Assets.xcassets */; };
 		5B9331BE27A9A51B00C61580 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9331BD27A9A51B00C61580 /* ContentViewModel.swift */; };
-		5B9331C027A9A8CB00C61580 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9331BF27A9A8CB00C61580 /* Home.swift */; };
-		5B9331C327A9A93000C61580 /* Drower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9331C227A9A93000C61580 /* Drower.swift */; };
-		5BA3D64C27AC3F8600471D32 /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA3D64B27AC3F8600471D32 /* frequency_tables.json */; };
 		5BF8DA6327B53B76007BA4C7 /* RemoteImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8DA6227B53B76007BA4C7 /* RemoteImageModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,9 @@
 /* Begin PBXFileReference section */
 		5B0F21E427AB2A0900B953E8 /* MenuButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtons.swift; sourceTree = "<group>"; };
 		5B0F21E627AB2BA700B953E8 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		5B269AE027BD8C68003976BC /* Tone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
+		5B269AED27BD9983003976BC /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = frequency_tables.json; sourceTree = "<group>"; };
+		5B269AF727BE118F003976BC /* ListActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListActionsView.swift; sourceTree = "<group>"; };
 		5B64855427ABB53B00378FBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B8F62F227B50B3400EA84BC /* ClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsView.swift; sourceTree = "<group>"; };
 		5B8F62F427B50B5600EA84BC /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
@@ -53,9 +58,6 @@
 		5B9331B027A9A02900C61580 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5B9331BC27A9A27200C61580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5B9331BD27A9A51B00C61580 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
-		5B9331BF27A9A8CB00C61580 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		5B9331C227A9A93000C61580 /* Drower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drower.swift; sourceTree = "<group>"; };
-		5BA3D64B27AC3F8600471D32 /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = frequency_tables.json; path = "../../Framework-Core-Swift-iOS/ToneDemoApp/frequency_tables.json"; sourceTree = "<group>"; };
 		5BF8DA6227B53B76007BA4C7 /* RemoteImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,16 +66,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B269ADE27BD8A2F003976BC /* RealmSwift in Frameworks */,
 				5B8F62F827B5317C00EA84BC /* FetchImage in Frameworks */,
+				5B269AFB27BE4498003976BC /* ToneLibrary in Frameworks */,
 				5B64855927ABB6E800378FBC /* FirebaseFirestore in Frameworks */,
-				5B8F62FB27B5340E00EA84BC /* ToneLibrary in Frameworks */,
 				5B64855B27ABB6E800378FBC /* FirebaseFirestoreCombine-Community in Frameworks */,
+				5B269ADC27BD8A2F003976BC /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B269ADF27BD8C46003976BC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B269AE027BD8C68003976BC /* Tone.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5B8F62C027B4790300EA84BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +113,8 @@
 		5B9331A827A9A02700C61580 /* ToneKnows */ = {
 			isa = PBXGroup;
 			children = (
-				5BA3D64B27AC3F8600471D32 /* frequency_tables.json */,
+				5B269AED27BD9983003976BC /* frequency_tables.json */,
+				5B269ADF27BD8C46003976BC /* Model */,
 				5B64855427ABB53B00378FBC /* GoogleService-Info.plist */,
 				5B9331BC27A9A27200C61580 /* Info.plist */,
 				5B9331BB27A9A1A400C61580 /* ViewModel */,
@@ -125,11 +138,10 @@
 		5B9331BA27A9A19D00C61580 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5B9331BF27A9A8CB00C61580 /* Home.swift */,
-				5B9331C227A9A93000C61580 /* Drower.swift */,
 				5B0F21E427AB2A0900B953E8 /* MenuButtons.swift */,
 				5B8F62F227B50B3400EA84BC /* ClientsView.swift */,
 				5B8F62F427B50B5600EA84BC /* DemoView.swift */,
+				5B269AF727BE118F003976BC /* ListActionsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,7 +177,9 @@
 				5B64855827ABB6E800378FBC /* FirebaseFirestore */,
 				5B64855A27ABB6E800378FBC /* FirebaseFirestoreCombine-Community */,
 				5B8F62F727B5317C00EA84BC /* FetchImage */,
-				5B8F62FA27B5340E00EA84BC /* ToneLibrary */,
+				5B269ADB27BD8A2F003976BC /* Realm */,
+				5B269ADD27BD8A2F003976BC /* RealmSwift */,
+				5B269AFA27BE4498003976BC /* ToneLibrary */,
 			);
 			productName = ToneKnows;
 			productReference = 5B9331A627A9A02700C61580 /* ToneKnows.app */;
@@ -198,7 +212,8 @@
 			packageReferences = (
 				5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5B8F62F627B5317B00EA84BC /* XCRemoteSwiftPackageReference "FetchImage" */,
-				5B8F62F927B5340E00EA84BC /* XCRemoteSwiftPackageReference "ToneLibrary" */,
+				5B269ADA27BD8A2F003976BC /* XCRemoteSwiftPackageReference "realm-swift" */,
+				5B269AF927BE4498003976BC /* XCRemoteSwiftPackageReference "ToneLibrary" */,
 			);
 			productRefGroup = 5B9331A727A9A02700C61580 /* Products */;
 			projectDirPath = "";
@@ -215,7 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B9331B127A9A02900C61580 /* Preview Assets.xcassets in Resources */,
-				5BA3D64C27AC3F8600471D32 /* frequency_tables.json in Resources */,
+				5B269AEE27BD9983003976BC /* frequency_tables.json in Resources */,
 				5B9331AE27A9A02900C61580 /* Assets.xcassets in Resources */,
 				5B64855527ABB53B00378FBC /* GoogleService-Info.plist in Resources */,
 			);
@@ -231,12 +246,12 @@
 				5B0F21E527AB2A0900B953E8 /* MenuButtons.swift in Sources */,
 				5B8F62F327B50B3500EA84BC /* ClientsView.swift in Sources */,
 				5B0F21E727AB2BA700B953E8 /* MenuViewModel.swift in Sources */,
+				5B269AF827BE118F003976BC /* ListActionsView.swift in Sources */,
+				5B269AE127BD8C68003976BC /* Tone.swift in Sources */,
 				5BF8DA6327B53B76007BA4C7 /* RemoteImageModel.swift in Sources */,
 				5B9331AC27A9A02700C61580 /* ContentView.swift in Sources */,
 				5B8F62F527B50B5600EA84BC /* DemoView.swift in Sources */,
 				5B9331AA27A9A02700C61580 /* ToneKnowsApp.swift in Sources */,
-				5B9331C027A9A8CB00C61580 /* Home.swift in Sources */,
-				5B9331C327A9A93000C61580 /* Drower.swift in Sources */,
 				5B9331BE27A9A51B00C61580 /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,7 +403,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.kraken.example.ToneKnows";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.kraken.example.ToneKnows.br";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -424,7 +439,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.kraken.example.ToneKnows";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.kraken.example.ToneKnows.br";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -456,6 +471,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5B269ADA27BD8A2F003976BC /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		5B269AF927BE4498003976BC /* XCRemoteSwiftPackageReference "ToneLibrary" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/The-TONE-Knows-Inc/ToneLibrary";
+			requirement = {
+				branch = ToneLibraryV4;
+				kind = branch;
+			};
+		};
 		5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -472,17 +503,24 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		5B8F62F927B5340E00EA84BC /* XCRemoteSwiftPackageReference "ToneLibrary" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/The-TONE-Knows-Inc/ToneLibrary";
-			requirement = {
-				branch = ToneLibraryV3;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5B269ADB27BD8A2F003976BC /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B269ADA27BD8A2F003976BC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		5B269ADD27BD8A2F003976BC /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B269ADA27BD8A2F003976BC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		5B269AFA27BE4498003976BC /* ToneLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B269AF927BE4498003976BC /* XCRemoteSwiftPackageReference "ToneLibrary" */;
+			productName = ToneLibrary;
+		};
 		5B64855827ABB6E800378FBC /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -497,11 +535,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B8F62F627B5317B00EA84BC /* XCRemoteSwiftPackageReference "FetchImage" */;
 			productName = FetchImage;
-		};
-		5B8F62FA27B5340E00EA84BC /* ToneLibrary */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B8F62F927B5340E00EA84BC /* XCRemoteSwiftPackageReference "ToneLibrary" */;
-			productName = ToneLibrary;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

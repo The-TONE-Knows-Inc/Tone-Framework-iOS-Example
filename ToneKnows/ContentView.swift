@@ -31,7 +31,12 @@ struct ContentView: View {
                         Image(systemName: "person.crop.circle")
                         Text("Clients")
                     }
-                }
+                ListActionsView()
+                    .tabItem {
+                        Image(systemName: "message")
+                        Text("Inbox")
+                    }
+                }        
             .tabViewStyle(PageTabViewStyle())
             
             
@@ -75,10 +80,11 @@ struct SheetDetailView: View {
             }) {
                 Text("Back")
             }
-            AsyncImages(
-                        url: URL(string: url)!,
-                        placeholder: Text("")
-            ).aspectRatio(contentMode: .fit)
+            ImageViewController(imageUrl: url)
+//            AsyncImages(
+//                        url: URL(string: url)!,
+//                        placeholder: Text("")
+            .aspectRatio(contentMode: .fit)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         

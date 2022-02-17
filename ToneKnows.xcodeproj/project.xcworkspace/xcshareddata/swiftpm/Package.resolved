@@ -164,6 +164,24 @@
         }
       },
       {
+        "package": "RealmDatabase",
+        "repositoryURL": "https://github.com/realm/realm-core",
+        "state": {
+          "branch": null,
+          "revision": "6b81f1a7a2d421f9e0b9e7f04e76bcf736a54409",
+          "version": "11.9.0"
+        }
+      },
+      {
+        "package": "Realm",
+        "repositoryURL": "https://github.com/realm/realm-swift.git",
+        "state": {
+          "branch": "master",
+          "revision": "bf5c0461952c427caaf5ef738a2050dcaaaa9830",
+          "version": null
+        }
+      },
+      {
         "package": "SoundpipeAudioKit",
         "repositoryURL": "https://github.com/AudioKit/SoundpipeAudioKit.git",
         "state": {
@@ -203,8 +221,8 @@
         "package": "ToneLibrary",
         "repositoryURL": "https://github.com/The-TONE-Knows-Inc/ToneLibrary",
         "state": {
-          "branch": "ToneLibraryV3",
-          "revision": "93bc1d70aec0a6871ae0baade958d51ee4c21220",
+          "branch": "ToneLibraryV4",
+          "revision": "e364645f7c55cfac7383ab581ca3ad0a660291a3",
           "version": null
         }
       }

@@ -18,16 +18,11 @@ struct DemoView: View {
                 GeometryReader{ geo in
                     
                     ZStack {
-                        if  menuData.clients.count > 0 {
+                        if  menuData.clients.count > 0 {                            
                             ImageViewController(imageUrl: menuData.clients.filter({ client in
                                 return client.name == menuData.selectedMenu
                             }).first?.image ?? "")
-//                            AsyncImages(
-//                                url: URL(string: menuData.clients.filter({ client in
-//                                    return client.name == menuData.selectedMenu
-//                                }).first?.image ?? "")!,
-//                                        placeholder: Text("")
-//                            )
+
                         }
                     }
                     .sheet(isPresented: $showingDetail){
@@ -37,8 +32,8 @@ struct DemoView: View {
                     })
                 }
             .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("get_clients")), perform: { _ in
-                print(UserDefaults.standard.string(forKey: "clientID") ?? "0" )
-                let toneFramework = ToneFramework(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "0" )
+                    print(UserDefaults.standard.string(forKey: "clientID") ?? "0" )
+                    let toneFramework = ToneFramework(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "0" )
                     toneFramework.stop()
                     toneFramework.start()
                 })
