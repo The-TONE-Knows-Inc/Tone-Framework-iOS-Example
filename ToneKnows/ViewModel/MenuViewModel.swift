@@ -22,7 +22,9 @@ class MenuViewModel: ObservableObject {
             } else {
                 for document in querySnapshot!.documents {
                     let client = Client(data: document.data())
-                    self.clients.append(client!)
+                    if client?.isActive == true {
+                        self.clients.append(client!)
+                    }                        
                 }                
                 if UserDefaults.standard.string(forKey: "clientID") ?? "0" == "0"{
                     UserDefaults.standard.set(self.clients.first?.clientID ?? "0", forKey: "clientID")
@@ -46,11 +48,13 @@ struct Client {
     var icon: String
     var image: String
     var name: String
+    var isActive: Bool = false
 
     init?(data: [String: Any]) {
         guard let clientID = data["clientId"] as? String,
             let icon = data["icon"] as? String,
             let image = data["image"] as? String,
+            let isActive = data["isActive"] as? Bool,
             let name = data["name"] as? String else {
                 return nil
         }
@@ -58,5 +62,6 @@ struct Client {
         self.icon = icon
         self.image = image
         self.name = name
+        self.isActive = isActive
     }
 }

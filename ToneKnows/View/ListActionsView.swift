@@ -30,6 +30,8 @@ struct ListActionsView: View {
         }.preferredColorScheme(.dark)
         
         .onReceive(NotificationCenter.default.publisher(for: model.responseObjectNotificationName), perform: { _ in
+            print("ListActionsView")
+            print(model.responseContent)
             guard let data = model.responseContent else {return}
             model.saveResponse(content: data)
             

@@ -12,8 +12,12 @@ struct DemoView: View {
     @EnvironmentObject var menuData: MenuViewModel
     @State var showingDetail = false
     @ObservedObject var model = ContentViewModel()
-    
+    let toneFramework = ToneFramework.shared
+    init() {
+        toneFramework.start()
+    }
     var body: some View {
+        
         VStack {
                 GeometryReader{ geo in
                     
@@ -32,10 +36,8 @@ struct DemoView: View {
                     })
                 }
             .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("get_clients")), perform: { _ in
-                    print(UserDefaults.standard.string(forKey: "clientID") ?? "0" )
-                    let toneFramework = ToneFramework(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "0" )
-                    toneFramework.stop()
-                    toneFramework.start()
+                    print(UserDefaults.standard.string(forKey: "clientID") ?? "0" )                    
+                toneFramework.setClientId(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "0")
                 })
         }.tabItem {
             Image(systemName: "house.fill")
