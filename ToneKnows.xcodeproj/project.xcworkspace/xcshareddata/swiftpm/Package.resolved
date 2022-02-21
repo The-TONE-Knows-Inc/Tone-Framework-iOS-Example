@@ -216,6 +216,15 @@
           "revision": "f8ec8e97095eb3a5312370ad94b921768217625f",
           "version": "5.1.0"
         }
+      },
+      {
+        "package": "ToneLibrary",
+        "repositoryURL": "https://github.com/The-TONE-Knows-Inc/ToneLibrary",
+        "state": {
+          "branch": "ToneLibraryV4",
+          "revision": "f44cf5d838dc1a739055eb584251742e752a25b7",
+          "version": null
+        }
       }
     ]
   },
