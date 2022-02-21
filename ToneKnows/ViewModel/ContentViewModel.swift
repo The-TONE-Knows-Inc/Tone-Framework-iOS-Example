@@ -18,6 +18,7 @@ class ContentViewModel: ObservableObject {
     var notifications : String = ""  // Holds a list of notifications received from View2 via NotificationCenter
     var clientNotification = NSNotification.Name("get_clients")
     var notificationName = NotificationsHandler.notificationName
+    
     var responseObjectNotificationName = NotificationsHandler.responseObjectNotificationName
     var responseSub: AnyCancellable?
     var tones: [Tone] = []

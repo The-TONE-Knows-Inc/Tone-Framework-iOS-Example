@@ -13,10 +13,10 @@
 		5B269ADE27BD8A2F003976BC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B269ADD27BD8A2F003976BC /* RealmSwift */; };
 		5B269AE127BD8C68003976BC /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B269AE027BD8C68003976BC /* Tone.swift */; };
 		5B269AF827BE118F003976BC /* ListActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B269AF727BE118F003976BC /* ListActionsView.swift */; };
+		5B58EA2927C40BCC00FDF07F /* ToneLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 5B58EA2827C40BCC00FDF07F /* ToneLibrary */; };
 		5B64855527ABB53B00378FBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B64855427ABB53B00378FBC /* GoogleService-Info.plist */; };
 		5B64855927ABB6E800378FBC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5B64855827ABB6E800378FBC /* FirebaseFirestore */; };
 		5B64855B27ABB6E800378FBC /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5B64855A27ABB6E800378FBC /* FirebaseFirestoreCombine-Community */; };
-		5B71C5B827C37DD30098BAF8 /* ToneLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71C5B727C37DD30098BAF8 /* ToneLibrary */; };
 		5B8F62F327B50B3500EA84BC /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F62F227B50B3400EA84BC /* ClientsView.swift */; };
 		5B8F62F527B50B5600EA84BC /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F62F427B50B5600EA84BC /* DemoView.swift */; };
 		5B8F62F827B5317C00EA84BC /* FetchImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B8F62F727B5317C00EA84BC /* FetchImage */; };
@@ -68,7 +68,7 @@
 			files = (
 				5B269ADE27BD8A2F003976BC /* RealmSwift in Frameworks */,
 				5B8F62F827B5317C00EA84BC /* FetchImage in Frameworks */,
-				5B71C5B827C37DD30098BAF8 /* ToneLibrary in Frameworks */,
+				5B58EA2927C40BCC00FDF07F /* ToneLibrary in Frameworks */,
 				5B64855927ABB6E800378FBC /* FirebaseFirestore in Frameworks */,
 				5B64855B27ABB6E800378FBC /* FirebaseFirestoreCombine-Community in Frameworks */,
 				5B269ADC27BD8A2F003976BC /* Realm in Frameworks */,
@@ -187,7 +187,7 @@
 				5B8F62F727B5317C00EA84BC /* FetchImage */,
 				5B269ADB27BD8A2F003976BC /* Realm */,
 				5B269ADD27BD8A2F003976BC /* RealmSwift */,
-				5B71C5B727C37DD30098BAF8 /* ToneLibrary */,
+				5B58EA2827C40BCC00FDF07F /* ToneLibrary */,
 			);
 			productName = ToneKnows;
 			productReference = 5B9331A627A9A02700C61580 /* ToneKnows.app */;
@@ -221,7 +221,7 @@
 				5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5B8F62F627B5317B00EA84BC /* XCRemoteSwiftPackageReference "FetchImage" */,
 				5B269ADA27BD8A2F003976BC /* XCRemoteSwiftPackageReference "realm-swift" */,
-				5B71C5B627C37DD30098BAF8 /* XCRemoteSwiftPackageReference "ToneLibrary" */,
+				5B58EA2727C40BCB00FDF07F /* XCRemoteSwiftPackageReference "ToneLibrary" */,
 			);
 			productRefGroup = 5B9331A727A9A02700C61580 /* Products */;
 			projectDirPath = "";
@@ -487,20 +487,20 @@
 				kind = branch;
 			};
 		};
+		5B58EA2727C40BCB00FDF07F /* XCRemoteSwiftPackageReference "ToneLibrary" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/The-TONE-Knows-Inc/ToneLibrary";
+			requirement = {
+				branch = ToneLibraryV4;
+				kind = branch;
+			};
+		};
 		5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 8.0.0;
-			};
-		};
-		5B71C5B627C37DD30098BAF8 /* XCRemoteSwiftPackageReference "ToneLibrary" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/The-TONE-Knows-Inc/ToneLibrary";
-			requirement = {
-				branch = ToneLibraryV4;
-				kind = branch;
 			};
 		};
 		5B8F62F627B5317B00EA84BC /* XCRemoteSwiftPackageReference "FetchImage" */ = {
@@ -524,6 +524,11 @@
 			package = 5B269ADA27BD8A2F003976BC /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
+		5B58EA2827C40BCC00FDF07F /* ToneLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B58EA2727C40BCB00FDF07F /* XCRemoteSwiftPackageReference "ToneLibrary" */;
+			productName = ToneLibrary;
+		};
 		5B64855827ABB6E800378FBC /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -533,11 +538,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseFirestoreCombine-Community";
-		};
-		5B71C5B727C37DD30098BAF8 /* ToneLibrary */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B71C5B627C37DD30098BAF8 /* XCRemoteSwiftPackageReference "ToneLibrary" */;
-			productName = ToneLibrary;
 		};
 		5B8F62F727B5317C00EA84BC /* FetchImage */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import ToneListen
 
 struct ListActionsView: View {
     @ObservedObject var model = ContentViewModel()
     @State var showingDetail = false
+    let notificationHandler = NotificationsHandler.shared
     var body: some View {
         VStack(spacing:3) {
             List(model.tones) { tone in
@@ -28,12 +30,12 @@ struct ListActionsView: View {
                 }
             }
         }.preferredColorScheme(.dark)
-        
-        .onReceive(NotificationCenter.default.publisher(for: model.responseObjectNotificationName), perform: { _ in
+            
+        .onReceive( NotificationCenter.default.publisher(for: model.responseObjectNotificationName), perform: { _ in
             print("ListActionsView")
-            print(model.responseContent)
-            guard let data = model.responseContent else {return}
-            model.saveResponse(content: data)
+            print(notificationHandler.contentResponse)
+            //guard let contentResponse = notificationHandler.contentResponse else {return}
+            model.saveResponse(content: notificationHandler.contentResponse)
             
             
         })
