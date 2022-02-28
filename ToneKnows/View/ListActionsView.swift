@@ -40,8 +40,8 @@ struct ListActionsView: View {
             
         })
         .tabItem {
-            Image(systemName: "message")
-            Text("Inbox")
+            Image(systemName: "tray.full")
+            Text("Actions")
         }
     }
     

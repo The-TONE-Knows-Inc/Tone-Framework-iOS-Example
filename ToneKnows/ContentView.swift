@@ -8,63 +8,54 @@
 import SwiftUI
 import Combine
 import Foundation
-//import ToneListen
+import ToneListen
 
 struct ContentView: View {
+    @State var showingDetail = false
+    @ObservedObject var model = ContentViewModel()
+    let toneFramework = ToneFramework.shared
     init() {
-        //UITabBar.appearance().isHidden = true
-        
+        toneFramework.start()
     }
-    @StateObject var menuData = MenuViewModel()
 
-    @Namespace var animation
     
     var body: some View {
-            TabView {
-                DemoView()
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("Demo")
-                    }
-                ClientsView()
-                    .tabItem {
-                        Image(systemName: "person.crop.circle")
-                        Text("Clients")
-                    }
-                ListActionsView()
-                    .tabItem {
-                        Image(systemName: "message")
-                        Text("Inbox")
-                    }
-                }        
-            .tabViewStyle(PageTabViewStyle())
+  
+        TabView {
+            HomeView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Try it")
+                }
             
+            AboutUsView()
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("About us")
+                }
             
-       // .frame(width: UIScreen.main.bounds.width)
-        .environmentObject(menuData)
+            TryItView()
+                .tabItem {
+                    Image(systemName: "message")
+                    Text("Try it")
+                }
+            
+            ContacUsView()
+                .tabItem {
+                    Image(systemName: "message")
+                    Text("Contact us")
+                }
+                
+            }.sheet(isPresented: $showingDetail){
+                SheetDetailView(showingDetail: $showingDetail, url: model.newNotification ?? "")
+            }.onReceive(NotificationCenter.default.publisher(for: model.notificationName), perform: { _ in
+                showingDetail.toggle()
+            }).onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("get_clients")), perform: { _ in
+                print(UserDefaults.standard.string(forKey: "clientID") ?? "0" )
+            toneFramework.setClientId(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "0")
+            })
         
-        
     }
-}
-
-class ImageLoader: ObservableObject {
-    @Published var image: UIImage?
-    private let url: URL
-    private var cancellable: AnyCancellable?
-    init(url: URL) {
-        //self.url = url
-        self.url = url
-    }
-    
-    func load() {
-        cancellable = URLSession.shared.dataTaskPublisher(for: url)
-                    .map { UIImage(data: $0.data) }
-                    .replaceError(with: nil)
-                    .receive(on: DispatchQueue.main)
-                    .assign(to: \.image, on: self)
-    }
-
-    func cancel() {}
 }
 
 struct SheetDetailView: View {
@@ -81,9 +72,6 @@ struct SheetDetailView: View {
                 Text("Back")
             }
             ImageViewController(imageUrl: url)
-//            AsyncImages(
-//                        url: URL(string: url)!,
-//                        placeholder: Text("")
             .aspectRatio(contentMode: .fit)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -92,38 +80,6 @@ struct SheetDetailView: View {
     }
 }
 
-struct AsyncImages<Placeholder: View>: View {
-    @ObservedObject private var loader: ImageLoader
-    private let placeholder: Placeholder?
-    
-    init(url: URL, placeholder: Placeholder? = nil) {
-        loader = ImageLoader(url: url)
-        self.placeholder = placeholder
-    }
-
-    var body: some View {
-        image
-            .onAppear(perform: loader.load)
-            .onDisappear(perform: loader.cancel)
-    }
-    
-    private var image: some View {
-            Group {
-                if loader.image != nil {
-                    
-                    Image(uiImage: loader.image!)
-                        .resizable()
-                        .scaledToFit()
-                        //.frame(width: 50, height: 50, alignment: .trailing)
-                        .edgesIgnoringSafeArea(.all)
-                        
-
-                } else {
-                    placeholder
-                }
-            }
-        }
-}
 
 
 

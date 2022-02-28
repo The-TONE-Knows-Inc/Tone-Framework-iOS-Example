@@ -25,6 +25,10 @@
 		5B9331AE27A9A02900C61580 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9331AD27A9A02900C61580 /* Assets.xcassets */; };
 		5B9331B127A9A02900C61580 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9331B027A9A02900C61580 /* Preview Assets.xcassets */; };
 		5B9331BE27A9A51B00C61580 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9331BD27A9A51B00C61580 /* ContentViewModel.swift */; };
+		5B9DF3F227CD271A00D9EC9D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF3F127CD271A00D9EC9D /* HomeView.swift */; };
+		5B9DF3F427CD279D00D9EC9D /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF3F327CD279D00D9EC9D /* AboutUsView.swift */; };
+		5B9DF3F627CD27AF00D9EC9D /* ContacUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF3F527CD27AF00D9EC9D /* ContacUsView.swift */; };
+		5B9DF3F827CD27DB00D9EC9D /* TryItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF3F727CD27DB00D9EC9D /* TryItView.swift */; };
 		5B9FC71427C034B900C5D07B /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B9FC71327C034B900C5D07B /* frequency_tables.json */; };
 		5BF8DA6327B53B76007BA4C7 /* RemoteImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8DA6227B53B76007BA4C7 /* RemoteImageModel.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +61,10 @@
 		5B9331B027A9A02900C61580 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5B9331BC27A9A27200C61580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5B9331BD27A9A51B00C61580 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		5B9DF3F127CD271A00D9EC9D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5B9DF3F327CD279D00D9EC9D /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
+		5B9DF3F527CD27AF00D9EC9D /* ContacUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContacUsView.swift; sourceTree = "<group>"; };
+		5B9DF3F727CD27DB00D9EC9D /* TryItView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryItView.swift; sourceTree = "<group>"; };
 		5B9FC71327C034B900C5D07B /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = frequency_tables.json; path = "../../Framework-Core-Swift-iOS/ToneListen/frequency_tables.json"; sourceTree = "<group>"; };
 		5BF8DA6227B53B76007BA4C7 /* RemoteImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +158,10 @@
 				5B8F62F227B50B3400EA84BC /* ClientsView.swift */,
 				5B8F62F427B50B5600EA84BC /* DemoView.swift */,
 				5B269AF727BE118F003976BC /* ListActionsView.swift */,
+				5B9DF3F127CD271A00D9EC9D /* HomeView.swift */,
+				5B9DF3F327CD279D00D9EC9D /* AboutUsView.swift */,
+				5B9DF3F527CD27AF00D9EC9D /* ContacUsView.swift */,
+				5B9DF3F727CD27DB00D9EC9D /* TryItView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,10 +268,14 @@
 				5B0F21E727AB2BA700B953E8 /* MenuViewModel.swift in Sources */,
 				5B269AF827BE118F003976BC /* ListActionsView.swift in Sources */,
 				5B269AE127BD8C68003976BC /* Tone.swift in Sources */,
+				5B9DF3F227CD271A00D9EC9D /* HomeView.swift in Sources */,
 				5BF8DA6327B53B76007BA4C7 /* RemoteImageModel.swift in Sources */,
 				5B9331AC27A9A02700C61580 /* ContentView.swift in Sources */,
 				5B8F62F527B50B5600EA84BC /* DemoView.swift in Sources */,
+				5B9DF3F627CD27AF00D9EC9D /* ContacUsView.swift in Sources */,
 				5B9331AA27A9A02700C61580 /* ToneKnowsApp.swift in Sources */,
+				5B9DF3F827CD27DB00D9EC9D /* TryItView.swift in Sources */,
+				5B9DF3F427CD279D00D9EC9D /* AboutUsView.swift in Sources */,
 				5B9331BE27A9A51B00C61580 /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

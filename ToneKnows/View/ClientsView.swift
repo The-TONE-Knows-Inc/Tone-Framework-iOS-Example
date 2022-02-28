@@ -19,8 +19,8 @@ struct ClientsView: View {
         }
     
         .tabItem {
-            Image(systemName: "person.crop.circle.fill")
-            Text("Home")
+            Image(systemName: "list.dash.header.rectangle")
+            Text("Try it")
         }
     }
 }
