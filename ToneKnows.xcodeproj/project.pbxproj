@@ -29,8 +29,8 @@
 		5B9DF3F427CD279D00D9EC9D /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF3F327CD279D00D9EC9D /* AboutUsView.swift */; };
 		5B9DF3F627CD27AF00D9EC9D /* ContacUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF3F527CD27AF00D9EC9D /* ContacUsView.swift */; };
 		5B9DF3F827CD27DB00D9EC9D /* TryItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF3F727CD27DB00D9EC9D /* TryItView.swift */; };
-		5B9FC71427C034B900C5D07B /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B9FC71327C034B900C5D07B /* frequency_tables.json */; };
 		5BF8DA6327B53B76007BA4C7 /* RemoteImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8DA6227B53B76007BA4C7 /* RemoteImageModel.swift */; };
+		DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA414C527CE5423003647B5 /* frequency_tables.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,8 +65,8 @@
 		5B9DF3F327CD279D00D9EC9D /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		5B9DF3F527CD27AF00D9EC9D /* ContacUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContacUsView.swift; sourceTree = "<group>"; };
 		5B9DF3F727CD27DB00D9EC9D /* TryItView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryItView.swift; sourceTree = "<group>"; };
-		5B9FC71327C034B900C5D07B /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = frequency_tables.json; path = "../../Framework-Core-Swift-iOS/ToneListen/frequency_tables.json"; sourceTree = "<group>"; };
 		5BF8DA6227B53B76007BA4C7 /* RemoteImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageModel.swift; sourceTree = "<group>"; };
+		DFA414C527CE5423003647B5 /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = frequency_tables.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +129,7 @@
 		5B9331A827A9A02700C61580 /* ToneKnows */ = {
 			isa = PBXGroup;
 			children = (
-				5B9FC71327C034B900C5D07B /* frequency_tables.json */,
+				DFA414C527CE5423003647B5 /* frequency_tables.json */,
 				5B269ADF27BD8C46003976BC /* Model */,
 				5B64855427ABB53B00378FBC /* GoogleService-Info.plist */,
 				5B9331BC27A9A27200C61580 /* Info.plist */,
@@ -250,7 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B9331B127A9A02900C61580 /* Preview Assets.xcassets in Resources */,
-				5B9FC71427C034B900C5D07B /* frequency_tables.json in Resources */,
+				DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */,
 				5B9331AE27A9A02900C61580 /* Assets.xcassets in Resources */,
 				5B64855527ABB53B00378FBC /* GoogleService-Info.plist in Resources */,
 			);
@@ -407,7 +407,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
-				DEVELOPMENT_TEAM = PV8Z8TA73K;
+				DEVELOPMENT_TEAM = N6J733ZXDX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToneKnows/Info.plist;
@@ -427,7 +427,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.kraken.example.ToneKnows.br";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -443,7 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
-				DEVELOPMENT_TEAM = PV8Z8TA73K;
+				DEVELOPMENT_TEAM = N6J733ZXDX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToneKnows/Info.plist;
@@ -463,7 +463,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.kraken.example.ToneKnows.br";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
