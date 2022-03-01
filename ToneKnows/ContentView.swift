@@ -8,14 +8,14 @@
 import SwiftUI
 import Combine
 import Foundation
-import ToneListen
+//import ToneListen
 
 struct ContentView: View {
     @State var showingDetail = false
     @ObservedObject var model = ContentViewModel()
-    let toneFramework = ToneFramework.shared
+//    let toneFramework = ToneFramework.shared
     init() {
-        toneFramework.start()
+     //   toneFramework.start()
     }
 
     
@@ -48,12 +48,13 @@ struct ContentView: View {
                 
             }.sheet(isPresented: $showingDetail){
                 SheetDetailView(showingDetail: $showingDetail, url: model.newNotification ?? "")
-            }.onReceive(NotificationCenter.default.publisher(for: model.notificationName), perform: { _ in
-                showingDetail.toggle()
-            }).onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("get_clients")), perform: { _ in
-                print(UserDefaults.standard.string(forKey: "clientID") ?? "0" )
-            toneFramework.setClientId(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "0")
-            })
+//            }.onReceive(NotificationCenter.default.publisher(for: model.notificationName), perform: { _ in
+//                showingDetail.toggle()
+            }
+//            }).onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("get_clients")), perform: { _ in
+//                print(UserDefaults.standard.string(forKey: "clientID") ?? "0" )
+//            toneFramework.setClientId(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "0")
+//            })
         
     }
 }
