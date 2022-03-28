@@ -11,86 +11,51 @@ import Foundation
 import ToneListen
 
 struct ContentView: View {
-    init() {
-        UITabBar.appearance().isHidden = true
-        let toneFramework = ToneFramework()
-        toneFramework.start()
-    }
-    @StateObject var menuData = MenuViewModel()
     @State var showingDetail = false
     @ObservedObject var model = ContentViewModel()
-    @Namespace var animation
+    let toneFramework = ToneFramework.shared
+    init() {
+        toneFramework.start()
+    }
+
     
     var body: some View {
-        HStack(spacing:0){
-            Drower(animation: animation)
-            TabView(selection: $menuData.selectedMenu){
-                
-                GeometryReader{ geo in
-                    ZStack {
-                        if model.thereClients ?? false && menuData.clients.count > 0 {
-                            AsyncImages(
-                                url: URL(string: menuData.clients.filter({ client in
-                                    return client.name == menuData.selectedMenu
-                                }).first?.image ?? "")!,
-                                        placeholder: Text("")
-                            ).aspectRatio(contentMode: .fit)
-                        }
-                    }.sheet(isPresented: $showingDetail){
-                        SheetDetailView(showingDetail: $showingDetail, url: model.newNotification ?? "")
-                    }
-                    
-                    .onReceive(NotificationCenter.default.publisher(for: model.notificationName), perform: { _ in
-                        print("Received notification: \(model.newNotification ?? "")")
-                        showingDetail.toggle()
-                    })
-                    
-                     
+  
+        TabView {
+            HomeView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
                 }
-               
-                Text(menuData.selectedMenu)
-                
-            }
-            .frame(width: UIScreen.main.bounds.width)
-        }
-        .onAppear(perform: {
-            menuData.loadImageFromStorage()
-        })
-        .frame(width: UIScreen.main.bounds.width)
-        .offset(x: menuData.showDrawer ? 125: -125)
-        .overlay(
-            ZStack {
-                if !menuData.showDrawer {
-                    DrowerCloseButton(animation: animation)
-                        .padding()
+            
+            AboutUsView()
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("About us")
                 }
-            },
-            alignment: .topLeading
-        )
-        .environmentObject(menuData)
-        
+            
+            TryItView()
+                .tabItem {
+                    Image(systemName: "message")
+                    Text("Try it")
+                }
+            
+            ContacUsView()
+                .tabItem {
+                    Image(systemName: "message")
+                    Text("Contact us")
+                }
+                
+            }.sheet(isPresented: $showingDetail){
+                SheetDetailView(showingDetail: $showingDetail, url: model.newNotification ?? "")
+            }.onReceive(NotificationCenter.default.publisher(for: model.notificationName), perform: { _ in
+                showingDetail.toggle()
+            }).onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("get_clients")), perform: { _ in
+                print(UserDefaults.standard.string(forKey: "clientID") ?? "0" )
+            toneFramework.setClientId(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "0")
+            })
         
     }
-}
-
-class ImageLoader: ObservableObject {
-    @Published var image: UIImage?
-    private let url: URL
-    private var cancellable: AnyCancellable?
-    init(url: URL) {
-        //self.url = url
-        self.url = url
-    }
-    
-    func load() {
-        cancellable = URLSession.shared.dataTaskPublisher(for: url)
-                    .map { UIImage(data: $0.data) }
-                    .replaceError(with: nil)
-                    .receive(on: DispatchQueue.main)
-                    .assign(to: \.image, on: self)
-    }
-
-    func cancel() {}
 }
 
 struct SheetDetailView: View {
@@ -106,10 +71,8 @@ struct SheetDetailView: View {
             }) {
                 Text("Back")
             }
-            AsyncImages(
-                        url: URL(string: url)!,
-                        placeholder: Text("")
-            ).aspectRatio(contentMode: .fit)
+            ImageViewController(imageUrl: url)
+            .aspectRatio(contentMode: .fit)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         
@@ -117,37 +80,6 @@ struct SheetDetailView: View {
     }
 }
 
-struct AsyncImages<Placeholder: View>: View {
-    @ObservedObject private var loader: ImageLoader
-    private let placeholder: Placeholder?
-    
-    init(url: URL, placeholder: Placeholder? = nil) {
-        loader = ImageLoader(url: url)
-        self.placeholder = placeholder
-    }
-
-    var body: some View {
-        image
-            .onAppear(perform: loader.load)
-            .onDisappear(perform: loader.cancel)
-    }
-    
-    private var image: some View {
-            Group {
-                if loader.image != nil {
-                    
-                    Image(uiImage: loader.image!)
-                        .resizable()
-                        .scaledToFit()
-                        //.edgesIgnoringSafeArea(.all)
-                        
-
-                } else {
-                    placeholder
-                }
-            }
-        }
-}
 
 
 
@@ -155,5 +87,42 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         
         ContentView()
+    }
+}
+
+
+
+struct ImageViewController: View {
+    @ObservedObject var url: LoadUrlImage
+
+    init(imageUrl: String) {
+        url = LoadUrlImage(imageURL: imageUrl)
+    }
+
+    var body: some View {
+          Image(uiImage: UIImage(data: self.url.data) ?? UIImage())
+              .resizable()
+              .clipped()
+    }
+}
+
+class LoadUrlImage: ObservableObject {
+    @Published var data = Data()
+    init(imageURL: String) {
+        let cache = URLCache.shared
+        let request = URLRequest(url: URL(string: imageURL)!, cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad, timeoutInterval: 60.0)
+        if let data = cache.cachedResponse(for: request)?.data {
+            self.data = data
+        } else {
+            URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                if let data = data, let response = response {
+                let cachedData = CachedURLResponse(response: response, data: data)
+                                    cache.storeCachedResponse(cachedData, for: request)
+                    DispatchQueue.main.async {
+                        self.data = data
+                    }
+                }
+            }).resume()
+        }
     }
 }

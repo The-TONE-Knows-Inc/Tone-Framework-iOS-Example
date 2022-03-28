@@ -12,8 +12,10 @@ import Firebase
 struct ToneKnowsApp: App {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
+       
         return true
     }
+    
     
     var body: some Scene {
         WindowGroup {

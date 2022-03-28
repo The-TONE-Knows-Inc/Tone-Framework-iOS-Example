@@ -8,20 +8,23 @@
 import SwiftUI
 
 struct MenuButtons: View {
+    var clientID: String
     var name: String
     var image: String
     @Binding var selectedMenu: String
-    var animation: Namespace.ID
+    
     var body: some View {
         Button(action: {
+            NotificationCenter.default.post(name: NSNotification.Name("get_clients"), object: true)
             withAnimation(.spring()){
                 selectedMenu = name
+                UserDefaults.standard.set(clientID, forKey: "clientID")
             }
         }, label: {
             HStack(spacing: 15){
-                AsyncImages(
-                            url: URL(string: image)!,
-                            placeholder: Text("")).aspectRatio(contentMode: .fit)
+                HStack {
+                    ImageViewController(imageUrl: image).aspectRatio(contentMode: .fit)
+                }.frame(width: 50, height: 50, alignment: .leading)
               //  Image(systemName: image)
               //      .font(.title2)
               //      .foregroundColor(selectedMenu == name ? .black : .white)
@@ -30,13 +33,13 @@ struct MenuButtons: View {
             }
             .padding(.horizontal)
             .padding(.vertical,12)
-            .frame(width: 200, alignment: .leading)
+            .frame(width: 300, alignment: .leading)
             .background(
                 ZStack{
                     if selectedMenu == name {
                         Color.white
                             .cornerRadius(10)
-                            .matchedGeometryEffect(id: "TAB", in: animation)
+                         //   .matchedGeometryEffect(id: "TAB", in: animation)
                     } else {
                         Color.clear
                     }
