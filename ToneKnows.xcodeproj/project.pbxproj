@@ -17,7 +17,6 @@
 		5B826CF427F23D4500D812D0 /* FetchImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B826CF327F23D4500D812D0 /* FetchImage */; };
 		5B826CF627F23D4D00D812D0 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5B826CF527F23D4D00D812D0 /* Realm */; };
 		5B826CF827F23D4D00D812D0 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B826CF727F23D4D00D812D0 /* RealmSwift */; };
-		5B826CFC27F23F3F00D812D0 /* ToneLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 5B826CFB27F23F3F00D812D0 /* ToneLibrary */; };
 		5B8F62F327B50B3500EA84BC /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F62F227B50B3400EA84BC /* ClientsView.swift */; };
 		5B8F62F527B50B5600EA84BC /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F62F427B50B5600EA84BC /* DemoView.swift */; };
 		5B9331AA27A9A02700C61580 /* ToneKnowsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9331A927A9A02700C61580 /* ToneKnowsApp.swift */; };
@@ -29,6 +28,7 @@
 		5B9DF3F427CD279D00D9EC9D /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF3F327CD279D00D9EC9D /* AboutUsView.swift */; };
 		5B9DF3F627CD27AF00D9EC9D /* ContacUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF3F527CD27AF00D9EC9D /* ContacUsView.swift */; };
 		5B9DF3F827CD27DB00D9EC9D /* TryItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF3F727CD27DB00D9EC9D /* TryItView.swift */; };
+		5BAEDE5428296E5900C4A2CA /* ToneLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 5BAEDE5328296E5900C4A2CA /* ToneLibrary */; };
 		5BF8DA6327B53B76007BA4C7 /* RemoteImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8DA6227B53B76007BA4C7 /* RemoteImageModel.swift */; };
 		DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA414C527CE5423003647B5 /* frequency_tables.json */; };
 /* End PBXBuildFile section */
@@ -76,7 +76,7 @@
 			files = (
 				5B826CF427F23D4500D812D0 /* FetchImage in Frameworks */,
 				5B826CF027F23D4000D812D0 /* FirebaseFirestore in Frameworks */,
-				5B826CFC27F23F3F00D812D0 /* ToneLibrary in Frameworks */,
+				5BAEDE5428296E5900C4A2CA /* ToneLibrary in Frameworks */,
 				5B826CF627F23D4D00D812D0 /* Realm in Frameworks */,
 				5B826CF827F23D4D00D812D0 /* RealmSwift in Frameworks */,
 				5B826CF227F23D4000D812D0 /* FirebaseFirestoreCombine-Community in Frameworks */,
@@ -199,7 +199,7 @@
 				5B826CF327F23D4500D812D0 /* FetchImage */,
 				5B826CF527F23D4D00D812D0 /* Realm */,
 				5B826CF727F23D4D00D812D0 /* RealmSwift */,
-				5B826CFB27F23F3F00D812D0 /* ToneLibrary */,
+				5BAEDE5328296E5900C4A2CA /* ToneLibrary */,
 			);
 			productName = ToneKnows;
 			productReference = 5B9331A627A9A02700C61580 /* ToneKnows.app */;
@@ -233,7 +233,7 @@
 				5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5B8F62F627B5317B00EA84BC /* XCRemoteSwiftPackageReference "FetchImage" */,
 				5B269ADA27BD8A2F003976BC /* XCRemoteSwiftPackageReference "realm-swift" */,
-				5B58EA2727C40BCB00FDF07F /* XCRemoteSwiftPackageReference "ToneLibrary" */,
+				5BAEDE5228296E5900C4A2CA /* XCRemoteSwiftPackageReference "ToneLibrary" */,
 			);
 			productRefGroup = 5B9331A727A9A02700C61580 /* Products */;
 			projectDirPath = "";
@@ -407,7 +407,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
-				DEVELOPMENT_TEAM = N6J733ZXDX;
+				DEVELOPMENT_TEAM = PV8Z8TA73K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToneKnows/Info.plist;
@@ -427,7 +427,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo.br";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -443,7 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
-				DEVELOPMENT_TEAM = N6J733ZXDX;
+				DEVELOPMENT_TEAM = PV8Z8TA73K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToneKnows/Info.plist;
@@ -463,7 +463,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo.br";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -503,14 +503,6 @@
 				kind = branch;
 			};
 		};
-		5B58EA2727C40BCB00FDF07F /* XCRemoteSwiftPackageReference "ToneLibrary" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/The-TONE-Knows-Inc/ToneLibrary";
-			requirement = {
-				branch = ToneLibraryV4;
-				kind = branch;
-			};
-		};
 		5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -525,6 +517,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
+			};
+		};
+		5BAEDE5228296E5900C4A2CA /* XCRemoteSwiftPackageReference "ToneLibrary" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/The-TONE-Knows-Inc/ToneLibrary";
+			requirement = {
+				branch = ToneLibraryV5;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -555,9 +555,9 @@
 			package = 5B269ADA27BD8A2F003976BC /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
-		5B826CFB27F23F3F00D812D0 /* ToneLibrary */ = {
+		5BAEDE5328296E5900C4A2CA /* ToneLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5B58EA2727C40BCB00FDF07F /* XCRemoteSwiftPackageReference "ToneLibrary" */;
+			package = 5BAEDE5228296E5900C4A2CA /* XCRemoteSwiftPackageReference "ToneLibrary" */;
 			productName = ToneLibrary;
 		};
 /* End XCSwiftPackageProductDependency section */

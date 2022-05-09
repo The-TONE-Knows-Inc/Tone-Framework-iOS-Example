@@ -14,17 +14,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AudioKit/AudioKit.git",
       "state" : {
-        "revision" : "86c9285d673baa7f7955e8f2c1550e5e9740bada",
-        "version" : "5.3.3"
+        "revision" : "e7f37266dc9200f04a2646b108acae98c87f8e46",
+        "version" : "5.4.1"
       }
     },
     {
       "identity" : "audiokitex",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AudioKit/AudioKitEX.git",
+      "location" : "https://github.com/AudioKit/AudioKitEX",
       "state" : {
-        "revision" : "57e2af5a924706ede3994440ffea3d0b2c003a08",
-        "version" : "5.3.2"
+        "revision" : "b66fb1e2922611ac0c5a7ac5bbe2731f9b5ce38b",
+        "version" : "5.4.0"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AudioKit/DunneAudioKit.git",
       "state" : {
-        "revision" : "83a7cd388ecb9237fba1ffe4129fab32a54c1acb",
-        "version" : "5.3.1"
+        "revision" : "866d5c1dd6727cbfce314ff7187329ecf9960e88",
+        "version" : "5.4.1"
       }
     },
     {
@@ -185,8 +185,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AudioKit/SoundpipeAudioKit.git",
       "state" : {
-        "revision" : "73b438e5c094d0535e48e305c37a6b77190510e3",
-        "version" : "5.3.1"
+        "revision" : "3be2802b20088de37f34f993966d918b65401a60",
+        "version" : "5.4.1"
       }
     },
     {
@@ -221,8 +221,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/The-TONE-Knows-Inc/ToneLibrary",
       "state" : {
-        "branch" : "ToneLibraryV4",
-        "revision" : "247ee1a36b4d86fb76ea417ca564e034d7f94ce2"
+        "branch" : "ToneLibraryV5",
+        "revision" : "f339f20d1fcc6577544e329f238e6556289ab209"
       }
     }
   ],
