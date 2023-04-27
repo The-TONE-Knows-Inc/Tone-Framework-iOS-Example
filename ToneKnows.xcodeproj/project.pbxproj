@@ -405,12 +405,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
 				DEVELOPMENT_TEAM = N6J733ZXDX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToneKnows/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "TONE Technology";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We use the location to provide better Ads";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use the location to provide better Ads";
 				INFOPLIST_KEY_NSLocationUsageDescription = "We use the location to provide better Ads";
@@ -426,7 +428,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -441,12 +443,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
 				DEVELOPMENT_TEAM = N6J733ZXDX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToneKnows/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "TONE Technology";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We use the location to provide better Ads";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use the location to provide better Ads";
 				INFOPLIST_KEY_NSLocationUsageDescription = "We use the location to provide better Ads";
@@ -462,7 +466,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
