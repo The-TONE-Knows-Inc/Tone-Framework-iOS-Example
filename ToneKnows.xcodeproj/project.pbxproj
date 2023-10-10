@@ -339,6 +339,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -393,6 +394,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -405,19 +407,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
 				DEVELOPMENT_TEAM = N6J733ZXDX;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToneKnows/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "TONE Technology";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We use the location to provide better Ads";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use the location to provide better Ads";
-				INFOPLIST_KEY_NSLocationUsageDescription = "We use the location to provide better Ads";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use the location to provide better Ads";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We don't record or send microphone data it analyzes sounds to display better ads";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We use the location to provide accurate and relative nformation for users";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use the location to provide accurate and relative nformation for users";
+				INFOPLIST_KEY_NSLocationUsageDescription = "We use the location to provide accurate and relative nformation for users";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use the location to provide accurate and relative nformation for users";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We don't record or send microphone data it analyzes sounds to display accurate and relative information for users.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,7 +431,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4;
+				MARKETING_VERSION = 4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -443,19 +446,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
 				DEVELOPMENT_TEAM = N6J733ZXDX;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToneKnows/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "TONE Technology";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We use the location to provide better Ads";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use the location to provide better Ads";
-				INFOPLIST_KEY_NSLocationUsageDescription = "We use the location to provide better Ads";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use the location to provide better Ads";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We don't record or send microphone data it analyzes sounds to display better ads";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We use the location to provide accurate and relative nformation for users";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use the location to provide accurate and relative nformation for users";
+				INFOPLIST_KEY_NSLocationUsageDescription = "We use the location to provide accurate and relative nformation for users";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use the location to provide accurate and relative nformation for users";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We don't record or send microphone data it analyzes sounds to display accurate and relative information for users.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -466,7 +470,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4;
+				MARKETING_VERSION = 4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
