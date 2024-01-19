@@ -14,8 +14,6 @@ class Tone: Object, Identifiable {
     @Persisted var actionURL: String = ""
     @Persisted var actionType: String = ""
     @Persisted var clientId: String = ""
-    
-    
     @Persisted var timestamp: String = ""
     
     convenience init(actionDesc: String, toneSequence: String, actionURL: String, actionType: String, clientId: String, timestamp: String) {
