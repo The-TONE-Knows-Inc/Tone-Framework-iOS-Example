@@ -109,20 +109,25 @@ struct ImageViewController: View {
 class LoadUrlImage: ObservableObject {
     @Published var data = Data()
     init(imageURL: String) {
+        guard let url = URL(string: imageURL) else {
+            return
+        }
         let cache = URLCache.shared
-        let request = URLRequest(url: URL(string: imageURL)!, cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad, timeoutInterval: 60.0)
+        let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 60.0)
+
         if let data = cache.cachedResponse(for: request)?.data {
             self.data = data
         } else {
-            URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-                if let data = data, let response = response {
+            URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
+                guard let self = self, let data = data, let response = response else { return }
+
                 let cachedData = CachedURLResponse(response: response, data: data)
-                                    cache.storeCachedResponse(cachedData, for: request)
-                    DispatchQueue.main.async {
-                        self.data = data
-                    }
+                cache.storeCachedResponse(cachedData, for: request)
+
+                DispatchQueue.main.async {
+                    self.data = data
                 }
-            }).resume()
+            }.resume()
         }
     }
 }

@@ -11,7 +11,6 @@
 		5B0F21E727AB2BA700B953E8 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F21E627AB2BA700B953E8 /* MenuViewModel.swift */; };
 		5B269AE127BD8C68003976BC /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B269AE027BD8C68003976BC /* Tone.swift */; };
 		5B269AF827BE118F003976BC /* ListActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B269AF727BE118F003976BC /* ListActionsView.swift */; };
-		5B64855527ABB53B00378FBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B64855427ABB53B00378FBC /* GoogleService-Info.plist */; };
 		5B826CF027F23D4000D812D0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5B826CEF27F23D4000D812D0 /* FirebaseFirestore */; };
 		5B826CF227F23D4000D812D0 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5B826CF127F23D4000D812D0 /* FirebaseFirestoreCombine-Community */; };
 		5B826CF427F23D4500D812D0 /* FetchImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B826CF327F23D4500D812D0 /* FetchImage */; };
@@ -29,6 +28,7 @@
 		5B9DF3F627CD27AF00D9EC9D /* ContacUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF3F527CD27AF00D9EC9D /* ContacUsView.swift */; };
 		5B9DF3F827CD27DB00D9EC9D /* TryItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF3F727CD27DB00D9EC9D /* TryItView.swift */; };
 		5BF8DA6327B53B76007BA4C7 /* RemoteImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8DA6227B53B76007BA4C7 /* RemoteImageModel.swift */; };
+		9EDB7E9C2B62E34400C9463F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9EDB7E9B2B62E34400C9463F /* GoogleService-Info.plist */; };
 		9EF462722B5AE5E700673477 /* ToneLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 9EF462712B5AE5E700673477 /* ToneLibrary */; };
 		DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA414C527CE5423003647B5 /* frequency_tables.json */; };
 /* End PBXBuildFile section */
@@ -51,7 +51,6 @@
 		5B0F21E627AB2BA700B953E8 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		5B269AE027BD8C68003976BC /* Tone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
 		5B269AF727BE118F003976BC /* ListActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListActionsView.swift; sourceTree = "<group>"; };
-		5B64855427ABB53B00378FBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B8F62F227B50B3400EA84BC /* ClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsView.swift; sourceTree = "<group>"; };
 		5B8F62F427B50B5600EA84BC /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
 		5B9331A627A9A02700C61580 /* ToneKnows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneKnows.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +65,7 @@
 		5B9DF3F527CD27AF00D9EC9D /* ContacUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContacUsView.swift; sourceTree = "<group>"; };
 		5B9DF3F727CD27DB00D9EC9D /* TryItView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryItView.swift; sourceTree = "<group>"; };
 		5BF8DA6227B53B76007BA4C7 /* RemoteImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageModel.swift; sourceTree = "<group>"; };
+		9EDB7E9B2B62E34400C9463F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DFA414C527CE5423003647B5 /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = frequency_tables.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,8 +131,8 @@
 			children = (
 				DFA414C527CE5423003647B5 /* frequency_tables.json */,
 				5B269ADF27BD8C46003976BC /* Model */,
-				5B64855427ABB53B00378FBC /* GoogleService-Info.plist */,
 				5B9331BC27A9A27200C61580 /* Info.plist */,
+				9EDB7E9B2B62E34400C9463F /* GoogleService-Info.plist */,
 				5B9331BB27A9A1A400C61580 /* ViewModel */,
 				5B9331BA27A9A19D00C61580 /* View */,
 				5B9331A927A9A02700C61580 /* ToneKnowsApp.swift */,
@@ -250,9 +250,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B9331B127A9A02900C61580 /* Preview Assets.xcassets in Resources */,
+				9EDB7E9C2B62E34400C9463F /* GoogleService-Info.plist in Resources */,
 				DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */,
 				5B9331AE27A9A02900C61580 /* Assets.xcassets in Resources */,
-				5B64855527ABB53B00378FBC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,7 +407,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
 				DEVELOPMENT_TEAM = N6J733ZXDX;
 				ENABLE_PREVIEWS = YES;
@@ -431,8 +431,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -446,7 +446,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
 				DEVELOPMENT_TEAM = N6J733ZXDX;
 				ENABLE_PREVIEWS = YES;
@@ -470,8 +470,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

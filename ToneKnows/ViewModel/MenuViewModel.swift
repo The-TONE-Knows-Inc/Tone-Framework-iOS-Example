@@ -16,7 +16,7 @@ class MenuViewModel: ObservableObject {
     func loadImageFromStorage() {
         FirebaseApp.configure()
         let db = Firestore.firestore()
-        db.collection("demos").getDocuments() { (querySnapshot, err) in
+        db.collection("demo").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
