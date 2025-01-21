@@ -10,11 +10,7 @@ import ToneListen
 
 struct DemoView: View {
     @EnvironmentObject var menuData: MenuViewModel
-  //  @State var showingDetail = false
-  //  @ObservedObject var model = ContentViewModel()
- 
     var body: some View {
-        
         VStack {
             GeometryReader{ geo in
                 
@@ -23,13 +19,11 @@ struct DemoView: View {
                         ImageViewController(imageUrl: menuData.clients.filter({ client in
                             return client.name == menuData.selectedMenu
                         }).first?.image ?? "")
+                        .padding()
                     }
                 }
             }
-        }.tabItem {
-            Image(systemName: "circle.grid.3x3.circle.fill")
-            Text("Dashboard")
-        }
+        }        
     }
 }
 

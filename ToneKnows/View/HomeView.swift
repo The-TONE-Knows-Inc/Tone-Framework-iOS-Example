@@ -10,21 +10,14 @@ import WebKit
 
 struct HomeView: View {
     @StateObject var modelWebView = WebViewModel()
-       
-   var body: some View {
-       WebView(webView: modelWebView.webView)
-   }
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
+    var body: some View {
+        WebView(webView: modelWebView.webView)
     }
 }
 
 struct WebView: UIViewRepresentable {
     typealias UIViewType = WKWebView
-
+    
     let webView: WKWebView
     
     func makeUIView(context: Context) -> WKWebView {
@@ -37,15 +30,19 @@ struct WebView: UIViewRepresentable {
 class WebViewModel: ObservableObject {
     let webView: WKWebView
     let url: URL
-    
     init() {
         webView = WKWebView(frame: .zero)
-        url = URL(string: "https://thetoneknows.ottchannel.com/")!        
+        url = URL(string: "https://thetoneknows.com/app/")!
         loadUrl()
     }
     
     func loadUrl() {
-        
         webView.load(URLRequest(url: url))
+    }
+}
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
     }
 }

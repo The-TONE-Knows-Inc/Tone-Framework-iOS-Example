@@ -15,19 +15,18 @@ struct MenuButtons: View {
     
     var body: some View {
         Button(action: {
-            NotificationCenter.default.post(name: NSNotification.Name("get_clients"), object: true)
-            withAnimation(.spring()){
-                selectedMenu = name
-                UserDefaults.standard.set(clientID, forKey: "clientID")
+            if !clientID.isEmpty {
+                NotificationCenter.default.post(name: NSNotification.Name("get_clients"), object: true)
+                withAnimation(.spring()) {
+                    selectedMenu = name
+                    UserDefaults.standard.set(clientID, forKey: "clientID")
+                }
             }
         }, label: {
             HStack(spacing: 15){
                 HStack {
                     ImageViewController(imageUrl: image).aspectRatio(contentMode: .fit)
                 }.frame(width: 50, height: 50, alignment: .leading)
-              //  Image(systemName: image)
-              //      .font(.title2)
-              //      .foregroundColor(selectedMenu == name ? .black : .white)
                 Text(name)
                     .foregroundColor(selectedMenu == name ? .black : .white)
             }
@@ -53,6 +52,5 @@ struct MenuButtons: View {
 struct MenuButtons_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-        //Home()
     }
 }

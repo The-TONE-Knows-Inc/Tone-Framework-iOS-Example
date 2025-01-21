@@ -2,12 +2,74 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSMinimumSystemVersion</key>
+	<string>12.0</string>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>Notifications may include alerts to notify if sound frequency detected is higher (Hz) than the normal hearing range.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
 		<string>fetch</string>
 		<string>location</string>
 		<string>remote-notification</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>20.120.248.225</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>solarintegratedroofingcorp.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSExceptionMinimumTLSVersion</key>
+				<string>TLSv1.2</string>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<true/>
+			</dict>
+			<key>www.solarintegratedroofingcorp.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSExceptionMinimumTLSVersion</key>
+				<string>TLSv1.2</string>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<true/>
+			</dict>
+			<key>tonedemo.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSExceptionMinimumTLSVersion</key>
+				<string>TLSv1.2</string>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSLocationPreciseUsageDescription</key>
+	<string>We need precise location access to provide detailed carrier-related functionality.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>This app uses Bluetooth to detect nearby devices and provide enhanced functionality.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>This app requires access to Bluetooth to connect and communicate with peripherals.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs location access to detect Wi-Fi networks in your area.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app requires location access to monitor Wi-Fi networks continuously in the background.</string>
+    <key>NSCarrierUsageDescription</key>
+    <string>We need access to cellular information for detecting the carrier name</string>
+	<key>com.apple.developer.networking.HotspotHelper</key>
+	<array>
+		<string>com.apple.hotspot-helper-network-info</string>
 	</array>
 </dict>
 </plist>

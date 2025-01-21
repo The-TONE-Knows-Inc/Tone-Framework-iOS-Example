@@ -8,53 +8,66 @@
 import SwiftUI
 import Combine
 import Foundation
-import ToneListen
 
 struct ContentView: View {
-    @State var showingDetail = false
+    @State private var isFirstLaunch: Bool
+    @State private var showingSplash = true
     @ObservedObject var model = ContentViewModel()
-    let toneFramework = ToneFramework.shared
     init() {
-        toneFramework.start()
+        if UserDefaults.standard.bool(forKey: "HasLaunchedOnce") {
+            _isFirstLaunch = State(initialValue: false)
+        } else {
+            UserDefaults.standard.set(true, forKey: "HasLaunchedOnce")
+            UserDefaults.standard.synchronize()
+            _isFirstLaunch = State(initialValue: true)
+        }
     }
 
     
     var body: some View {
-  
-        TabView {
-            HomeView()
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("Home")
+        if showingSplash {
+            SplashScreenView()
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        self.showingSplash = false
+                    }
                 }
-            
-            AboutUsView()
-                .tabItem {
-                    Image(systemName: "person.crop.circle")
-                    Text("About us")
-                }
-            
-            TryItView()
-                .tabItem {
-                    Image(systemName: "message")
-                    Text("Try it")
-                }
-            
-            ContacUsView()
-                .tabItem {
-                    Image(systemName: "message")
-                    Text("Contact us")
-                }
-                
-            }.sheet(isPresented: $showingDetail){
-                SheetDetailView(showingDetail: $showingDetail, url: model.newNotification ?? "")
-            }.onReceive(NotificationCenter.default.publisher(for: model.notificationName), perform: { _ in
-                showingDetail.toggle()
-            }).onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("get_clients")), perform: { _ in
-                print(UserDefaults.standard.string(forKey: "clientID") ?? "0" )
-            toneFramework.setClientId(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "0")
-            })
-        
+        }else{
+            NavigationView {
+                TryItView()
+            }
+        }
+    }
+}
+
+struct SplashScreenView: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            Image("HeaderLogo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(.horizontal, 15)
+            Text("Know your frequencies")
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding(.all)
+            Spacer()
+            Button("Privacy Policy") {
+                openTermsAndConditions()
+            }
+            .font(.footnote)
+            .foregroundColor(.white)
+            .padding()
+        }
+        .background(Color.black)
+        .edgesIgnoringSafeArea(.all)
+    }
+    
+    func openTermsAndConditions() {
+        if let url = URL(string: "https://thetoneknows.com/privacy") {
+            UIApplication.shared.open(url)
+        }
     }
 }
 
@@ -80,8 +93,40 @@ struct SheetDetailView: View {
     }
 }
 
+struct SheetDetailDataView: View {
+    @ObservedObject var model = ContentViewModel()
+    @Binding var showingDetail: Bool
+    @Binding var imageData: Data
+    
+    var body: some View {
+        VStack(spacing: 15) {
+            Text("TAG Content")
+            Button(action: {
+                showingDetail.toggle()
+            }) {
+                Text("Back")
+            }
+            ImageDataViewController(imageData: $imageData)
+                .aspectRatio(contentMode: .fit)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
 
-
+struct ImageDataViewController: View {
+    @Binding var imageData: Data
+    
+    var body: some View {
+        if let uiImage = UIImage(data: imageData) {
+            Image(uiImage: uiImage)
+                .resizable()
+                .clipped()
+        } else {
+            Text("No image available")
+                .foregroundColor(.gray)
+        }
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

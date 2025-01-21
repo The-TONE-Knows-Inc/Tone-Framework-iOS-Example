@@ -24,20 +24,27 @@ class MenuViewModel: ObservableObject {
                     let client = Client(data: document.data())
                     if client?.isActive == true {
                         self.clients.append(client!)
-                    }                        
-                }                
-                if UserDefaults.standard.string(forKey: "clientID") ?? "0" == "0"{
-                    UserDefaults.standard.set(self.clients.first?.clientID ?? "0", forKey: "clientID")
-                    self.selectedMenu = self.clients.first?.name ?? ""
+                    }
+                }
+                if let firstClientID = self.clients.first?.clientID {
+                    if UserDefaults.standard.string(forKey: "clientID") == nil || UserDefaults.standard.string(forKey: "clientID") == "" {
+                        UserDefaults.standard.set(firstClientID, forKey: "clientID")
+                        self.selectedMenu = self.clients.first?.name ?? ""
+                    } else {
+                        if let storedClientID = UserDefaults.standard.string(forKey: "clientID") {
+                            self.selectedMenu = self.clients.first(where: { $0.clientID == storedClientID })?.name ?? ""
+                        } else {
+                            print(":::: UserDefaults: clientID is nil ::::")
+                        }
+                    }
                 } else {
-                    self.selectedMenu = self.clients.filter({ client in
-                        return client.clientID == UserDefaults.standard.string(forKey: "clientID")
-                    }).first?.name ?? ""
+                    print(":::: No clients available. ::::")
                 }
                 NotificationCenter.default.post(name: NSNotification.Name("get_clients"), object: true)
             }
         }
     }
+    
     init(){
         self.loadImageFromStorage()
     }

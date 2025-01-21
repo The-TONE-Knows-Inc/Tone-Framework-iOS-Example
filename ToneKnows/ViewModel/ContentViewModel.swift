@@ -9,7 +9,6 @@ import Foundation
 import Combine
 import Firebase
 import ToneListen
-import RealmSwift
 
 
 class ContentViewModel: ObservableObject {
@@ -18,6 +17,8 @@ class ContentViewModel: ObservableObject {
     var notifications : String = ""  // Holds a list of notifications received from View2 via NotificationCenter
     var clientNotification = NSNotification.Name("get_clients")
     var notificationName = NotificationsHandler.notificationName
+    var notificationImageData = NotificationsHandler.notificationImageData
+    @Published var dataResponse: [String] = []
     
     var responseObjectNotificationName = NotificationsHandler.responseObjectNotificationName
     var responseSub: AnyCancellable?
@@ -39,14 +40,16 @@ class ContentViewModel: ObservableObject {
     
     @Published var responseContent: [String : Any]? {
         didSet {
-            guard responseContent != nil else { return }
+            if responseContent != nil {
+                dataResponse.append(responseContent?["toneSequence"]  as? String ?? "")
+            }else{
+                return
+            }
         }
     }
     
     init() {
         // Open the default realm
-        
-        loadActions()
         
         notificationClient = NotificationCenter.default.publisher(for: clientNotification)
             .map { notification in notification.object as? Bool }   // Transform the notification into a simple string
@@ -61,62 +64,11 @@ class ContentViewModel: ObservableObject {
             .assign(to: \ContentViewModel.responseContent, on: self)  // Assign the msg to a property using a keypath
         
     }
-    
-    func loadActions() {
-        do {
-            let realm = try Realm()
-            if UserDefaults.standard.string(forKey: "clientID") ?? "0" != "0" {
-                let listTones = realm.objects(Tone.self)
-                let clientTones = listTones.where {
-                    $0.clientId == UserDefaults.standard.string(forKey: "clientID")!
-                }.sorted(byKeyPath: "timestamp", ascending: false)
-                tones = clientTones.toArray(ofType: Tone.self)
-            }
-        } catch _ as NSError {
-            // Handle error
-        }
-    }
-    func saveResponse(content: [String : Any]) {
-        do {
-            let realm = try Realm()
-            let tones = realm.objects(Tone.self)
-            let tone = Tone(value: content)
-            tone.timestamp = String(Date.currentTimeStamp)
-            let clientTones = tones.where {
-                ($0.toneSequence == tone.toneSequence) && ($0.actionDesc == tone.actionDesc)
-                
-            }
-            
-            if clientTones.isEmpty {
-                try! realm.write {
-                    // Add the instance to the realm.
-                    realm.add(tone)
-                }
-            }
-            loadActions()
-        } catch _ as NSError {
-            // Handle error
-        }
-    }
 }
-
 
 extension String: Identifiable {
     public var id: String {
         return UUID().uuidString
-    }
-}
-
-extension Results {
-    func toArray<T>(ofType: T.Type) -> [T] {
-        var array = [T]()
-        for i in 0 ..< count {
-            if let result = self[i] as? T {
-                array.append(result)
-            }
-        }
-
-        return array
     }
 }
 
