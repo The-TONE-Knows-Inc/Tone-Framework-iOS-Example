@@ -1,5 +1,5 @@
 {
-  "originHash" : "9fefff607f8c3e16841fb3b183f6411ed92de0b59e58cb90d47ac089728b2a62",
+  "originHash" : "abcd9fb0f101377522707f53030692d75070402aac064a4cbe439e9c0fd721b9",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -29,24 +29,6 @@
       }
     },
     {
-      "identity" : "audiokitex",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AudioKit/AudioKitEX",
-      "state" : {
-        "revision" : "cb1a1276978ffc08e00d4774c0617aa8a58a17c4",
-        "version" : "5.6.1"
-      }
-    },
-    {
-      "identity" : "dunneaudiokit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AudioKit/DunneAudioKit.git",
-      "state" : {
-        "revision" : "dd0a417239ba345e03ca8ffe936d052d6a8239ea",
-        "version" : "5.6.1"
-      }
-    },
-    {
       "identity" : "fetchimage",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nenosllc/FetchImage.git",
@@ -62,15 +44,6 @@
       "state" : {
         "revision" : "eca84fd638116dd6adb633b5a3f31cc7befcbb7d",
         "version" : "10.29.0"
-      }
-    },
-    {
-      "identity" : "generic-json-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/zoul/generic-json-swift",
-      "state" : {
-        "revision" : "0a06575f4038b504e78ac330913d920f1630f510",
-        "version" : "2.0.2"
       }
     },
     {
@@ -128,15 +101,6 @@
       }
     },
     {
-      "identity" : "kissfft",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AudioKit/KissFFT",
-      "state" : {
-        "revision" : "dd0636e151724b8ba2e0908eba4d99a6ff24d00c",
-        "version" : "1.0.0"
-      }
-    },
-    {
       "identity" : "leveldb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/leveldb.git",
@@ -173,24 +137,6 @@
       }
     },
     {
-      "identity" : "soundpipeaudiokit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AudioKit/SoundpipeAudioKit.git",
-      "state" : {
-        "revision" : "ee7d9542078ae48b24744a67c0350a12f9de354b",
-        "version" : "5.6.1"
-      }
-    },
-    {
-      "identity" : "stkaudiokit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AudioKit/STKAudioKit.git",
-      "state" : {
-        "revision" : "e6af9e24eb599d4ff34d5776b0801cf0068142bc",
-        "version" : "5.5.4"
-      }
-    },
-    {
       "identity" : "swift-protobuf",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
@@ -202,19 +148,10 @@
     {
       "identity" : "swiftlocation",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/malcommac/SwiftLocation",
+      "location" : "https://github.com/malcommac/SwiftLocation.git",
       "state" : {
-        "revision" : "f8ec8e97095eb3a5312370ad94b921768217625f",
-        "version" : "5.1.0"
-      }
-    },
-    {
-      "identity" : "toneframework",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/The-TONE-Knows-Inc/ToneFramework.git",
-      "state" : {
-        "revision" : "4d0fcdb8a9400d0058af304e2c7d0348898f6ec2",
-        "version" : "1.0.11"
+        "revision" : "010073e62cea4daefea61042a51b8619d23cdc35",
+        "version" : "6.0.0"
       }
     }
   ],

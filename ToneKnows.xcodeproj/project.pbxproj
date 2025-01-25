@@ -10,7 +10,6 @@
 		5B0F21E527AB2A0900B953E8 /* MenuButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F21E427AB2A0900B953E8 /* MenuButtons.swift */; };
 		5B0F21E727AB2BA700B953E8 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F21E627AB2BA700B953E8 /* MenuViewModel.swift */; };
 		5B269AE127BD8C68003976BC /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B269AE027BD8C68003976BC /* Tone.swift */; };
-		5B269AF827BE118F003976BC /* ListActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B269AF727BE118F003976BC /* ListActionsView.swift */; };
 		5B826CF027F23D4000D812D0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5B826CEF27F23D4000D812D0 /* FirebaseFirestore */; };
 		5B826CF227F23D4000D812D0 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5B826CF127F23D4000D812D0 /* FirebaseFirestoreCombine-Community */; };
 		5B826CF427F23D4500D812D0 /* FetchImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B826CF327F23D4500D812D0 /* FetchImage */; };
@@ -28,18 +27,32 @@
 		5BF8DA6327B53B76007BA4C7 /* RemoteImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8DA6227B53B76007BA4C7 /* RemoteImageModel.swift */; };
 		9E162F582B75FC5F001CCFC8 /* ToneValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E162F572B75FC5F001CCFC8 /* ToneValidator.swift */; };
 		9E1D25692BA0300E0047F2F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E1D25682BA0300E0047F2F0 /* GoogleService-Info.plist */; };
-		9E526D032D3FEE9600A18BD8 /* ToneLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 9E526D022D3FEE9600A18BD8 /* ToneLibrary */; };
 		9E5CB93E2D0B35E4008FE924 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5CB93D2D0B35E4008FE924 /* SwiftLocation */; };
 		9E5CB9412D0B3648008FE924 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5CB9402D0B3648008FE924 /* AudioKit */; };
+		9EB196DF2D44D90B00B4A7AB /* ToneListen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB196DE2D44D90B00B4A7AB /* ToneListen.xcframework */; };
+		9EB196E02D44D90B00B4A7AB /* ToneListen.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB196DE2D44D90B00B4A7AB /* ToneListen.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9ECAC9B32BBD7DAA009E42AA /* home_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ECAC9B22BBD7DAA009E42AA /* home_response.json */; };
 		DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA414C527CE5423003647B5 /* frequency_tables.json */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9EB196B72D43D85900B4A7AB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9EB196E02D44D90B00B4A7AB /* ToneListen.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5B0F21E427AB2A0900B953E8 /* MenuButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtons.swift; sourceTree = "<group>"; };
 		5B0F21E627AB2BA700B953E8 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		5B269AE027BD8C68003976BC /* Tone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
-		5B269AF727BE118F003976BC /* ListActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListActionsView.swift; sourceTree = "<group>"; };
 		5B8F62F227B50B3400EA84BC /* ClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsView.swift; sourceTree = "<group>"; };
 		5B8F62F427B50B5600EA84BC /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
 		5B9331A627A9A02700C61580 /* ToneKnows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneKnows.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +69,7 @@
 		5BF8DA6227B53B76007BA4C7 /* RemoteImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageModel.swift; sourceTree = "<group>"; };
 		9E162F572B75FC5F001CCFC8 /* ToneValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneValidator.swift; sourceTree = "<group>"; };
 		9E1D25682BA0300E0047F2F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9EB196DE2D44D90B00B4A7AB /* ToneListen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ToneListen.xcframework; path = ../../../Desktop/ToneListen.xcframework; sourceTree = "<group>"; };
 		9ECAC9B22BBD7DAA009E42AA /* home_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home_response.json; sourceTree = "<group>"; };
 		9ED0294C2D1E976F009E0E4B /* ToneKnows.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToneKnows.entitlements; sourceTree = "<group>"; };
 		DFA414C527CE5423003647B5 /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = frequency_tables.json; sourceTree = "<group>"; };
@@ -66,9 +80,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EB196DF2D44D90B00B4A7AB /* ToneListen.xcframework in Frameworks */,
 				5B826CF427F23D4500D812D0 /* FetchImage in Frameworks */,
 				9E5CB9412D0B3648008FE924 /* AudioKit in Frameworks */,
-				9E526D032D3FEE9600A18BD8 /* ToneLibrary in Frameworks */,
 				5B826CF027F23D4000D812D0 /* FirebaseFirestore in Frameworks */,
 				9E5CB93E2D0B35E4008FE924 /* SwiftLocation in Frameworks */,
 				5B826CF227F23D4000D812D0 /* FirebaseFirestoreCombine-Community in Frameworks */,
@@ -96,6 +110,7 @@
 		5B8F62C027B4790300EA84BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9EB196DE2D44D90B00B4A7AB /* ToneListen.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -132,6 +147,7 @@
 				5B9331A927A9A02700C61580 /* ToneKnowsApp.swift */,
 				5B9331AB27A9A02700C61580 /* ContentView.swift */,
 				5B9331AD27A9A02900C61580 /* Assets.xcassets */,
+				9E808FBA2D30F9610001B703 /* UnUsedFiles */,
 				5B9331AF27A9A02900C61580 /* Preview Content */,
 			);
 			path = ToneKnows;
@@ -151,11 +167,7 @@
 				5B0F21E427AB2A0900B953E8 /* MenuButtons.swift */,
 				5B8F62F227B50B3400EA84BC /* ClientsView.swift */,
 				5B8F62F427B50B5600EA84BC /* DemoView.swift */,
-				5B269AF727BE118F003976BC /* ListActionsView.swift */,
-				5B9DF3F127CD271A00D9EC9D /* HomeView.swift */,
-				5B9DF3F327CD279D00D9EC9D /* AboutUsView.swift */,
 				9E162F572B75FC5F001CCFC8 /* ToneValidator.swift */,
-				5B9DF3F527CD27AF00D9EC9D /* ContacUsView.swift */,
 				5B9DF3F727CD27DB00D9EC9D /* TryItView.swift */,
 			);
 			path = View;
@@ -171,6 +183,16 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9E808FBA2D30F9610001B703 /* UnUsedFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5B9DF3F527CD27AF00D9EC9D /* ContacUsView.swift */,
+				5B9DF3F127CD271A00D9EC9D /* HomeView.swift */,
+				5B9DF3F327CD279D00D9EC9D /* AboutUsView.swift */,
+			);
+			path = UnUsedFiles;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,6 +203,7 @@
 				5B9331A227A9A02700C61580 /* Sources */,
 				5B9331A327A9A02700C61580 /* Frameworks */,
 				5B9331A427A9A02700C61580 /* Resources */,
+				9EB196B72D43D85900B4A7AB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -193,7 +216,6 @@
 				5B826CF327F23D4500D812D0 /* FetchImage */,
 				9E5CB93D2D0B35E4008FE924 /* SwiftLocation */,
 				9E5CB9402D0B3648008FE924 /* AudioKit */,
-				9E526D022D3FEE9600A18BD8 /* ToneLibrary */,
 			);
 			productName = ToneKnows;
 			productReference = 5B9331A627A9A02700C61580 /* ToneKnows.app */;
@@ -228,7 +250,6 @@
 				5B8F62F627B5317B00EA84BC /* XCRemoteSwiftPackageReference "FetchImage" */,
 				9E5CB93C2D0B35E4008FE924 /* XCRemoteSwiftPackageReference "SwiftLocation" */,
 				9E5CB93F2D0B3648008FE924 /* XCRemoteSwiftPackageReference "AudioKit" */,
-				9E526D012D3FEE9600A18BD8 /* XCRemoteSwiftPackageReference "ToneFramework" */,
 			);
 			productRefGroup = 5B9331A727A9A02700C61580 /* Products */;
 			projectDirPath = "";
@@ -262,7 +283,6 @@
 				5B0F21E527AB2A0900B953E8 /* MenuButtons.swift in Sources */,
 				5B8F62F327B50B3500EA84BC /* ClientsView.swift in Sources */,
 				5B0F21E727AB2BA700B953E8 /* MenuViewModel.swift in Sources */,
-				5B269AF827BE118F003976BC /* ListActionsView.swift in Sources */,
 				5B269AE127BD8C68003976BC /* Tone.swift in Sources */,
 				5B9DF3F227CD271A00D9EC9D /* HomeView.swift in Sources */,
 				5BF8DA6327B53B76007BA4C7 /* RemoteImageModel.swift in Sources */,
@@ -407,7 +427,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ToneKnows/ToneKnows.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
 				DEVELOPMENT_TEAM = N6J733ZXDX;
 				ENABLE_PREVIEWS = YES;
@@ -429,7 +449,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -449,7 +469,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ToneKnows/ToneKnows.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
 				DEVELOPMENT_TEAM = N6J733ZXDX;
 				ENABLE_PREVIEWS = YES;
@@ -471,7 +491,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -524,20 +544,12 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		9E526D012D3FEE9600A18BD8 /* XCRemoteSwiftPackageReference "ToneFramework" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/The-TONE-Knows-Inc/ToneFramework.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.11;
-			};
-		};
 		9E5CB93C2D0B35E4008FE924 /* XCRemoteSwiftPackageReference "SwiftLocation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/malcommac/SwiftLocation.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
+				minimumVersion = 6.0.0;
 			};
 		};
 		9E5CB93F2D0B3648008FE924 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
@@ -565,11 +577,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B8F62F627B5317B00EA84BC /* XCRemoteSwiftPackageReference "FetchImage" */;
 			productName = FetchImage;
-		};
-		9E526D022D3FEE9600A18BD8 /* ToneLibrary */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9E526D012D3FEE9600A18BD8 /* XCRemoteSwiftPackageReference "ToneFramework" */;
-			productName = ToneLibrary;
 		};
 		9E5CB93D2D0B35E4008FE924 /* SwiftLocation */ = {
 			isa = XCSwiftPackageProductDependency;

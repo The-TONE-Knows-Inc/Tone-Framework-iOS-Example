@@ -79,11 +79,11 @@ struct MainTabView: View {
                     if !isToneFrameworkRunning {
                         print("<<<<toneFramework.start()>>>>")
                         toneFramework.start()
-                        toneFramework.enableToneOfflineMode(isEnable: true, clientID: UserDefaults.standard.string(forKey: "clientID") ?? "")
+                        toneFramework.enableToneOfflineMode(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "", true)
                         isToneFrameworkRunning = true
-                        toneFramework.getBluetoothDataDetection(isEnable: true)
-                        toneFramework.getCarrierDataDetection(isEnable: true)
-                        toneFramework.getWifiDataDetection(isEnable: true)
+                        toneFramework.enableBluetoothDetection(true)
+                        toneFramework.enableCarrierDetection(true)
+                        toneFramework.enableWifiDetection(true)
                     }
                 }
             ToneValidator()
