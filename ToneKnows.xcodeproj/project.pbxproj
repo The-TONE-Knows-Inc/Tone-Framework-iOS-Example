@@ -29,8 +29,8 @@
 		9E1D25692BA0300E0047F2F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E1D25682BA0300E0047F2F0 /* GoogleService-Info.plist */; };
 		9E5CB93E2D0B35E4008FE924 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5CB93D2D0B35E4008FE924 /* SwiftLocation */; };
 		9E5CB9412D0B3648008FE924 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5CB9402D0B3648008FE924 /* AudioKit */; };
-		9EB196DF2D44D90B00B4A7AB /* ToneListen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB196DE2D44D90B00B4A7AB /* ToneListen.xcframework */; };
-		9EB196E02D44D90B00B4A7AB /* ToneListen.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB196DE2D44D90B00B4A7AB /* ToneListen.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9EBA8D972D47978200D19B2C /* ToneListen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBA8D962D47978200D19B2C /* ToneListen.xcframework */; };
+		9EBA8D982D47978200D19B2C /* ToneListen.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBA8D962D47978200D19B2C /* ToneListen.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9ECAC9B32BBD7DAA009E42AA /* home_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ECAC9B22BBD7DAA009E42AA /* home_response.json */; };
 		DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA414C527CE5423003647B5 /* frequency_tables.json */; };
 /* End PBXBuildFile section */
@@ -42,7 +42,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9EB196E02D44D90B00B4A7AB /* ToneListen.xcframework in Embed Frameworks */,
+				9EBA8D982D47978200D19B2C /* ToneListen.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,7 +69,7 @@
 		5BF8DA6227B53B76007BA4C7 /* RemoteImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageModel.swift; sourceTree = "<group>"; };
 		9E162F572B75FC5F001CCFC8 /* ToneValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneValidator.swift; sourceTree = "<group>"; };
 		9E1D25682BA0300E0047F2F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9EB196DE2D44D90B00B4A7AB /* ToneListen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ToneListen.xcframework; path = ../../../Desktop/ToneListen.xcframework; sourceTree = "<group>"; };
+		9EBA8D962D47978200D19B2C /* ToneListen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ToneListen.xcframework; path = ../../../Desktop/ToneListen.xcframework; sourceTree = "<group>"; };
 		9ECAC9B22BBD7DAA009E42AA /* home_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home_response.json; sourceTree = "<group>"; };
 		9ED0294C2D1E976F009E0E4B /* ToneKnows.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToneKnows.entitlements; sourceTree = "<group>"; };
 		DFA414C527CE5423003647B5 /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = frequency_tables.json; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EB196DF2D44D90B00B4A7AB /* ToneListen.xcframework in Frameworks */,
+				9EBA8D972D47978200D19B2C /* ToneListen.xcframework in Frameworks */,
 				5B826CF427F23D4500D812D0 /* FetchImage in Frameworks */,
 				9E5CB9412D0B3648008FE924 /* AudioKit in Frameworks */,
 				5B826CF027F23D4000D812D0 /* FirebaseFirestore in Frameworks */,
@@ -110,7 +110,7 @@
 		5B8F62C027B4790300EA84BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9EB196DE2D44D90B00B4A7AB /* ToneListen.xcframework */,
+				9EBA8D962D47978200D19B2C /* ToneListen.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -427,7 +427,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ToneKnows/ToneKnows.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
 				DEVELOPMENT_TEAM = N6J733ZXDX;
 				ENABLE_PREVIEWS = YES;
@@ -469,7 +469,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ToneKnows/ToneKnows.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ToneKnows/Preview Content\"";
 				DEVELOPMENT_TEAM = N6J733ZXDX;
 				ENABLE_PREVIEWS = YES;
