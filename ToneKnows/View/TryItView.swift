@@ -68,7 +68,7 @@ struct MainTabView: View {
                     Text("Clients")
                 }.onAppear{
                     print("<<<<toneFramework.stop()>>>>")
-                    toneFramework.stop()
+                    toneFramework.perform(action: .stop)
                     isToneFrameworkRunning = false
                 }
             DemoView()
@@ -78,12 +78,12 @@ struct MainTabView: View {
                 }.onAppear{
                     if !isToneFrameworkRunning {
                         print("<<<<toneFramework.start()>>>>")
-                        toneFramework.start()
-                        toneFramework.enableToneOfflineMode(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "", true)
                         isToneFrameworkRunning = true
-                        toneFramework.enableBluetoothDetection(true)
-                        toneFramework.enableCarrierDetection(true)
-                        toneFramework.enableWifiDetection(true)
+                        toneFramework.perform(action: .start)
+                        toneFramework.setFeature(.offlineMode(isClientId: UserDefaults.standard.string(forKey: "clientID") ?? "", true))
+                        toneFramework.setFeature(.bluetoothDetection(true))
+                        toneFramework.setFeature(.carrierDetection(true))
+                        toneFramework.setFeature(.wifiDetection(true))
                     }
                 }
             ToneValidator()
@@ -91,56 +91,35 @@ struct MainTabView: View {
                     Image(systemName: "music.quarternote.3")
                     Text("Frequency")
                 }
+                .onAppear {
+                    toneFramework.perform(action: .deleteOfflineData)
+                }
                 .environmentObject(toneDataViewModel)
         }.sheet(isPresented: $showingDetail){
             SheetDetailView(showingDetail: $showingDetail, url: imageURL)
         }
         .sheet(isPresented: $showingDetailForOffline) {
             SheetDetailDataView(showingDetail: $showingDetailForOffline, imageData: $imageData)
-        }
+        } 
         .onAppear {
             toneFramework.setClientId(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "")
+            toneFramework.setFeature(.defaultToneTagSheet(true))
         }.onDisappear {
             if isToneFrameworkRunning {
                 print("<<<<toneFramework.stop()>>>>")
-                toneFramework.stop()
+                toneFramework.perform(action: .stop)
                 isToneFrameworkRunning = false
             }
         }.onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("get_clients")), perform: { _ in
             toneFramework.setClientId(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "")
-        }).onReceive(NotificationCenter.default.publisher(for: model.notificationName)) { notification in
-            showingDetailForOffline = false
-            imageURL = (notification.object ?? "") as? String ?? ""
-            if let userInfo = notification.userInfo, let tone = userInfo["tone"] as? String {
-                print("Received tone: \(tone)")
-            }
-            if showingDetail {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    showingDetail = true
-                }
-                showingDetail.toggle()
-            }else{
-                showingDetail.toggle()
-            }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: model.notificationImageData)) { notification in
-            showingDetail = false
-            if let imageData = notification.object as? Data {
-                self.imageData = imageData
+        })
+        .onReceive(NotificationCenter.default.publisher(for: model.responseObjectNotificationName)) { notification in
+            if let content = notification.object as? [String: Any] {
+                print("\n-------------------------------------- :: Received Notification :: -----------------------------------------------------\n")
+                print("Notification Data: \(content)")
+                print("\n-------------------------------------- :: Received Notification :: -----------------------------------------------------\n")
             } else {
-                print(" NO DATA AVAILABLE :: <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< $$$$$$")
-            }
-            if let userInfo = notification.userInfo, let tone = userInfo["tone"] as? String {
-                print("Received tone: \(tone)")
-                toneDataViewModel.dataResponse.append(tone)
-            }
-            if showingDetailForOffline {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    showingDetailForOffline = true
-                }
-                showingDetailForOffline.toggle()
-            }else{
-                showingDetailForOffline.toggle()
+                print("Received notification but data format is invalid.")
             }
         }
         .onChange(of: audioProcessor.routeChanged, perform: { _ in
@@ -163,7 +142,7 @@ struct ContentViews: View {
                             .frame(width: geometry.size.width, height: geometry.size.height * 0.9, alignment: .center)
                     }
                     .background(Color.clear)
-                    if featureFlagManager.featureEnabled {
+                    if  featureFlagManager.featureEnabled {
                         NavigationLink(destination: MainTabView()) {
                             Image(systemName: "gear")
                                 .font(.title)
