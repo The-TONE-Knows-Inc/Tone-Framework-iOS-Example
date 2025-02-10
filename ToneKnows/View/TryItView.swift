@@ -80,10 +80,16 @@ struct MainTabView: View {
                         print("<<<<toneFramework.start()>>>>")
                         isToneFrameworkRunning = true
                         toneFramework.perform(action: .start)
-                        toneFramework.setFeature(.offlineMode(isClientId: UserDefaults.standard.string(forKey: "clientID") ?? "", true))
                         toneFramework.setFeature(.bluetoothDetection(true))
                         toneFramework.setFeature(.carrierDetection(true))
                         toneFramework.setFeature(.wifiDetection(true))
+                        getClientId() { result in
+                            if result {
+                                toneFramework.setFeature(.offlineMode(isClientId: UserDefaults.standard.string(forKey: "clientID") ?? "", result))
+                            } else {
+                                toneFramework.perform(action: .deleteOfflineData)
+                            }
+                        }
                     }
                 }
             ToneValidator()
@@ -91,19 +97,15 @@ struct MainTabView: View {
                     Image(systemName: "music.quarternote.3")
                     Text("Frequency")
                 }
-                .onAppear {
-                    toneFramework.perform(action: .deleteOfflineData)
-                }
                 .environmentObject(toneDataViewModel)
         }.sheet(isPresented: $showingDetail){
             SheetDetailView(showingDetail: $showingDetail, url: imageURL)
         }
         .sheet(isPresented: $showingDetailForOffline) {
             SheetDetailDataView(showingDetail: $showingDetailForOffline, imageData: $imageData)
-        } 
+        }
         .onAppear {
             toneFramework.setClientId(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "")
-            toneFramework.setFeature(.defaultToneTagSheet(true))
         }.onDisappear {
             if isToneFrameworkRunning {
                 print("<<<<toneFramework.stop()>>>>")
@@ -113,18 +115,77 @@ struct MainTabView: View {
         }.onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("get_clients")), perform: { _ in
             toneFramework.setClientId(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "")
         })
-        .onReceive(NotificationCenter.default.publisher(for: model.responseObjectNotificationName)) { notification in
-            if let content = notification.object as? [String: Any] {
-                print("\n-------------------------------------- :: Received Notification :: -----------------------------------------------------\n")
-                print("Notification Data: \(content)")
-                print("\n-------------------------------------- :: Received Notification :: -----------------------------------------------------\n")
+        .onReceive(NotificationCenter.default.publisher(for: model.notificationName)) { notification in
+            showingDetailForOffline = false
+            imageURL = (notification.object ?? "") as? String ?? ""
+            if let userInfo = notification.userInfo, let tone = userInfo["tone"] as? String {
+                print("Received tone: \(tone)")
+            }
+            if showingDetail {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    showingDetail = true
+                }
+                showingDetail.toggle()
+            }else{
+                showingDetail.toggle()
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: model.notificationImageData)) { notification in
+            showingDetail = false
+            if let imageData = notification.object as? Data {
+                self.imageData = imageData
             } else {
-                print("Received notification but data format is invalid.")
+                print(" NO DATA AVAILABLE :: <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< $$$$$$")
+            }
+            if let userInfo = notification.userInfo, let tone = userInfo["tone"] as? String {
+                print("Received tone: \(tone)")
+            }
+            if showingDetailForOffline {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    showingDetailForOffline = true
+                }
+                showingDetailForOffline.toggle()
+            } else {
+                showingDetailForOffline.toggle()
             }
         }
         .onChange(of: audioProcessor.routeChanged, perform: { _ in
             refreshView.toggle()
         })
+    }
+    
+    private func getClientId(completion: @escaping (Bool) -> Void) {
+        let databaseAuth = Firestore.firestore()
+        var result: Bool = false
+        let documentReference = databaseAuth.collection("onlineClients").document("Z0bSkI7ywrXgSRJW5TrN")
+        
+        documentReference.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data()
+                DispatchQueue.main.async {
+                    print("Client:::::::\(dataDescription?["client"] as? String ?? "")")
+                    let dataDes = dataDescription?["client"] as? String ?? ""
+                    let dataClient = dataDes.data(using: .utf8) ?? Data()
+                    let dataJson = try? JSONSerialization.jsonObject(with: dataClient, options: []) as? [String: Any]
+                    
+                    if let onlineClientId = dataJson?["onlineClientId"] as? [String] {
+                        // Store it in a variable
+                        let onlineClientIds: [String] = onlineClientId
+                        print("The overall Client ids are ------------------------------->", onlineClientIds)
+                        
+                        let enteredClientId = UserDefaults.standard.string(forKey: "clientID") ?? ""
+                        result = onlineClientIds.contains(enteredClientId)
+                        print("The result for client id is ----------------------------------------------->", result)
+                    }
+                    
+                    // Return the result via the completion handler
+                    completion(result)
+                }
+            } else {
+                print("Document does not exist")
+                completion(false)
+            }
+        }
     }
 }
 struct ContentViews: View {
