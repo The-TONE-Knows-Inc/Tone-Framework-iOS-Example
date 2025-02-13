@@ -68,7 +68,7 @@ struct MainTabView: View {
                     Text("Clients")
                 }.onAppear{
                     print("<<<<toneFramework.stop()>>>>")
-                    toneFramework.perform(action: .stop)
+                    toneFramework.stop()
                     isToneFrameworkRunning = false
                 }
             DemoView()
@@ -79,15 +79,15 @@ struct MainTabView: View {
                     if !isToneFrameworkRunning {
                         print("<<<<toneFramework.start()>>>>")
                         isToneFrameworkRunning = true
-                        toneFramework.perform(action: .start)
-                        toneFramework.setFeature(.bluetoothDetection(true))
-                        toneFramework.setFeature(.carrierDetection(true))
-                        toneFramework.setFeature(.wifiDetection(true))
+                        toneFramework.start()
+                        toneFramework.enableBluetoothDetection(true)
+                        toneFramework.enableCarrierDetection(true)
+                        toneFramework.enableWifiDetection(true)
                         getClientId() { result in
                             if result {
-                                toneFramework.setFeature(.offlineMode(isClientId: UserDefaults.standard.string(forKey: "clientID") ?? "", result))
+                                toneFramework.enableToneOfflineMode(clientID: UserDefaults.standard.string(forKey: "clientID") ?? "", result)
                             } else {
-                                toneFramework.perform(action: .deleteOfflineData)
+                                toneFramework.deleteOfflineData()
                             }
                         }
                     }
@@ -109,7 +109,7 @@ struct MainTabView: View {
         }.onDisappear {
             if isToneFrameworkRunning {
                 print("<<<<toneFramework.stop()>>>>")
-                toneFramework.perform(action: .stop)
+                toneFramework.stop()
                 isToneFrameworkRunning = false
             }
         }.onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("get_clients")), perform: { _ in
