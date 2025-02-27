@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
         label.textColor     = .secondary
         label.font          = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textAlignment = .left
-        label.text          = "Latitude: --"
+        label.text          = "Latitude: Fetching Latitude.."
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
         label.textColor     = .secondary
         label.font          = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textAlignment = .left
-        label.text          = "Latitude: --"
+        label.text          = "Longitude: Fetching Longitude.."
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -67,19 +67,23 @@ class MainViewController: UIViewController {
         initialSetup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        latLabel.text = "Latitude: \(UserDefaults.isLatitude ?? "Latitude: Fetching Latitude..")"
+        longLabel.text = "Longitude: \(UserDefaults.isLongitude ?? "Longitude: Fetching Longitude..")"
+    }
+    
     func initialSetup() {
         setupLayout()
         setupViewControllers()
         setDelegates()
         switchToViewController(.clientsVC)
-        locationManager.requestLocation()
     }
     
     func setDelegates() {
         clientsVC.delegate = tryItVC
         viewModel.delegate = self
         headerView.delegate = self
-        locationManager.delegate = self
     }
     
     private func setupLayout() {
@@ -189,21 +193,5 @@ extension MainViewController: NotificationViewModelDelegate {
     
     func didReceiveOfflineNotification(_ notification: Data) {
         sheetPresenter.handleImageDataNotification(imageData: notification)
-    }
-}
-
-// MARK: - LocationManagerDelegate -
-extension MainViewController: LocationManagerDelegate {
-    
-    func didUpdateLocation(_ Latitude: String, _ Longitude: String) {
-        self.latLabel.text = "Latitude: \(Latitude)"
-        self.longLabel.text = "Longitude: \(Longitude)"
-    }
-    
-    func didFailWithError(_ error: String) {
-        DispatchQueue.main.async {
-            self.latLabel.text = "Latitude: --"
-            self.longLabel.text = "Longitude: --"
-        }
     }
 }

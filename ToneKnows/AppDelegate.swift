@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        setRootController(SpectrumViewController())
+        setRootController(SplashViewController())
         UserDefaults.isFeatureFlagEnabled = FeatureFlagManager.shared.featureEnabled
         configureRealmMigration()
         return true

@@ -22,7 +22,7 @@ class ClientsListCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 35
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .gray
+        imageView.backgroundColor = .containerBackground
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -106,13 +106,9 @@ class ClientsListCell: UITableViewCell {
         if let localImageData = loadLocalImage(clientID: client.clientID) {
             clientImageView.image = UIImage(data: localImageData)
             activityIndicator.stopAnimating()
-        } else if let url = URL(string: client.icon) {
-            clientImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"), options: nil, completionHandler: { [weak self] _ in
-                self?.activityIndicator.stopAnimating()
-            })
         } else {
-            clientImageView.image = UIImage(named: "placeholder")
-            activityIndicator.stopAnimating()
+            clientImageView.loadImage(from: .azureImageURL(basePath: .LOGO, fileName: client.icon))
+            self.activityIndicator.stopAnimating()
         }
         
         updateAppearance(isSelected: isSelected)

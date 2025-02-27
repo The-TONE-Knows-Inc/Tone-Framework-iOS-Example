@@ -12,6 +12,8 @@ class SheetPresenter {
     func handleImageDataNotification(imageURL: String = "", imageData: Data? = nil) {
         DispatchQueue.main.async {
             
+            print("Received URL ::: \(imageURL)")
+            
             guard let rootViewController = UIApplication.shared.connectedScenes
                 .compactMap({ ($0 as? UIWindowScene)?.keyWindow?.rootViewController })
                 .first else {

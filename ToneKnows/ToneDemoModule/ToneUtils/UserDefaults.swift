@@ -21,6 +21,12 @@ extension UserDefaults {
     @UserDefault(key: "is_framework_running", defaultValue: nil)
     static var isFrameworkRunning: Bool?
     
+    @UserDefault(key: "is_latitude", defaultValue: nil)
+    static var isLatitude: String?
+    
+    @UserDefault(key: "is_Longitude", defaultValue: nil)
+    static var isLongitude: String?
+    
     static func removeAll(){
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)

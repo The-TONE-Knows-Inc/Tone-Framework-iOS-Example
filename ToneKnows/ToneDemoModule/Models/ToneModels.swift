@@ -8,26 +8,35 @@
 import Foundation
 import RealmSwift
 
-struct Client {
-    var clientID: String
-    var icon: String
-    var image: String
-    var name: String
-    var isActive: Bool
+struct ToneClientsResponse: Codable {
+    let data : [Client]
     
-    init?(data: [String: Any]) {
-        guard let clientID = data["clientId"] as? String,
-              let icon = data["icon"] as? String,
-              let image = data["image"] as? String,
-              let isActive = data["isActive"] as? Bool,
-              let name = data["name"] as? String else {
-            return nil
-        }
-        self.clientID = clientID
-        self.icon = icon
-        self.image = image
-        self.name = name
-        self.isActive = isActive
+    enum CodingKeys: String, CodingKey {
+        case data = "data"
+    }
+}
+
+struct Client: Codable {
+    let id          : Int?
+    let name        : String?
+    let logo        : String?
+    let description : String?
+    let background  : String?
+    let governor    : Int?
+    let clientType  : String?
+    let clientId    : String?
+    let status      : Bool?
+    
+    enum CodingKeys: String, CodingKey {
+        case id             = "id"
+        case name           = "name"
+        case logo           = "logo"
+        case description    = "description"
+        case background     = "background"
+        case governor       = "governor"
+        case clientType     = "clientType"
+        case clientId       = "clientId"
+        case status         = "status"
     }
 }
 
@@ -42,11 +51,11 @@ class ClientObject: Object {
 
     convenience init(client: Client) {
         self.init()
-        self.clientID = client.clientID
-        self.icon = client.icon
-        self.image = client.image
-        self.name = client.name
-        self.isActive = client.isActive
+        self.clientID = client.clientId ?? ""
+        self.icon = client.logo ?? ""
+        self.image = client.background ?? ""
+        self.name = client.name ?? ""
+        self.isActive = client.status ?? false
     }
 }
 

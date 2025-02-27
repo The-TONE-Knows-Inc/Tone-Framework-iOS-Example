@@ -48,7 +48,7 @@ extension TryItViewController: ClientsViewControllerDelegate {
         if let localImageData = loadLocalImage(clientID: clientID) {
             backgroundImage.image = UIImage(data: localImageData)
         } else {
-            backgroundImage.kf.setImage(with: URL(string: client), placeholder: UIImage(named: "placeholder"))
+            backgroundImage.loadImage(from: .azureImageURL(basePath: .LOGO, fileName: client))
         }
     }
     

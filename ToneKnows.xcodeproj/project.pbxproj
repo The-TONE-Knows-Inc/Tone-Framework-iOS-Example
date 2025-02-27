@@ -35,15 +35,17 @@
 		9E37E25C2D6DB9B0001DFC82 /* FrequencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E2582D6DB9B0001DFC82 /* FrequencyViewController.swift */; };
 		9E37E2602D6DB9D1001DFC82 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E25E2D6DB9D1001DFC82 /* NotificationViewModel.swift */; };
 		9E37E2612D6DB9D1001DFC82 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E25F2D6DB9D1001DFC82 /* MenuViewModel.swift */; };
-		9E37E26A2D6DBBEA001DFC82 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9E37E2692D6DBBEA001DFC82 /* Kingfisher */; };
 		9E37E26F2D6DBC62001DFC82 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9E37E26E2D6DBC62001DFC82 /* RealmSwift */; };
 		9E37E2712D6DBC8A001DFC82 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9E37E26E2D6DBC62001DFC82 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9E37E2732D6EE162001DFC82 /* Extension + Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E2722D6EE162001DFC82 /* Extension + Assets.swift */; };
 		9E37E2752D6EE4FD001DFC82 /* CustomAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E37E2742D6EE4FD001DFC82 /* CustomAssets.xcassets */; };
-		9E54B4FD2D660A6000EDF21A /* ToneListen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E54B4FC2D660A6000EDF21A /* ToneListen.xcframework */; };
-		9E54B4FE2D660A6000EDF21A /* ToneListen.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E54B4FC2D660A6000EDF21A /* ToneListen.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9E37E2772D6EFA07001DFC82 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E2762D6EFA07001DFC82 /* SplashViewController.swift */; };
+		9E37E2792D6F1F5A001DFC82 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E2782D6F1F5A001DFC82 /* ProgressIndicator.swift */; };
+		9E37E2A92D6F5CCA001DFC82 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E2A82D6F5CCA001DFC82 /* NetworkRequests.swift */; };
 		9E5CB93E2D0B35E4008FE924 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5CB93D2D0B35E4008FE924 /* SwiftLocation */; };
 		9E5CB9412D0B3648008FE924 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5CB9402D0B3648008FE924 /* AudioKit */; };
+		9E6483912D70519400EA1BD0 /* ToneListen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6483902D70519400EA1BD0 /* ToneListen.xcframework */; };
+		9E6483922D70519400EA1BD0 /* ToneListen.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6483902D70519400EA1BD0 /* ToneListen.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9ECAC9B32BBD7DAA009E42AA /* home_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ECAC9B22BBD7DAA009E42AA /* home_response.json */; };
 		DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA414C527CE5423003647B5 /* frequency_tables.json */; };
 /* End PBXBuildFile section */
@@ -55,8 +57,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				9E6483922D70519400EA1BD0 /* ToneListen.xcframework in Embed Frameworks */,
 				9E37E2712D6DBC8A001DFC82 /* RealmSwift in Embed Frameworks */,
-				9E54B4FE2D660A6000EDF21A /* ToneListen.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,7 +96,10 @@
 		9E37E25F2D6DB9D1001DFC82 /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		9E37E2722D6EE162001DFC82 /* Extension + Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Assets.swift"; sourceTree = "<group>"; };
 		9E37E2742D6EE4FD001DFC82 /* CustomAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CustomAssets.xcassets; sourceTree = "<group>"; };
-		9E54B4FC2D660A6000EDF21A /* ToneListen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ToneListen.xcframework; path = ../../../Desktop/ToneListen.xcframework; sourceTree = "<group>"; };
+		9E37E2762D6EFA07001DFC82 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		9E37E2782D6F1F5A001DFC82 /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
+		9E37E2A82D6F5CCA001DFC82 /* NetworkRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
+		9E6483902D70519400EA1BD0 /* ToneListen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ToneListen.xcframework; path = ../../../Desktop/ToneListen.xcframework; sourceTree = "<group>"; };
 		9ECAC9B22BBD7DAA009E42AA /* home_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home_response.json; sourceTree = "<group>"; };
 		9ED0294C2D1E976F009E0E4B /* ToneKnows.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToneKnows.entitlements; sourceTree = "<group>"; };
 		DFA414C527CE5423003647B5 /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = frequency_tables.json; sourceTree = "<group>"; };
@@ -105,9 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E6483912D70519400EA1BD0 /* ToneListen.xcframework in Frameworks */,
 				9E37E26F2D6DBC62001DFC82 /* RealmSwift in Frameworks */,
-				9E54B4FD2D660A6000EDF21A /* ToneListen.xcframework in Frameworks */,
-				9E37E26A2D6DBBEA001DFC82 /* Kingfisher in Frameworks */,
 				9E5CB9412D0B3648008FE924 /* AudioKit in Frameworks */,
 				5B826CF027F23D4000D812D0 /* FirebaseFirestore in Frameworks */,
 				9E5CB93E2D0B35E4008FE924 /* SwiftLocation in Frameworks */,
@@ -121,7 +125,7 @@
 		5B8F62C027B4790300EA84BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9E54B4FC2D660A6000EDF21A /* ToneListen.xcframework */,
+				9E6483902D70519400EA1BD0 /* ToneListen.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,8 +165,9 @@
 		9E37E22F2D6DB90D001DFC82 /* BaseModule */ = {
 			isa = PBXGroup;
 			children = (
-				9E37E22B2D6DB900001DFC82 /* BaseViewController.swift */,
+				9E37E2762D6EFA07001DFC82 /* SplashViewController.swift */,
 				9E37E22C2D6DB900001DFC82 /* MainViewController.swift */,
+				9E37E22B2D6DB900001DFC82 /* BaseViewController.swift */,
 			);
 			path = BaseModule;
 			sourceTree = "<group>";
@@ -170,14 +175,15 @@
 		9E37E2302D6DB928001DFC82 /* ToneDemoModule */ = {
 			isa = PBXGroup;
 			children = (
-				9E37E25D2D6DB9BB001DFC82 /* ViewModel */,
-				9E37E2542D6DB9A8001DFC82 /* ViewController */,
-				9E37E2472D6DB994001DFC82 /* View */,
+				9E37E2A72D6F5CB5001DFC82 /* Network */,
+				9E37E22F2D6DB90D001DFC82 /* BaseModule */,
+				9E37E2342D6DB94E001DFC82 /* ToneUtils */,
 				9E37E23C2D6DB97E001DFC82 /* ToneManageHandler */,
 				9E37E2392D6DB96F001DFC82 /* Protocols */,
-				9E37E2342D6DB94E001DFC82 /* ToneUtils */,
 				9E37E2332D6DB941001DFC82 /* Models */,
-				9E37E22F2D6DB90D001DFC82 /* BaseModule */,
+				9E37E2472D6DB994001DFC82 /* View */,
+				9E37E2542D6DB9A8001DFC82 /* ViewController */,
+				9E37E25D2D6DB9BB001DFC82 /* ViewModel */,
 			);
 			path = ToneDemoModule;
 			sourceTree = "<group>";
@@ -217,6 +223,7 @@
 				9E37E23F2D6DB987001DFC82 /* LocationManager.swift */,
 				9E37E2412D6DB987001DFC82 /* PermissionManager.swift */,
 				9E37E2402D6DB987001DFC82 /* SheetPresenter.swift */,
+				9E37E2782D6F1F5A001DFC82 /* ProgressIndicator.swift */,
 			);
 			path = ToneManageHandler;
 			sourceTree = "<group>";
@@ -237,10 +244,10 @@
 		9E37E2542D6DB9A8001DFC82 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9E37E2572D6DB9B0001DFC82 /* ClientsViewController.swift */,
-				9E37E2582D6DB9B0001DFC82 /* FrequencyViewController.swift */,
 				9E37E2562D6DB9B0001DFC82 /* SpectrumViewController.swift */,
+				9E37E2572D6DB9B0001DFC82 /* ClientsViewController.swift */,
 				9E37E2552D6DB9B0001DFC82 /* TryItViewController.swift */,
+				9E37E2582D6DB9B0001DFC82 /* FrequencyViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -252,6 +259,14 @@
 				9E37E25E2D6DB9D1001DFC82 /* NotificationViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9E37E2A72D6F5CB5001DFC82 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9E37E2A82D6F5CCA001DFC82 /* NetworkRequests.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +291,6 @@
 				5B826CF127F23D4000D812D0 /* FirebaseFirestoreCombine-Community */,
 				9E5CB93D2D0B35E4008FE924 /* SwiftLocation */,
 				9E5CB9402D0B3648008FE924 /* AudioKit */,
-				9E37E2692D6DBBEA001DFC82 /* Kingfisher */,
 				9E37E26E2D6DBC62001DFC82 /* RealmSwift */,
 			);
 			productName = ToneKnows;
@@ -311,7 +325,6 @@
 				5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				9E5CB93C2D0B35E4008FE924 /* XCRemoteSwiftPackageReference "SwiftLocation" */,
 				9E5CB93F2D0B3648008FE924 /* XCRemoteSwiftPackageReference "AudioKit" */,
-				9E37E2682D6DBBEA001DFC82 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				9E37E26B2D6DBC61001DFC82 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 5B9331A727A9A02700C61580 /* Products */;
@@ -345,6 +358,7 @@
 			files = (
 				9E37E2612D6DB9D1001DFC82 /* MenuViewModel.swift in Sources */,
 				9E37E2432D6DB987001DFC82 /* FeatureFlagManager.swift in Sources */,
+				9E37E2A92D6F5CCA001DFC82 /* NetworkRequests.swift in Sources */,
 				9E37E2602D6DB9D1001DFC82 /* NotificationViewModel.swift in Sources */,
 				9E37E2512D6DB99C001DFC82 /* ToneDetectedSheet.swift in Sources */,
 				9E37E23B2D6DB975001DFC82 /* ToneProtocols.swift in Sources */,
@@ -359,9 +373,11 @@
 				9E37E2592D6DB9B0001DFC82 /* TryItViewController.swift in Sources */,
 				5B9331AC27A9A02700C61580 /* AppDelegate.swift in Sources */,
 				9E37E2422D6DB987001DFC82 /* AudioProcessor.swift in Sources */,
+				9E37E2792D6F1F5A001DFC82 /* ProgressIndicator.swift in Sources */,
 				9E37E2462D6DB987001DFC82 /* PermissionManager.swift in Sources */,
 				9E37E25C2D6DB9B0001DFC82 /* FrequencyViewController.swift in Sources */,
 				9E37E25B2D6DB9B0001DFC82 /* ClientsViewController.swift in Sources */,
+				9E37E2772D6EFA07001DFC82 /* SplashViewController.swift in Sources */,
 				9E37E2502D6DB99C001DFC82 /* SpectrumAnalyzerView.swift in Sources */,
 				9E37E2322D6DB93C001DFC82 /* ToneModels.swift in Sources */,
 				9E37E24F2D6DB99C001DFC82 /* HeaderView.swift in Sources */,
@@ -525,7 +541,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.4;
+				MARKETING_VERSION = 1.2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -569,7 +585,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.4;
+				MARKETING_VERSION = 1.2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.the-tone-knows-inc.demo1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -614,14 +630,6 @@
 				minimumVersion = 10.0.0;
 			};
 		};
-		9E37E2682D6DBBEA001DFC82 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.2.0;
-			};
-		};
 		9E37E26B2D6DBC61001DFC82 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -659,11 +667,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseFirestoreCombine-Community";
-		};
-		9E37E2692D6DBBEA001DFC82 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9E37E2682D6DBBEA001DFC82 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 		9E37E26E2D6DBC62001DFC82 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;

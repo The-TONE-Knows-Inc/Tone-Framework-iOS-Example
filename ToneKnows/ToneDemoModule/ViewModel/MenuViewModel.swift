@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import FirebaseFirestore
-import Kingfisher
 import ToneListen
 import RealmSwift
 
@@ -26,35 +24,103 @@ class MenuViewModel {
     }
     
     func fetchClients(completion: @escaping () -> Void) {
-        let db = Firestore.firestore()
-        db.collection("demo").getDocuments { [weak self] (querySnapshot, err) in
-            guard let self = self else { return }
+        NetworkRequests.fetchClientData { result in
             
-            if let err = err {
-                print("Error fetching documents: \(err)")
-                return
+            switch result {
+                case .success(let data):
+                    
+                    if let firstClientID = data.first?.clientId {
+                        if UserDefaults.isSelectedClientID == nil || UserDefaults.isSelectedClientID == "" {
+                            UserDefaults.isSelectedClientID = firstClientID
+                            UserDefaults.isSelectedImageURL = data.first?.background ?? ""
+                        } else {
+                            if let storedClientID = UserDefaults.isSelectedClientID {
+                                UserDefaults.isSelectedImageURL = data.first(where: { $0.clientId == storedClientID })?.background ?? ""
+                            } else {
+                                print(":::: UserDefaults: clientID is nil ::::")
+                            }
+                        }
+                    }
+                    
+                    self.downloadAndPrepareClients(clients: data) {
+                        completion()
+                    }
+                case .failure(let error):
+                    print("\n======================== FAILURE =======================")
+                    print("\n===========================================================================\n")
+                    print(error.localizedDescription)
+                    print("\n===========================================================================\n")
+                    completion()
             }
+        }
+    }
+    
+    private func downloadAndPrepareClients(clients: [Client], completion: @escaping () -> Void) {
+        let dispatchGroup = DispatchGroup()
+        var processedClients: [ClientObject] = []
+        
+        for client in clients {
+            let clientObject = ClientObject(client: client)
             
-            let fetchedClients = querySnapshot?.documents.compactMap { Client(data: $0.data()) } ?? []
-            let activeClients = fetchedClients.filter { $0.isActive }
-            
-            DispatchQueue.main.async {
-                self.saveClientsToLocalDB(clients: activeClients)
+            // Track download of images
+            dispatchGroup.enter()
+            downloadImages(for: clientObject) { updatedClient in
+                processedClients.append(updatedClient)
+                dispatchGroup.leave()
             }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.saveClientsToLocalDB(clients: processedClients)
             completion()
         }
     }
     
-    private func saveClientsToLocalDB(clients: [Client]) {
+    private func downloadImages(for client: ClientObject, completion: @escaping (ClientObject) -> Void) {
+        let imageURLs: [(String, (Data) -> Void)] = [
+            (String.AZURE_STORAGE_BASE_URL + String.LOGO + client.icon + String.AZURE_STORAGE_URL_STRING, { client.logoData = $0 }),
+            (String.AZURE_STORAGE_BASE_URL + String.CLIENTS + client.image + String.AZURE_STORAGE_URL_STRING, { client.demoImage = $0 })
+        ]
+        
+        let dispatchGroup = DispatchGroup()
+        
+        for (urlString, dataHandler) in imageURLs {
+            guard let url = URL(string: urlString) else {
+                print("Invalid URL: \(urlString)")
+                continue
+            }
+            
+            dispatchGroup.enter()
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                defer { dispatchGroup.leave() }
+                
+                if let error = error {
+                    print("Failed to download image from \(urlString): \(error.localizedDescription)")
+                    return
+                }
+                
+                guard let data = data, !data.isEmpty else {
+                    print("Received empty data from \(urlString)")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    dataHandler(data)
+                }
+            }
+            task.resume()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            completion(client)
+        }
+    }
+    
+    private func saveClientsToLocalDB(clients: [ClientObject]) {
         do {
             try realm.write {
                 realm.delete(realm.objects(ClientObject.self))
-                
-                clients.forEach { client in
-                    let clientObject = ClientObject(client: client)
-                    realm.add(clientObject)
-                    downloadAndSaveImages(for: clientObject)
-                }
+                clients.forEach { realm.add($0) }
             }
             loadClientsFromLocalDB()
         } catch {
@@ -62,36 +128,7 @@ class MenuViewModel {
         }
     }
     
-    private func downloadAndSaveImages(for client: ClientObject) {
-        let imageURLs: [(String, (Data) -> Void)] = [
-            (client.icon, { client.logoData = $0 }),
-            (client.image, { client.demoImage = $0 })
-        ]
-
-        imageURLs.forEach { (urlString, dataHandler) in
-            guard let url = URL(string: urlString) else { return }
-            
-            KingfisherManager.shared.retrieveImage(with: url, options: nil) { result in
-                switch result {
-                case .success(let value):
-                    if let imageData = value.image.pngData() {
-                        DispatchQueue.main.async {
-                            do {
-                                let realm = try Realm()
-                                try realm.write {
-                                    if let clientToUpdate = realm.object(ofType: ClientObject.self, forPrimaryKey: client.clientID) {
-                                        dataHandler(imageData) // Update field safely
-                                    }
-                                }
-                            } catch {
-                                print("Error updating client image data: \(error)")
-                            }
-                        }
-                    }
-                case .failure(let error):
-                    print("Failed to download image: \(error)")
-                }
-            }
-        }
+    func fetchClientsFromBackend() {
+        
     }
 }

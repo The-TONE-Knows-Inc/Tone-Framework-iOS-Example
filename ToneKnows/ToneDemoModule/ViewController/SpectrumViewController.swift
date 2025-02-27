@@ -42,7 +42,7 @@ class SpectrumViewController: UIViewController {
         label.textColor     = .white
         label.font          = UIFont.systemFont(ofSize: 18, weight: .semibold)
         label.textAlignment = .left
-        label.text          = "Latitude: --"
+        label.text          = "Latitude: Fetching Latitude.."
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -52,7 +52,7 @@ class SpectrumViewController: UIViewController {
         label.textColor     = .white
         label.font          = UIFont.systemFont(ofSize: 18, weight: .semibold)
         label.textAlignment = .left
-        label.text          = "Longitude: --"
+        label.text          = "Longitude: Fetching Longitude.."
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -62,7 +62,7 @@ class SpectrumViewController: UIViewController {
         label.textColor     = .white
         label.font          = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textAlignment = .center
-        label.text          = "Frequency: -- Hz"
+        label.text          = "Frequency: Fetching Frequency.."
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -77,26 +77,27 @@ class SpectrumViewController: UIViewController {
     let locationManager     = LocationManager()
     let audioProcessor      = AudioProcessor()
     let featureFlagManager  = FeatureFlagManager()
+    let viewModel           = MenuViewModel()
     
     override func loadView() {
         super.loadView()
         
         view.backgroundColor = .black
         permissionManager.checkMicrophonePermission()
-        
+        viewModel.fetchClientsFromBackend()
         setupUI()
         locationManager.delegate = self
-        locationManager.requestLocation()
         gearButton.isHidden = UserDefaults.isFeatureFlagEnabled ?? true
-        // Start Audio Processing
+        CheckFrequencyAndLocation()
+    }
+    
+    fileprivate func CheckFrequencyAndLocation() {
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             self?.updateFrequency()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
+            self?.locationManager.requestLocation()
+        }
     }
     
     func setupUI() {
@@ -159,14 +160,22 @@ extension SpectrumViewController {
 extension SpectrumViewController: LocationManagerDelegate {
     
     func didUpdateLocation(_ Latitude: String, _ Longitude: String) {
-        self.latLabel.text = "Latitude: \(Latitude)"
-        self.longLabel.text = "Longitude: \(Longitude)"
+        UserDefaults.isLatitude = Latitude
+        UserDefaults.isLongitude = Longitude
+        setLatAndLong()
+    }
+    
+    func setLatAndLong() {
+        DispatchQueue.main.async {
+            self.latLabel.text = "Latitude: \(UserDefaults.isLatitude ?? "Latitude: Fetching Latitude..")"
+            self.longLabel.text = "Longitude: \(UserDefaults.isLongitude ?? "Longitude: Fetching Longitude..")"
+        }
     }
     
     func didFailWithError(_ error: String) {
         DispatchQueue.main.async {
-            self.latLabel.text = "Latitude: --"
-            self.longLabel.text = "Longitude: --"
+            self.latLabel.text = "Latitude: Fetching Latitude.."
+            self.longLabel.text = "Longitude: Fetching Longitude.."
         }
     }
 }

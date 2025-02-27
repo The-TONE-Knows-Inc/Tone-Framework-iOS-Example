@@ -47,6 +47,17 @@ class BaseViewController: UIViewController {
         return label
     }()
     
+    lazy var emptyClientsLabel: UILabel = {
+        let label               = UILabel()
+        label.text              = "No clients available"
+        label.textColor         = .secondary
+        label.textAlignment     = .center
+        label.font              = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.isHidden          = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     lazy var searchView: SearchTextFieldView = {
         let view = SearchTextFieldView()
         view.clearButton.addTarget(self, action: #selector(clearSearch), for: .touchUpInside)
@@ -89,16 +100,20 @@ class BaseViewController: UIViewController {
     func setupLayout() {
         view.addSubview(searchView)
         view.addSubview(clientsTableView)
+        view.addSubview(emptyClientsLabel)
         
         NSLayoutConstraint.activate([
             searchView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            searchView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            searchView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            searchView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            searchView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             clientsTableView.topAnchor.constraint(equalTo: searchView.bottomAnchor, constant: 10),
             clientsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             clientsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             clientsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            
+            emptyClientsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyClientsLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
     
@@ -129,6 +144,7 @@ class BaseViewController: UIViewController {
             self.searchView.clearButton.isHidden = true
             self.searchView.searchTextField.resignFirstResponder()
             self.isSearching = false
+            self.emptyClientsLabel.isHidden = true
             self.filteredClients.removeAll()
             self.clientsTableView.reloadData()
         }

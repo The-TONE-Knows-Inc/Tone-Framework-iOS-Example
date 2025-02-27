@@ -74,8 +74,9 @@ class SearchTextFieldView: UIView {
         textField.backgroundColor = .clear
         textField.returnKeyType = .done
         textField.textColor = .secondary
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.font = .systemFont(ofSize: 16, weight: .regular)
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
@@ -83,16 +84,17 @@ class SearchTextFieldView: UIView {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
         button.tintColor = .gray
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.contentMode = .scaleAspectFit
         button.isHidden = true
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .containerBackground
-        layer.cornerRadius = 10
-        layer.borderWidth = 1
+        layer.cornerRadius = 6
+        layer.borderWidth = 0.8
         layer.borderColor = UIColor.lightGray.cgColor
         setupLayout()
     }
@@ -113,8 +115,8 @@ class SearchTextFieldView: UIView {
             
             clearButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             clearButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            clearButton.widthAnchor.constraint(equalToConstant: 30),
-            clearButton.heightAnchor.constraint(equalToConstant: 30),
+            clearButton.widthAnchor.constraint(equalToConstant: 40),
+            clearButton.heightAnchor.constraint(equalToConstant: 40),
             
             heightAnchor.constraint(equalToConstant: 45)
         ])

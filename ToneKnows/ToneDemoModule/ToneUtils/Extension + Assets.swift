@@ -20,6 +20,10 @@ extension UIImage {
     static var backIcon : UIImage {
         return #imageLiteral(resourceName: "BackIcon")
     }
+    
+    static var headerLogo : UIImage {
+        return #imageLiteral(resourceName: "HeaderLogo")
+    }
 }
 
 extension UIColor {
@@ -46,5 +50,56 @@ extension UIColor {
     
     static var tabtint : UIColor {
         return UIColor(named: "tabtint") ?? .cyan
+    }
+}
+
+extension String {
+    static let AZURE_STORAGE_BASE_URL = "https://tonedashboardsa.blob.core.windows.net/dev-tone/"
+    static let AZURE_STORAGE_URL_STRING = "?sp=r&st=2025-01-24T09:50:07Z&se=2027-02-01T17:50:07Z&spr=https&sv=2022-11-02&sr=c&sig=63CLCkMEJn1dI5%2Fn4%2F3cJwP4fDtAsnS5ciXaFwnbppA%3D"
+    static let LOGO = "logo/"
+    static let CLIENTS = "clients/"
+    
+    static func azureImageURL(basePath: String, fileName: String) -> String {
+        return String.AZURE_STORAGE_BASE_URL + basePath + fileName + String.AZURE_STORAGE_URL_STRING
+    }
+}
+
+extension UIViewController{
+    
+    private func getLoaderController() -> UIViewController {
+        
+        var privateSharedInstance: ProgressIndicator?
+        
+        if privateSharedInstance == nil {
+            privateSharedInstance = ProgressIndicator()
+            return privateSharedInstance!
+        }
+        return privateSharedInstance!
+    }
+    
+    func showLoadingIndicator(_ completion: (() -> Void)? = nil) {
+        let vc = getLoaderController()
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: false) {
+            completion?()
+        }
+    }
+    
+    func dismissLoadingIndicator(_ completion: (() -> Void)? = nil) {
+        DispatchQueue.main.async {
+            guard let presentController = self.presentedViewController as? ProgressIndicator else{
+                completion?()
+                return
+            }
+            self.dismissPresentedController(presentController, completion: completion)
+        }
+    }
+    
+    func dismissPresentedController(_ controller: ProgressIndicator, completion: (() -> Void)?) {
+        self.dismiss(animated: false) {
+            controller.dismiss(animated: false) {
+                completion?()
+            }
+        }
     }
 }

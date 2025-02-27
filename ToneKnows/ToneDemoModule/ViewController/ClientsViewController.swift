@@ -28,13 +28,19 @@ class ClientsViewController: BaseViewController {
     }
     
     func fetchClientData() {
-        self.viewModel.loadClientsFromLocalDB()
-        self.clientsTableView.reloadData()
+        showLoadingIndicator()
+        clientsTableView.isHidden = true
+        viewModel.loadClientsFromLocalDB()
+        clientsTableView.reloadData()
         
         // Fetch new data from Firestore and update local storage
         self.viewModel.fetchClients {
             DispatchQueue.main.async {
+                self.clientsTableView.isHidden = false
                 self.clientsTableView.reloadData()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.dismissLoadingIndicator()
+                }
             }
         }
     }
@@ -96,7 +102,7 @@ extension ClientsViewController: UITextFieldDelegate {
                 return nameMatch || idMatch
             }
         }
-        
+        emptyClientsLabel.isHidden = !isSearching || !filteredClients.isEmpty
         clientsTableView.reloadData()
         return true
     }
@@ -105,6 +111,7 @@ extension ClientsViewController: UITextFieldDelegate {
         textField.text = ""
         isSearching = false
         filteredClients.removeAll()
+        emptyClientsLabel.isHidden = true
         clientsTableView.reloadData()
         return false
     }
