@@ -72,7 +72,7 @@ class BaseViewController: UIViewController {
     var isSearching         = false
     
     var clientID            : String { return UserDefaults.isSelectedClientID ?? "" }
-    var filteredClients     : [ClientObject] = []
+    var filteredClients     : [Client] = []
     var selectedIndexPath   : IndexPath?
     
     var toneDemoImage       : String    = ""

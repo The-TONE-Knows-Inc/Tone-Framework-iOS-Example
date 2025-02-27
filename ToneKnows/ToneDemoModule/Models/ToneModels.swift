@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 struct ToneClientsResponse: Codable {
     let data : [Client]
@@ -17,15 +16,17 @@ struct ToneClientsResponse: Codable {
 }
 
 struct Client: Codable {
-    let id          : Int?
-    let name        : String?
-    let logo        : String?
-    let description : String?
-    let background  : String?
-    let governor    : Int?
-    let clientType  : String?
-    let clientId    : String?
-    let status      : Bool?
+    var id          : Int?
+    var name        : String?
+    var logo        : String?
+    var description : String?
+    var background  : String?
+    var governor    : Int?
+    var clientType  : String?
+    var clientId    : String?
+    var status      : Bool?
+    var logoData    : String?
+    var demoImage   : String?
     
     enum CodingKeys: String, CodingKey {
         case id             = "id"
@@ -37,25 +38,8 @@ struct Client: Codable {
         case clientType     = "clientType"
         case clientId       = "clientId"
         case status         = "status"
-    }
-}
-
-class ClientObject: Object {
-    @Persisted(primaryKey: true) var clientID: String = ""  // Set as primary key
-    @Persisted var icon: String = ""
-    @Persisted var image: String = ""
-    @Persisted var name: String = ""
-    @Persisted var isActive: Bool = false
-    @Persisted var logoData: Data?
-    @Persisted var demoImage: Data?
-
-    convenience init(client: Client) {
-        self.init()
-        self.clientID = client.clientId ?? ""
-        self.icon = client.logo ?? ""
-        self.image = client.background ?? ""
-        self.name = client.name ?? ""
-        self.isActive = client.status ?? false
+        case logoData
+        case demoImage
     }
 }
 

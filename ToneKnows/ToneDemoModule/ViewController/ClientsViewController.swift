@@ -9,10 +9,21 @@ import UIKit
 
 class ClientsViewController: BaseViewController {
     
+    lazy var refreshControlSegment: UIRefreshControl = {
+        let controller = UIRefreshControl()
+        controller.backgroundColor = .clear
+        controller.tintColor = .secondary
+        controller.addTarget(self, action: #selector(self.refreshViewModel), for: .valueChanged)
+        return controller
+    }()
+    
+    var clientList: [Client] = []
+    
     override func initView() {
         super.initView()
         clientsTableView.delegate           = self
         clientsTableView.dataSource         = self
+        clientsTableView.refreshControl     = refreshControlSegment
         searchView.searchTextField.delegate = self
         fetchClientData()
         FeatureFlagManager.shared.getClientId { result in
@@ -28,28 +39,39 @@ class ClientsViewController: BaseViewController {
     }
     
     func fetchClientData() {
-        showLoadingIndicator()
-        clientsTableView.isHidden = true
-        viewModel.loadClientsFromLocalDB()
-        clientsTableView.reloadData()
-        
-        // Fetch new data from Firestore and update local storage
-        self.viewModel.fetchClients {
-            DispatchQueue.main.async {
-                self.clientsTableView.isHidden = false
+        DispatchQueue.main.async {
+            self.refreshControlSegment.endRefreshing()
+            self.showLoadingIndicator()
+            self.viewModel.fetchClients {
+                self.dismissLoadingIndicator()
+                self.clientList = self.viewModel.clients.sorted { $0.name?.localizedCaseInsensitiveCompare($1.name ?? "") == .orderedAscending }
                 self.clientsTableView.reloadData()
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                    self.dismissLoadingIndicator()
-                }
             }
         }
+    }
+    
+    @objc func refreshViewModel() {
+        DispatchQueue.main.async {
+            self.refreshControlSegment.endRefreshing()
+            self.showLoadingIndicator()
+            self.viewModel.fetchClients {
+                self.clientList = self.viewModel.clients.sorted { $0.name?.localizedCaseInsensitiveCompare($1.name ?? "") == .orderedAscending }
+                self.dismissLoadingIndicator()
+                self.clientsTableView.reloadData()
+            }
+        }
+    }
+    
+    func fetchClientDatas() {
+        viewModel.loadClientsFromLocalDB()
+        clientsTableView.reloadData()
     }
 }
 
 extension ClientsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isSearching ? filteredClients.count : viewModel.clients.count
+        return isSearching ? filteredClients.count : clientList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,9 +79,9 @@ extension ClientsViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let client = isSearching ? filteredClients[indexPath.row] : viewModel.clients[indexPath.row]
+        let client = isSearching ? filteredClients[indexPath.row] : clientList[indexPath.row]
         cell.selectionStyle = .none
-        let isSelected = client.clientID == UserDefaults.isSelectedClientID
+        let isSelected = client.clientId == UserDefaults.isSelectedClientID
         cell.configure(with: client, isSelected: isSelected)
         
         return cell
@@ -67,17 +89,19 @@ extension ClientsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dispatchSelection(indexPath: indexPath)
-        tableView.reloadData()
     }
     
     func dispatchSelection(indexPath: IndexPath) {
-        let selectedClient = isSearching ? filteredClients[indexPath.row] : viewModel.clients[indexPath.row]
-        UserDefaults.isSelectedClientID = selectedClient.clientID
-        UserDefaults.isSelectedImageURL = selectedClient.image
+        let selectedClient = isSearching ? filteredClients[indexPath.row] : clientList[indexPath.row]
+        UserDefaults.isSelectedClientID = selectedClient.clientId
+        UserDefaults.isSelectedImageURL = selectedClient.background
         toneFramework.setClientId(clientID: clientID)
-        delegate?.didSelectClientImage(selectedClient.image, selectedClient.clientID)
+        delegate?.didSelectClientImage(selectedClient.background ?? "", selectedClient.clientId ?? "")
         FeatureFlagManager.shared.getClientId { result in
             self.handleOfflineMode(result)
+        }
+        DispatchQueue.main.async {
+            self.clientsTableView.reloadData()
         }
     }
 }
@@ -96,10 +120,10 @@ extension ClientsViewController: UITextFieldDelegate {
             filteredClients.removeAll()
         } else {
             isSearching = true
-            filteredClients = viewModel.clients.filter { client in
-                let nameMatch = client.name.lowercased().contains(searchText.lowercased())
-                let idMatch = client.clientID.lowercased().contains(searchText.lowercased())
-                return nameMatch || idMatch
+            filteredClients = clientList.filter { client in
+                let nameMatch = client.name?.lowercased().contains(searchText.lowercased())
+                let idMatch = client.clientId?.lowercased().contains(searchText.lowercased())
+                return nameMatch ?? false || idMatch ?? false
             }
         }
         emptyClientsLabel.isHidden = !isSearching || !filteredClients.isEmpty

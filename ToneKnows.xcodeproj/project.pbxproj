@@ -35,8 +35,6 @@
 		9E37E25C2D6DB9B0001DFC82 /* FrequencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E2582D6DB9B0001DFC82 /* FrequencyViewController.swift */; };
 		9E37E2602D6DB9D1001DFC82 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E25E2D6DB9D1001DFC82 /* NotificationViewModel.swift */; };
 		9E37E2612D6DB9D1001DFC82 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E25F2D6DB9D1001DFC82 /* MenuViewModel.swift */; };
-		9E37E26F2D6DBC62001DFC82 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9E37E26E2D6DBC62001DFC82 /* RealmSwift */; };
-		9E37E2712D6DBC8A001DFC82 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9E37E26E2D6DBC62001DFC82 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9E37E2732D6EE162001DFC82 /* Extension + Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E2722D6EE162001DFC82 /* Extension + Assets.swift */; };
 		9E37E2752D6EE4FD001DFC82 /* CustomAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E37E2742D6EE4FD001DFC82 /* CustomAssets.xcassets */; };
 		9E37E2772D6EFA07001DFC82 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E2762D6EFA07001DFC82 /* SplashViewController.swift */; };
@@ -44,8 +42,10 @@
 		9E37E2A92D6F5CCA001DFC82 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E2A82D6F5CCA001DFC82 /* NetworkRequests.swift */; };
 		9E5CB93E2D0B35E4008FE924 /* SwiftLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5CB93D2D0B35E4008FE924 /* SwiftLocation */; };
 		9E5CB9412D0B3648008FE924 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5CB9402D0B3648008FE924 /* AudioKit */; };
-		9E6483912D70519400EA1BD0 /* ToneListen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6483902D70519400EA1BD0 /* ToneListen.xcframework */; };
-		9E6483922D70519400EA1BD0 /* ToneListen.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6483902D70519400EA1BD0 /* ToneListen.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9E6483952D70592A00EA1BD0 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9E6483942D70592A00EA1BD0 /* AlamofireImage */; };
+		9E6483982D707ECF00EA1BD0 /* ClientEntityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E6483962D707ECF00EA1BD0 /* ClientEntityModel.xcdatamodeld */; };
+		9E64839A2D70BAF300EA1BD0 /* ToneListen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6483992D70BAF300EA1BD0 /* ToneListen.xcframework */; };
+		9E64839B2D70BAF300EA1BD0 /* ToneListen.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6483992D70BAF300EA1BD0 /* ToneListen.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9ECAC9B32BBD7DAA009E42AA /* home_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ECAC9B22BBD7DAA009E42AA /* home_response.json */; };
 		DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA414C527CE5423003647B5 /* frequency_tables.json */; };
 /* End PBXBuildFile section */
@@ -57,8 +57,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9E6483922D70519400EA1BD0 /* ToneListen.xcframework in Embed Frameworks */,
-				9E37E2712D6DBC8A001DFC82 /* RealmSwift in Embed Frameworks */,
+				9E64839B2D70BAF300EA1BD0 /* ToneListen.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,7 +98,8 @@
 		9E37E2762D6EFA07001DFC82 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9E37E2782D6F1F5A001DFC82 /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		9E37E2A82D6F5CCA001DFC82 /* NetworkRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
-		9E6483902D70519400EA1BD0 /* ToneListen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ToneListen.xcframework; path = ../../../Desktop/ToneListen.xcframework; sourceTree = "<group>"; };
+		9E6483972D707ECF00EA1BD0 /* ClientEntity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClientEntity.xcdatamodel; sourceTree = "<group>"; };
+		9E6483992D70BAF300EA1BD0 /* ToneListen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ToneListen.xcframework; path = ../../../Desktop/ToneListen.xcframework; sourceTree = "<group>"; };
 		9ECAC9B22BBD7DAA009E42AA /* home_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home_response.json; sourceTree = "<group>"; };
 		9ED0294C2D1E976F009E0E4B /* ToneKnows.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToneKnows.entitlements; sourceTree = "<group>"; };
 		DFA414C527CE5423003647B5 /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = frequency_tables.json; sourceTree = "<group>"; };
@@ -110,12 +110,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E6483912D70519400EA1BD0 /* ToneListen.xcframework in Frameworks */,
-				9E37E26F2D6DBC62001DFC82 /* RealmSwift in Frameworks */,
+				9E64839A2D70BAF300EA1BD0 /* ToneListen.xcframework in Frameworks */,
 				9E5CB9412D0B3648008FE924 /* AudioKit in Frameworks */,
 				5B826CF027F23D4000D812D0 /* FirebaseFirestore in Frameworks */,
 				9E5CB93E2D0B35E4008FE924 /* SwiftLocation in Frameworks */,
 				5B826CF227F23D4000D812D0 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				9E6483952D70592A00EA1BD0 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +125,7 @@
 		5B8F62C027B4790300EA84BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9E6483902D70519400EA1BD0 /* ToneListen.xcframework */,
+				9E6483992D70BAF300EA1BD0 /* ToneListen.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -158,6 +158,7 @@
 				5B9331BC27A9A27200C61580 /* Info.plist */,
 				9E1D25682BA0300E0047F2F0 /* GoogleService-Info.plist */,
 				5B9331AD27A9A02900C61580 /* Assets.xcassets */,
+				9E6483962D707ECF00EA1BD0 /* ClientEntityModel.xcdatamodeld */,
 			);
 			path = ToneKnows;
 			sourceTree = "<group>";
@@ -291,7 +292,7 @@
 				5B826CF127F23D4000D812D0 /* FirebaseFirestoreCombine-Community */,
 				9E5CB93D2D0B35E4008FE924 /* SwiftLocation */,
 				9E5CB9402D0B3648008FE924 /* AudioKit */,
-				9E37E26E2D6DBC62001DFC82 /* RealmSwift */,
+				9E6483942D70592A00EA1BD0 /* AlamofireImage */,
 			);
 			productName = ToneKnows;
 			productReference = 5B9331A627A9A02700C61580 /* ToneKnows.app */;
@@ -325,7 +326,7 @@
 				5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				9E5CB93C2D0B35E4008FE924 /* XCRemoteSwiftPackageReference "SwiftLocation" */,
 				9E5CB93F2D0B3648008FE924 /* XCRemoteSwiftPackageReference "AudioKit" */,
-				9E37E26B2D6DBC61001DFC82 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				9E6483932D70592A00EA1BD0 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = 5B9331A727A9A02700C61580 /* Products */;
 			projectDirPath = "";
@@ -371,6 +372,7 @@
 				9E37E2382D6DB961001DFC82 /* ImageDownloader.swift in Sources */,
 				9E37E2532D6DB99C001DFC82 /* CustomTabBarView.swift in Sources */,
 				9E37E2592D6DB9B0001DFC82 /* TryItViewController.swift in Sources */,
+				9E6483982D707ECF00EA1BD0 /* ClientEntityModel.xcdatamodeld in Sources */,
 				5B9331AC27A9A02700C61580 /* AppDelegate.swift in Sources */,
 				9E37E2422D6DB987001DFC82 /* AudioProcessor.swift in Sources */,
 				9E37E2792D6F1F5A001DFC82 /* ProgressIndicator.swift in Sources */,
@@ -630,15 +632,6 @@
 				minimumVersion = 10.0.0;
 			};
 		};
-		9E37E26B2D6DBC61001DFC82 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				kind = versionRange;
-				maximumVersion = 11.0.0;
-				minimumVersion = 10.54.1;
-			};
-		};
 		9E5CB93C2D0B35E4008FE924 /* XCRemoteSwiftPackageReference "SwiftLocation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/malcommac/SwiftLocation.git";
@@ -655,6 +648,14 @@
 				minimumVersion = 5.6.4;
 			};
 		};
+		9E6483932D70592A00EA1BD0 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -668,11 +669,6 @@
 			package = 5B64855727ABB6E800378FBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseFirestoreCombine-Community";
 		};
-		9E37E26E2D6DBC62001DFC82 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9E37E26B2D6DBC61001DFC82 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
 		9E5CB93D2D0B35E4008FE924 /* SwiftLocation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9E5CB93C2D0B35E4008FE924 /* XCRemoteSwiftPackageReference "SwiftLocation" */;
@@ -683,7 +679,25 @@
 			package = 9E5CB93F2D0B3648008FE924 /* XCRemoteSwiftPackageReference "AudioKit" */;
 			productName = AudioKit;
 		};
+		9E6483942D70592A00EA1BD0 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E6483932D70592A00EA1BD0 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		9E6483962D707ECF00EA1BD0 /* ClientEntityModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9E6483972D707ECF00EA1BD0 /* ClientEntity.xcdatamodel */,
+			);
+			currentVersion = 9E6483972D707ECF00EA1BD0 /* ClientEntity.xcdatamodel */;
+			path = ClientEntityModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5B93319E27A9A02700C61580 /* Project object */;
 }

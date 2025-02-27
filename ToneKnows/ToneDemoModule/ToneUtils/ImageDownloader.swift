@@ -47,7 +47,7 @@ extension UIImageView {
         if let cachedImage = ImageCache.shared.getImage(forKey: urlString) {
             self.image = cachedImage
             hideLoader()
-            return
+            return 
         }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
@@ -75,13 +75,19 @@ extension UIImageView {
     // MARK: - Loader Methods
     private func showLoader() {
         let loader = UIActivityIndicatorView(style: .medium)
-        loader.center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
-        loader.color = .secondary
-        loader.startAnimating()
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        loader.color = .gray
         loader.tag = 999
         
         DispatchQueue.main.async {
             self.addSubview(loader)
+            
+            NSLayoutConstraint.activate([
+                loader.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                loader.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            ])
+            
+            loader.startAnimating()
         }
     }
     

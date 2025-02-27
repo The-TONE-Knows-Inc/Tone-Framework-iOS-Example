@@ -7,128 +7,223 @@
 
 import UIKit
 import ToneListen
-import RealmSwift
+import Alamofire
+import AlamofireImage
+import CoreData
+
+class CoreDataStack {
+    static let shared = CoreDataStack()
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "ClientEntityModel")
+        container.loadPersistentStores { _, error in
+            if let error = error {
+                fatalError("Failed to load Core Data stack: \(error)")
+            }
+        }
+        return container
+    }()
+    
+    var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+
+    func saveContext() {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                print("Failed to save Core Data: \(error)")
+            }
+        }
+    }
+}
 
 class MenuViewModel {
-    var selectedMenu: String = ""
-    var clients: [ClientObject] = []
-    let realm = try! Realm()
     
-    init() {
-        loadClientsFromLocalDB()
-    }
-    
-    func loadClientsFromLocalDB() {
-        let savedClients = realm.objects(ClientObject.self)
-        clients = savedClients.map { ClientObject(value: $0) }
-    }
+    var clients: [Client] = []
+    static let shared = MenuViewModel()
     
     func fetchClients(completion: @escaping () -> Void) {
         NetworkRequests.fetchClientData { result in
-            
             switch result {
-                case .success(let data):
+                case .success(let clients):
+                    DispatchQueue.main.async {
+                        self.clients = clients.sorted { $0.name?.localizedCaseInsensitiveCompare($1.name ?? "") == .orderedAscending }
+                        self.setSelectedClientDefaults()
+                        completion()
+                    }
                     
-                    if let firstClientID = data.first?.clientId {
-                        if UserDefaults.isSelectedClientID == nil || UserDefaults.isSelectedClientID == "" {
-                            UserDefaults.isSelectedClientID = firstClientID
-                            UserDefaults.isSelectedImageURL = data.first?.background ?? ""
-                        } else {
-                            if let storedClientID = UserDefaults.isSelectedClientID {
-                                UserDefaults.isSelectedImageURL = data.first(where: { $0.clientId == storedClientID })?.background ?? ""
-                            } else {
-                                print(":::: UserDefaults: clientID is nil ::::")
-                            }
+                    self.downloadAllImages(clients: clients) { updatedClients in
+                        DispatchQueue.main.async {
+                            self.saveClientsToCoreData(clients: updatedClients)
                         }
                     }
                     
-                    self.downloadAndPrepareClients(clients: data) {
+                case .failure(let error):
+                    print("API Fetch Failed: \(error.localizedDescription)")
+                    DispatchQueue.main.async {
+                        self.loadClientsFromLocalDB()
                         completion()
                     }
-                case .failure(let error):
-                    print("\n======================== FAILURE =======================")
-                    print("\n===========================================================================\n")
-                    print(error.localizedDescription)
-                    print("\n===========================================================================\n")
-                    completion()
             }
         }
     }
     
-    private func downloadAndPrepareClients(clients: [Client], completion: @escaping () -> Void) {
+    private func setSelectedClientDefaults() {
+        guard let firstClient = clients.first?.clientId else { return }
+        
+        let storedClientID = UserDefaults.isSelectedClientID
+        
+        if storedClientID == nil || storedClientID == "" || !clients.contains(where: { $0.clientId == storedClientID }) {
+            UserDefaults.isSelectedClientID = firstClient
+            UserDefaults.isSelectedImageURL = clients.first?.background
+        } else {
+            UserDefaults.isSelectedImageURL = clients.first(where: { $0.clientId == storedClientID })?.background ?? ""
+        }
+    }
+    
+    func downloadAllImages(clients: [Client], completion: @escaping ([Client]) -> Void) {
+        var updatedClients: [Client] = []
         let dispatchGroup = DispatchGroup()
-        var processedClients: [ClientObject] = []
         
         for client in clients {
-            let clientObject = ClientObject(client: client)
+            var modifiedClient = client
             
-            // Track download of images
             dispatchGroup.enter()
-            downloadImages(for: clientObject) { updatedClient in
-                processedClients.append(updatedClient)
+            downloadImage(url: .azureImageURL(basePath: .LOGO, fileName: client.logo ?? "")) { localPath in
+                modifiedClient.logoData = localPath
                 dispatchGroup.leave()
             }
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            self.saveClientsToLocalDB(clients: processedClients)
-            completion()
-        }
-    }
-    
-    private func downloadImages(for client: ClientObject, completion: @escaping (ClientObject) -> Void) {
-        let imageURLs: [(String, (Data) -> Void)] = [
-            (String.AZURE_STORAGE_BASE_URL + String.LOGO + client.icon + String.AZURE_STORAGE_URL_STRING, { client.logoData = $0 }),
-            (String.AZURE_STORAGE_BASE_URL + String.CLIENTS + client.image + String.AZURE_STORAGE_URL_STRING, { client.demoImage = $0 })
-        ]
-        
-        let dispatchGroup = DispatchGroup()
-        
-        for (urlString, dataHandler) in imageURLs {
-            guard let url = URL(string: urlString) else {
-                print("Invalid URL: \(urlString)")
-                continue
-            }
             
             dispatchGroup.enter()
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                defer { dispatchGroup.leave() }
-                
-                if let error = error {
-                    print("Failed to download image from \(urlString): \(error.localizedDescription)")
-                    return
-                }
-                
-                guard let data = data, !data.isEmpty else {
-                    print("Received empty data from \(urlString)")
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    dataHandler(data)
-                }
+            downloadImage(url: .azureImageURL(basePath: .CLIENTS, fileName: client.background ?? "")) { localPath in
+                modifiedClient.demoImage = localPath
+                dispatchGroup.leave()
             }
-            task.resume()
+            
+            dispatchGroup.notify(queue: .main) {
+                updatedClients.append(modifiedClient)
+            }
         }
         
         dispatchGroup.notify(queue: .main) {
-            completion(client)
+            print("Finished downloading images. Updated clients count: \(updatedClients.count)")
+            completion(updatedClients)
         }
     }
     
-    private func saveClientsToLocalDB(clients: [ClientObject]) {
-        do {
-            try realm.write {
-                realm.delete(realm.objects(ClientObject.self))
-                clients.forEach { realm.add($0) }
+    func downloadImage(url: String, completion: @escaping (String) -> Void) {
+        guard let imageURL = URL(string: url) else {
+            print("Invalid URL: \(url)")
+            completion("")
+            return
+        }
+        
+        AF.request(imageURL).responseImage { response in
+            switch response.result {
+            case .success(let image):
+                if let localPath = self.saveImageToFileManager(image: image, imageName: imageURL.lastPathComponent) {
+                    completion(localPath)
+                } else {
+                    print("Failed to save image: \(imageURL.lastPathComponent)")
+                    completion("")
+                }
+            case .failure(let error):
+                print("Image download failed for URL: \(url), Error: \(error.localizedDescription)")
+                completion("")
             }
+        }
+    }
+    
+    func saveImageToFileManager(image: UIImage, imageName: String) -> String? {
+        let fileManager = FileManager.default
+        guard let imageData = image.pngData() else { return nil }
+        
+        if let cachesDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first {
+            let directory = cachesDirectory.appendingPathComponent("ClientImages")
+            
+            if !fileManager.fileExists(atPath: directory.path) {
+                try? fileManager.createDirectory(at: directory, withIntermediateDirectories: true)
+            }
+            
+            let filePath = directory.appendingPathComponent(imageName)
+            
+            do {
+                try imageData.write(to: filePath)
+                return filePath.path
+            } catch {
+                debugPrint("Error saving image to disk: \(error.localizedDescription)")
+                return nil
+            }
+        }
+        return nil
+    }
+    
+    func saveClientsToCoreData(clients: [Client]) {
+        let context = CoreDataStack.shared.context
+        
+        do {
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = ClientEntity.fetchRequest()
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            try context.execute(deleteRequest)
+            
+            for client in clients {
+                let entity = ClientEntity(context: context)
+                entity.clientID = client.clientId ?? ""
+                entity.icon = client.logo
+                entity.image = client.background
+                entity.name = client.name ?? ""
+                entity.isActive = client.status ?? false
+                entity.logoData = client.logoData
+                entity.demoImage = client.demoImage
+            }
+            
+            try context.save()
+            print("Core Data Save Successful")
             loadClientsFromLocalDB()
         } catch {
-            print("Error saving clients to Realm: \(error)")
+            print("Core Data Save Error: \(error)")
         }
     }
     
-    func fetchClientsFromBackend() {
+    func loadClientsFromLocalDB() {
+        let context = CoreDataStack.shared.context
+        let fetchRequest: NSFetchRequest<ClientEntity> = ClientEntity.fetchRequest()
         
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedCaseInsensitiveCompare))
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            let savedClients = try context.fetch(fetchRequest)
+            
+            self.clients = savedClients.map { clientEntity in
+                Client(
+                    name: clientEntity.name,
+                    logo: clientEntity.icon,
+                    background: clientEntity.image,
+                    clientId: clientEntity.clientID,
+                    logoData: clientEntity.logoData,
+                    demoImage: clientEntity.demoImage
+                )
+            }
+        } catch {
+            print("Core Data Fetch Error: \(error)")
+        }
+    }
+    
+    func loadLocalImagePath(clientID: String) -> String? {
+        let context = CoreDataStack.shared.context
+        let fetchRequest: NSFetchRequest<ClientEntity> = ClientEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "clientID == %@", clientID)
+        
+        do {
+            let clients = try context.fetch(fetchRequest)
+            return clients.first?.demoImage
+        } catch {
+            print("Failed to fetch local image path: \(error)")
+            return nil
+        }
     }
 }

@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         setRootController(SplashViewController())
         UserDefaults.isFeatureFlagEnabled = FeatureFlagManager.shared.featureEnabled
-        configureRealmMigration()
         return true
     }
     
@@ -30,21 +28,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController?.navigationBar.isHidden = true
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-    }
-
-    func configureRealmMigration() {
-        let config = Realm.Configuration(
-            schemaVersion: 2,
-            migrationBlock: { migration, oldSchemaVersion in
-                if oldSchemaVersion < 2 {
-                    // Realm will automatically detect and handle new primary keys.
-                    // No explicit migration logic needed for adding primary keys.
-                }
-            }
-        )
-        
-        Realm.Configuration.defaultConfiguration = config
-        // Initialize Realm to apply the migration
-        _ = try! Realm()
     }
 }

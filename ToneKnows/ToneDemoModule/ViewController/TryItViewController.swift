@@ -6,14 +6,13 @@
 //
 
 import UIKit
-import RealmSwift
+import CoreData
 
 class TryItViewController: BaseViewController {
     
     override func initView() {
         super.initView()
         view.backgroundColor = .containerBackground
-        configure(with: UserDefaults.isSelectedImageURL ?? "", clientID: UserDefaults.isSelectedClientID ?? "")
     }
     
     override func initAppearView() {
@@ -22,6 +21,7 @@ class TryItViewController: BaseViewController {
             toneFramework.start()
             enableToneFrameworkFeatures()
             UserDefaults.isFrameworkRunning = true
+            configure(with: UserDefaults.isSelectedImageURL ?? "", clientID: UserDefaults.isSelectedClientID ?? "")
         }
     }
     
@@ -45,15 +45,19 @@ extension TryItViewController: ClientsViewControllerDelegate {
     }
     
     func configure(with client: String, clientID: String) {
-        if let localImageData = loadLocalImage(clientID: clientID) {
-            backgroundImage.image = UIImage(data: localImageData)
+        if let localImagePath = MenuViewModel.shared.loadLocalImagePath(clientID: clientID),
+           let image = loadImageFromPath(localImagePath) {
+            backgroundImage.image = image
         } else {
-            backgroundImage.loadImage(from: .azureImageURL(basePath: .LOGO, fileName: client))
+            backgroundImage.loadImage(from: .azureImageURL(basePath: .CLIENTS, fileName: client))
         }
     }
     
-    private func loadLocalImage(clientID: String) -> Data? {
-        let realm = try? Realm()
-        return realm?.object(ofType: ClientObject.self, forPrimaryKey: clientID)?.demoImage
+    private func loadImageFromPath(_ path: String) -> UIImage? {
+        let fileURL = URL(fileURLWithPath: path)
+        if let imageData = try? Data(contentsOf: fileURL) {
+            return UIImage(data: imageData)
+        }
+        return nil
     }
 }

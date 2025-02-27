@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class ClientsListCell: UITableViewCell {
     
@@ -100,23 +99,30 @@ class ClientsListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with client: ClientObject, isSelected: Bool) {
+    func configure(with client: Client, isSelected: Bool) {
         nameLabel.text = client.name
         activityIndicator.startAnimating()
-        if let localImageData = loadLocalImage(clientID: client.clientID) {
-            clientImageView.image = UIImage(data: localImageData)
+        
+        if let localImagePath = client.logoData, !localImagePath.isEmpty,
+           let image = loadImageFromPath(localImagePath) {
+            clientImageView.image = image
             activityIndicator.stopAnimating()
+        } else if let remoteImageURL = client.logo, !remoteImageURL.isEmpty {
+            clientImageView.loadImage(from: .azureImageURL(basePath: .LOGO, fileName: remoteImageURL))
         } else {
-            clientImageView.loadImage(from: .azureImageURL(basePath: .LOGO, fileName: client.icon))
-            self.activityIndicator.stopAnimating()
+            clientImageView.image = UIImage(named: "placeholder")
         }
         
+        activityIndicator.stopAnimating()
         updateAppearance(isSelected: isSelected)
     }
     
-    private func loadLocalImage(clientID: String) -> Data? {
-        let realm = try? Realm()
-        return realm?.object(ofType: ClientObject.self, forPrimaryKey: clientID)?.logoData
+    private func loadImageFromPath(_ path: String) -> UIImage? {
+        let fileURL = URL(fileURLWithPath: path)
+        if let imageData = try? Data(contentsOf: fileURL) {
+            return UIImage(data: imageData)
+        }
+        return nil
     }
     
     func updateAppearance(isSelected: Bool) {

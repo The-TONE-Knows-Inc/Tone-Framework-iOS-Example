@@ -84,7 +84,6 @@ class SpectrumViewController: UIViewController {
         
         view.backgroundColor = .black
         permissionManager.checkMicrophonePermission()
-        viewModel.fetchClientsFromBackend()
         setupUI()
         locationManager.delegate = self
         gearButton.isHidden = UserDefaults.isFeatureFlagEnabled ?? true
