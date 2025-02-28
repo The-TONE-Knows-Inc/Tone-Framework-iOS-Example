@@ -21,6 +21,10 @@ protocol ClientsViewControllerDelegate: AnyObject {
     func didSelectClientImage(_ imageName: String, _ clientID: String)
 }
 
+protocol HeaderViewDelegate: AnyObject {
+    func didSelectClient(_ clientName: String)
+}
+
 protocol BackButtonDelegate: AnyObject {
     func backButtonAction()
 }

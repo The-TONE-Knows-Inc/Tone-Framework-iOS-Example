@@ -103,14 +103,20 @@ class ClientsListCell: UITableViewCell {
         nameLabel.text = client.name
         activityIndicator.startAnimating()
         
-        if let localImagePath = client.logoData, !localImagePath.isEmpty,
-           let image = loadImageFromPath(localImagePath) {
-            clientImageView.image = image
-            activityIndicator.stopAnimating()
-        } else if let remoteImageURL = client.logo, !remoteImageURL.isEmpty {
-            clientImageView.loadImage(from: .azureImageURL(basePath: .LOGO, fileName: remoteImageURL))
-        } else {
-            clientImageView.image = UIImage(named: "placeholder")
+        if let remoteImageURL = client.logo, !remoteImageURL.isEmpty {
+            clientImageView.setImage(from: .azureImageURL(basePath: .LOGO, fileName: remoteImageURL)) { result in
+                if let result, result {
+                    print("------------ success ::::: \(result) -----------")
+                } else {
+                    if let localImagePath = client.logoData, !localImagePath.isEmpty,
+                       let image = self.loadImageFromPath(localImagePath) {
+                        self.clientImageView.image = image
+                        self.activityIndicator.stopAnimating()
+                    } else {
+                        self.clientImageView.image = UIImage(named: "placeholder")
+                    }
+                }
+            }
         }
         
         activityIndicator.stopAnimating()

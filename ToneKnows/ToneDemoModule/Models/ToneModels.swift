@@ -53,7 +53,7 @@ enum ViewControllers {
             case .clientsVC:
                 return "Client Names"
             case .tryItVC:
-                return "Tone Demo"
+                return UserDefaults.isHeaderTitle ?? "Tone Demo"
             case .frequencyVC:
                 return "Frequency List"
         }

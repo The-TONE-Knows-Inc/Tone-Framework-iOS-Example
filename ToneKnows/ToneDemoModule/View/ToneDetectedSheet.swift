@@ -59,7 +59,7 @@ class ToneDetectedSheet: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let imageURL = imageURL, !imageURL.isEmpty {
-            imageView.loadImage(from: imageURL)
+            imageView.setImage(from: imageURL)
         } else {
             if let imageData = imageData {
                 imageView.image = UIImage(data: imageData)

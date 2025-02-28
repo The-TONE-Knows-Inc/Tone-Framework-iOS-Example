@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SDWebImageAVIFCoder
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,8 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        setupSDWebImage()
         setRootController(SplashViewController())
-        UserDefaults.isFeatureFlagEnabled = FeatureFlagManager.shared.featureEnabled
+        FeatureFlagManager.shared.fetchFeatureFlag() { result in
+            UserDefaults.isFeatureFlagEnabled = result
+        }
         return true
     }
     
@@ -28,5 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController?.navigationBar.isHidden = true
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+    }
+
+    func setupSDWebImage() {
+        let avifCoder = SDImageAVIFCoder.shared
+        SDImageCodersManager.shared.addCoder(avifCoder)
     }
 }

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Alamofire
+import SDWebImageAVIFCoder
 
 class ImageCache {
     static let shared = ImageCache()
@@ -30,56 +32,47 @@ extension UIImageView {
         set { objc_setAssociatedObject(self, &AssociatedKeys.taskKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
     
-    func loadImage(from urlString: String, placeholder: UIImage? = UIImage(named: "placeholder")) {
+    func setImage(from urlString: String, placeholder: UIImage? = UIImage(named: "placeholder")) {
+        setImage(from: urlString, placeholder: placeholder, completion: nil)
+    }
+    
+    func setImage(from urlString: String, placeholder: UIImage? = UIImage(named: "placeholder"), completion: ((Bool?) -> Void)?) {
         self.image = placeholder
         showLoader()
         
-        // Cancel any ongoing task before starting a new one
         currentTask?.cancel()
         
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL: \(urlString)")
+        guard let validURL = ImageHelper.shared.getValidURL(from: urlString) else {
             hideLoader()
+            completion?(false)
             return
         }
-        
         // Check Cache
         if let cachedImage = ImageCache.shared.getImage(forKey: urlString) {
             self.image = cachedImage
             hideLoader()
-            return 
+            completion?(true)
+            return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
-            guard let self = self, let data = data, error == nil,
-                  let image = UIImage(data: data) else {
-                print("Failed to load image: \(error?.localizedDescription ?? "Unknown error")")
-                DispatchQueue.main.async { self?.hideLoader() }
-                return
-            }
-            
-            // Cache the image
-            ImageCache.shared.saveImage(image, forKey: urlString)
-            
+        currentTask = ImageHelper.shared.fetchImage(url: validURL, urlString: urlString) { image in
             DispatchQueue.main.async {
                 self.image = image
                 self.hideLoader()
+                completion?(image != nil)
             }
         }
         
-        // Store and start the task
-        currentTask = task
-        task.resume()
+        currentTask?.resume()
     }
     
-    // MARK: - Loader Methods
     private func showLoader() {
-        let loader = UIActivityIndicatorView(style: .medium)
-        loader.translatesAutoresizingMaskIntoConstraints = false
-        loader.color = .gray
-        loader.tag = 999
-        
         DispatchQueue.main.async {
+            let loader = UIActivityIndicatorView(style: .medium)
+            loader.translatesAutoresizingMaskIntoConstraints = false
+            loader.color = .gray
+            loader.tag = 999
+            
             self.addSubview(loader)
             
             NSLayoutConstraint.activate([

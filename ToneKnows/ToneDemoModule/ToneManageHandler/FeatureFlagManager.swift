@@ -10,23 +10,18 @@ import FirebaseFirestore
 class FeatureFlagManager {
     
     static let shared = FeatureFlagManager()
-    var featureEnabled: Bool = false
     private var db = Firestore.firestore()
     
-    init() {
-        fetchFeatureFlag()
-    }
-    
-    func fetchFeatureFlag() {
+    func fetchFeatureFlag(completion: @escaping (Bool) -> Void) {
         let docRef = db.collection("settings").document("2mFXFqDjUCBlJnaTDP8z")
 
-        docRef.getDocument { [weak self] (document, error) in
-            guard let self = self else { return }
-            
+        docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 let dataDescription = document.data()
-                self.featureEnabled = dataDescription?["featureEnabled"] as? Bool ?? false
+                let featureEnabled = dataDescription?["iOS"] as? Bool ?? false
+                completion(featureEnabled)
             } else {
+                completion(false)
                 print("Document does not exist")
             }
         }

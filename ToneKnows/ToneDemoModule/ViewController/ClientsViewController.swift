@@ -19,6 +19,8 @@ class ClientsViewController: BaseViewController {
     
     var clientList: [Client] = []
     
+    weak var headerDelegate: HeaderViewDelegate?
+    
     override func initView() {
         super.initView()
         clientsTableView.delegate           = self
@@ -97,6 +99,7 @@ extension ClientsViewController: UITableViewDelegate, UITableViewDataSource {
         UserDefaults.isSelectedImageURL = selectedClient.background
         toneFramework.setClientId(clientID: clientID)
         delegate?.didSelectClientImage(selectedClient.background ?? "", selectedClient.clientId ?? "")
+        headerDelegate?.didSelectClient(selectedClient.name ?? "Tone Demo")
         FeatureFlagManager.shared.getClientId { result in
             self.handleOfflineMode(result)
         }

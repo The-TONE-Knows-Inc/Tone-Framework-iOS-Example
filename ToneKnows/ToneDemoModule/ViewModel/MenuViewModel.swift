@@ -79,8 +79,10 @@ class MenuViewModel {
         if storedClientID == nil || storedClientID == "" || !clients.contains(where: { $0.clientId == storedClientID }) {
             UserDefaults.isSelectedClientID = firstClient
             UserDefaults.isSelectedImageURL = clients.first?.background
+            UserDefaults.isHeaderTitle = clients.first?.name
         } else {
             UserDefaults.isSelectedImageURL = clients.first(where: { $0.clientId == storedClientID })?.background ?? ""
+            UserDefaults.isHeaderTitle = clients.first(where: { $0.clientId == storedClientID })?.name ?? "Tone Demo"
         }
     }
     
@@ -94,12 +96,14 @@ class MenuViewModel {
             dispatchGroup.enter()
             downloadImage(url: .azureImageURL(basePath: .LOGO, fileName: client.logo ?? "")) { localPath in
                 modifiedClient.logoData = localPath
+                print("Logo Data Path >> \(localPath)")
                 dispatchGroup.leave()
             }
             
             dispatchGroup.enter()
             downloadImage(url: .azureImageURL(basePath: .CLIENTS, fileName: client.background ?? "")) { localPath in
                 modifiedClient.demoImage = localPath
+                print("Demo Image Path >> \(localPath)")
                 dispatchGroup.leave()
             }
             
@@ -115,23 +119,21 @@ class MenuViewModel {
     }
     
     func downloadImage(url: String, completion: @escaping (String) -> Void) {
-        guard let imageURL = URL(string: url) else {
-            print("Invalid URL: \(url)")
+        guard let validURL = ImageHelper.shared.getValidURL(from: url) else {
             completion("")
             return
         }
         
-        AF.request(imageURL).responseImage { response in
-            switch response.result {
-            case .success(let image):
-                if let localPath = self.saveImageToFileManager(image: image, imageName: imageURL.lastPathComponent) {
+        ImageHelper.shared.fetchImageData(url: validURL) { data in
+            if let data = data {
+                if let localPath = self.saveImageToFileManager(image: data, imageName: validURL.lastPathComponent) {
                     completion(localPath)
                 } else {
-                    print("Failed to save image: \(imageURL.lastPathComponent)")
+                    print("Failed to save image: \(validURL.lastPathComponent)")
                     completion("")
                 }
-            case .failure(let error):
-                print("Image download failed for URL: \(url), Error: \(error.localizedDescription)")
+            } else {
+                print("Image download failed for URL: \(url)")
                 completion("")
             }
         }

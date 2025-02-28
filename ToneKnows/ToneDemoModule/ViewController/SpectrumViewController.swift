@@ -86,7 +86,7 @@ class SpectrumViewController: UIViewController {
         permissionManager.checkMicrophonePermission()
         setupUI()
         locationManager.delegate = self
-        gearButton.isHidden = UserDefaults.isFeatureFlagEnabled ?? true
+        gearButton.isHidden = !UserDefaults.isFeatureFlagEnabled
         CheckFrequencyAndLocation()
     }
     

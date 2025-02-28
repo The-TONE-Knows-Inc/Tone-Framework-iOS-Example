@@ -15,14 +15,17 @@ extension UserDefaults {
     @UserDefault(key: "is_selected_client_id_key", defaultValue: nil)
     static var isSelectedImageURL: String?
     
-    @UserDefault(key: "is_feature_flag_enabled", defaultValue: nil)
-    static var isFeatureFlagEnabled: Bool?
+    @UserDefault(key: "is_feature_flag_enabled", defaultValue: false)
+    static var isFeatureFlagEnabled: Bool
     
     @UserDefault(key: "is_framework_running", defaultValue: nil)
     static var isFrameworkRunning: Bool?
     
     @UserDefault(key: "is_latitude", defaultValue: nil)
     static var isLatitude: String?
+    
+    @UserDefault(key: "is_header_title", defaultValue: nil)
+    static var isHeaderTitle: String?
     
     @UserDefault(key: "is_Longitude", defaultValue: nil)
     static var isLongitude: String?

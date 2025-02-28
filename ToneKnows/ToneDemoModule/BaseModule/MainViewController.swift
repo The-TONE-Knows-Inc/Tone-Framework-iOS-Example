@@ -60,6 +60,7 @@ class MainViewController: UIViewController {
     let viewModel       = NotificationViewModel()
     let locationManager = LocationManager()
     let sheetPresenter  = SheetPresenter()
+    let permissionManager   = PermissionManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,8 +70,8 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        latLabel.text = "Latitude: \(UserDefaults.isLatitude ?? "Latitude: Fetching Latitude..")"
-        longLabel.text = "Longitude: \(UserDefaults.isLongitude ?? "Longitude: Fetching Longitude..")"
+        locationManager.delegate = self
+        CheckFrequencyAndLocation()
     }
     
     func initialSetup() {
@@ -82,6 +83,7 @@ class MainViewController: UIViewController {
     
     func setDelegates() {
         clientsVC.delegate = tryItVC
+        clientsVC.headerDelegate = self
         viewModel.delegate = self
         headerView.delegate = self
     }
@@ -165,6 +167,13 @@ extension MainViewController: CustomTabBarDelegate {
     }
 }
 
+// MARK: - CustomTabBarDelegate -
+extension MainViewController: HeaderViewDelegate {
+    func didSelectClient(_ clientName: String) {
+        UserDefaults.isHeaderTitle = clientName
+    }
+}
+
 // MARK: - BackButtonDelegate -
 extension MainViewController: BackButtonDelegate {
     func backButtonAction() {
@@ -193,5 +202,34 @@ extension MainViewController: NotificationViewModelDelegate {
     
     func didReceiveOfflineNotification(_ notification: Data) {
         sheetPresenter.handleImageDataNotification(imageData: notification)
+    }
+}
+
+extension MainViewController: LocationManagerDelegate {
+    
+    func CheckFrequencyAndLocation() {
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
+            self?.locationManager.requestLocation()
+        }
+    }
+    
+    func didUpdateLocation(_ Latitude: String, _ Longitude: String) {
+        UserDefaults.isLatitude = Latitude
+        UserDefaults.isLongitude = Longitude
+        setLatAndLong()
+    }
+    
+    func setLatAndLong() {
+        DispatchQueue.main.async {
+            self.latLabel.text = "Latitude: \(UserDefaults.isLatitude ?? "Latitude: Fetching Latitude..")"
+            self.longLabel.text = "Longitude: \(UserDefaults.isLongitude ?? "Longitude: Fetching Longitude..")"
+        }
+    }
+    
+    func didFailWithError(_ error: String) {
+        DispatchQueue.main.async {
+            self.latLabel.text = "Latitude: Fetching Latitude.."
+            self.longLabel.text = "Longitude: Fetching Longitude.."
+        }
     }
 }

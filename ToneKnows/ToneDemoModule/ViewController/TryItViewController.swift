@@ -44,12 +44,20 @@ extension TryItViewController: ClientsViewControllerDelegate {
         configure(with: imageName, clientID: clientID)
     }
     
+    func didSelectClient(_ clientName: String) {
+        print("Selected Client Name :::::::: \(clientName)")
+    }
+    
     func configure(with client: String, clientID: String) {
-        if let localImagePath = MenuViewModel.shared.loadLocalImagePath(clientID: clientID),
-           let image = loadImageFromPath(localImagePath) {
-            backgroundImage.image = image
-        } else {
-            backgroundImage.loadImage(from: .azureImageURL(basePath: .CLIENTS, fileName: client))
+        backgroundImage.setImage(from: .azureImageURL(basePath: .CLIENTS, fileName: client)) { result in
+            guard let success = result, success else {
+                if let localImagePath = MenuViewModel.shared.loadLocalImagePath(clientID: clientID),
+                   let image = self.loadImageFromPath(localImagePath) {
+                    self.backgroundImage.image = image
+                }
+                return
+            }
+            print("------------ success -----------")
         }
     }
     
