@@ -45,6 +45,10 @@ class MenuViewModel {
     var clients: [Client] = []
     static let shared = MenuViewModel()
     
+    private var imageLoader: ImageLoaderProtocol {
+        return ImageLoader()
+    }
+    
     func fetchClients(completion: @escaping () -> Void) {
         NetworkRequests.fetchClientData { result in
             switch result {
@@ -68,21 +72,6 @@ class MenuViewModel {
                         completion()
                     }
             }
-        }
-    }
-    
-    private func setSelectedClientDefaults() {
-        guard let firstClient = clients.first?.clientId else { return }
-        
-        let storedClientID = UserDefaults.isSelectedClientID
-        
-        if storedClientID == nil || storedClientID == "" || !clients.contains(where: { $0.clientId == storedClientID }) {
-            UserDefaults.isSelectedClientID = firstClient
-            UserDefaults.isSelectedImageURL = clients.first?.background
-            UserDefaults.isHeaderTitle = clients.first?.name
-        } else {
-            UserDefaults.isSelectedImageURL = clients.first(where: { $0.clientId == storedClientID })?.background ?? ""
-            UserDefaults.isHeaderTitle = clients.first(where: { $0.clientId == storedClientID })?.name ?? "Tone Demo"
         }
     }
     
@@ -119,12 +108,12 @@ class MenuViewModel {
     }
     
     func downloadImage(url: String, completion: @escaping (String) -> Void) {
-        guard let validURL = ImageHelper.shared.getValidURL(from: url) else {
+        guard let validURL = imageLoader.getValidURL(from: url) else {
             completion("")
             return
         }
         
-        ImageHelper.shared.fetchImageData(url: validURL) { data in
+        imageLoader.fetchImageData(url: validURL) { data in
             if let data = data {
                 if let localPath = self.saveImageToFileManager(image: data, imageName: validURL.lastPathComponent) {
                     completion(localPath)
@@ -226,6 +215,21 @@ class MenuViewModel {
         } catch {
             print("Failed to fetch local image path: \(error)")
             return nil
+        }
+    }
+    
+    private func setSelectedClientDefaults() {
+        guard let firstClient = clients.first?.clientId else { return }
+        
+        let storedClientID = UserDefaults.isSelectedClientID
+        
+        if storedClientID == nil || storedClientID == "" || !clients.contains(where: { $0.clientId == storedClientID }) {
+            UserDefaults.isSelectedClientID = firstClient
+            UserDefaults.isSelectedImageURL = clients.first?.background
+            UserDefaults.isHeaderTitle = clients.first?.name
+        } else {
+            UserDefaults.isSelectedImageURL = clients.first(where: { $0.clientId == storedClientID })?.background ?? ""
+            UserDefaults.isHeaderTitle = clients.first(where: { $0.clientId == storedClientID })?.name ?? "Tone Demo"
         }
     }
 }

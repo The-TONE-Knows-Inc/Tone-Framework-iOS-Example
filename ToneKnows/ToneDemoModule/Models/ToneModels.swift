@@ -59,3 +59,7 @@ enum ViewControllers {
         }
     }
 }
+
+struct AssociatedKeys {
+    static var taskKey = "imageTaskKey"
+}

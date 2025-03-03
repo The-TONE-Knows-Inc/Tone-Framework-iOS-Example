@@ -22,14 +22,24 @@ class ImageCache {
     }
 }
 
-extension UIImageView {
-    private struct AssociatedKeys {
-        static var taskKey = "imageTaskKey"
-    }
+class CustomImageView: UIImageView {
+    
+    private let imageLoader: ImageLoaderProtocol?
     
     private var currentTask: URLSessionDataTask? {
         get { return objc_getAssociatedObject(self, &AssociatedKeys.taskKey) as? URLSessionDataTask }
         set { objc_setAssociatedObject(self, &AssociatedKeys.taskKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+    
+    // Injecting ImageLoader dependency
+    init(imageLoader: ImageLoaderProtocol = ImageLoader()) {
+        self.imageLoader = imageLoader
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder: NSCoder) {
+        self.imageLoader = ImageLoader()
+        super.init(coder: coder)
     }
     
     func setImage(from urlString: String, placeholder: UIImage? = UIImage(named: "placeholder")) {
@@ -42,7 +52,7 @@ extension UIImageView {
         
         currentTask?.cancel()
         
-        guard let validURL = ImageHelper.shared.getValidURL(from: urlString) else {
+        guard let validURL = imageLoader?.getValidURL(from: urlString) else {
             hideLoader()
             completion?(false)
             return
@@ -55,7 +65,7 @@ extension UIImageView {
             return
         }
         
-        currentTask = ImageHelper.shared.fetchImage(url: validURL, urlString: urlString) { image in
+        currentTask = imageLoader?.fetchImage(url: validURL, urlString: urlString) { image in
             DispatchQueue.main.async {
                 self.image = image
                 self.hideLoader()

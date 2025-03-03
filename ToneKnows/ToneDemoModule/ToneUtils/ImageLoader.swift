@@ -8,9 +8,7 @@
 import UIKit
 import SDWebImageAVIFCoder
 
-class ImageHelper {
-    
-    static let shared = ImageHelper()
+class ImageLoader: ImageLoaderProtocol {
     
     func getValidURL(from urlString: String) -> URL? {
         if let normalURL = URL(string: urlString) {
@@ -66,6 +64,9 @@ class ImageHelper {
         }
         
         SDWebImageDownloader.shared.downloadImage(with: validURL, options: [.continueInBackground, .highPriority], progress: nil) { image, data, error, _ in
+            if let error = error {
+                print("SDWebImage Error: \(error.localizedDescription)")
+            }
             if let image = image {
                 completion?(image)
             } else if let data = data {
@@ -96,32 +97,6 @@ class ImageHelper {
     }
     
     func fetchImageData(url: URL, completion: @escaping (UIImage?) -> Void) {
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self, let data = data, error == nil else {
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
-                return
-            }
-            
-            if let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    completion(image)
-                }
-            } else {
-                print("Failed to create image from data. Data size: \(data.count) bytes")
-                self.getImageFromSDWebImage(from: url) { image in
-                    DispatchQueue.main.async {
-                        if let image {
-                            completion(image)
-                        } else {
-                            print("Failed to create image from data.")
-                            completion(nil)
-                        }
-                    }
-                }
-            }
-        }
-        task.resume()
+        self.getImageFromSDWebImage(from: url, completion: completion)
     }
 }

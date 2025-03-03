@@ -27,8 +27,8 @@ class BaseViewController: UIViewController {
         return tableView
     }()
     
-    lazy var backgroundImage: UIImageView = {
-        let view                = UIImageView()
+    lazy var backgroundImage: CustomImageView = {
+        let view                = CustomImageView()
         view.contentMode        = .scaleAspectFit
         view.clipsToBounds      = true
         view.backgroundColor    = .containerBackground

@@ -22,8 +22,8 @@ class ToneDetectedSheet: UIViewController {
         super.init(coder: coder)
     }
     
-    lazy var imageView: UIImageView = {
-        let view            = UIImageView()
+    lazy var imageView: CustomImageView = {
+        let view            = CustomImageView()
         view.contentMode    = .scaleToFill
 //        view.clipsToBounds  = true
         view.translatesAutoresizingMaskIntoConstraints = false

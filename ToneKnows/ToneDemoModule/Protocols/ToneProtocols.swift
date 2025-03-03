@@ -36,3 +36,11 @@ protocol NotificationViewModelDelegate: AnyObject {
     func didUpdateResponseContent(_ content: [String: Any])
     func didUpdateToneSequences(_ toneSequences: [String])
 }
+
+protocol ImageLoaderProtocol {
+    func getValidURL(from urlString: String) -> URL?
+    func fetchImage(url: URL, urlString: String, completion: @escaping (UIImage?) -> Void) -> URLSessionDataTask
+    func getImageFromSDWebImage(from url: URL?, completion: ((UIImage?) -> Void)?)
+    func convertAVIFToPNGOrJPEG(from data: Data, completion: ((UIImage?) -> Void)?)
+    func fetchImageData(url: URL, completion: @escaping (UIImage?) -> Void)
+}

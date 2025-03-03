@@ -17,8 +17,8 @@ class ClientsListCell: UITableViewCell {
         return view
     }()
     
-    lazy var clientImageView: UIImageView = {
-        let imageView = UIImageView()
+    lazy var clientImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.layer.cornerRadius = 35
         imageView.clipsToBounds = true
         imageView.backgroundColor = .containerBackground

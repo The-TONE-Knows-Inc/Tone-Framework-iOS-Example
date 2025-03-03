@@ -47,7 +47,7 @@
 		9E64839A2D70BAF300EA1BD0 /* ToneListen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6483992D70BAF300EA1BD0 /* ToneListen.xcframework */; };
 		9E64839B2D70BAF300EA1BD0 /* ToneListen.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6483992D70BAF300EA1BD0 /* ToneListen.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9E6483A32D71E83F00EA1BD0 /* SDWebImageAVIFCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 9E6483A22D71E83F00EA1BD0 /* SDWebImageAVIFCoder */; };
-		9E6483AC2D71ED0300EA1BD0 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6483AB2D71ED0300EA1BD0 /* ImageHelper.swift */; };
+		9E6483AC2D71ED0300EA1BD0 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6483AB2D71ED0300EA1BD0 /* ImageLoader.swift */; };
 		9ECAC9B32BBD7DAA009E42AA /* home_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ECAC9B22BBD7DAA009E42AA /* home_response.json */; };
 		DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA414C527CE5423003647B5 /* frequency_tables.json */; };
 /* End PBXBuildFile section */
@@ -102,7 +102,7 @@
 		9E37E2A82D6F5CCA001DFC82 /* NetworkRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
 		9E6483972D707ECF00EA1BD0 /* ClientEntity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClientEntity.xcdatamodel; sourceTree = "<group>"; };
 		9E6483992D70BAF300EA1BD0 /* ToneListen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ToneListen.xcframework; path = ../../../Desktop/ToneListen.xcframework; sourceTree = "<group>"; };
-		9E6483AB2D71ED0300EA1BD0 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		9E6483AB2D71ED0300EA1BD0 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		9ECAC9B22BBD7DAA009E42AA /* home_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home_response.json; sourceTree = "<group>"; };
 		9ED0294C2D1E976F009E0E4B /* ToneKnows.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToneKnows.entitlements; sourceTree = "<group>"; };
 		DFA414C527CE5423003647B5 /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = frequency_tables.json; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				9E37E2362D6DB961001DFC82 /* ImageDownloader.swift */,
-				9E6483AB2D71ED0300EA1BD0 /* ImageHelper.swift */,
+				9E6483AB2D71ED0300EA1BD0 /* ImageLoader.swift */,
 				9E37E2352D6DB961001DFC82 /* UserDefaults.swift */,
 				9E37E2722D6EE162001DFC82 /* Extension + Assets.swift */,
 				9E37E2742D6EE4FD001DFC82 /* CustomAssets.xcassets */,
@@ -375,7 +375,7 @@
 				9E37E2732D6EE162001DFC82 /* Extension + Assets.swift in Sources */,
 				9E37E2452D6DB987001DFC82 /* SheetPresenter.swift in Sources */,
 				9E37E22D2D6DB900001DFC82 /* BaseViewController.swift in Sources */,
-				9E6483AC2D71ED0300EA1BD0 /* ImageHelper.swift in Sources */,
+				9E6483AC2D71ED0300EA1BD0 /* ImageLoader.swift in Sources */,
 				9E37E22E2D6DB900001DFC82 /* MainViewController.swift in Sources */,
 				9E37E2382D6DB961001DFC82 /* ImageDownloader.swift in Sources */,
 				9E37E2532D6DB99C001DFC82 /* CustomTabBarView.swift in Sources */,
