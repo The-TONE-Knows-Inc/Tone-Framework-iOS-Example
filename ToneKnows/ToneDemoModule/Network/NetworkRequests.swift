@@ -11,7 +11,7 @@ class NetworkRequests {
     
     static func fetchClientData(completion: @escaping (Result<[Client], Error>) -> Void) {
         
-        let urlString = "https://dev-dashboard-api.tonetrackr.com/companies/get/offline"
+        let urlString = "https://api.tonetrackr.com/companies/get/offline"
         guard let url = URL(string: urlString) else {
             print("Invalid URL: \(urlString)")
             completion(.failure(NSError(domain: "Invalid URL", code: 400, userInfo: nil)))

@@ -54,8 +54,8 @@ extension UIColor {
 }
 
 extension String {
-    static let AZURE_STORAGE_BASE_URL = "https://tonedashboardsa.blob.core.windows.net/dev-tone/"
-    static let AZURE_STORAGE_URL_STRING = "?sp=r&st=2025-01-24T09:50:07Z&se=2027-02-01T17:50:07Z&spr=https&sv=2022-11-02&sr=c&sig=63CLCkMEJn1dI5%2Fn4%2F3cJwP4fDtAsnS5ciXaFwnbppA%3D"
+    static let AZURE_STORAGE_BASE_URL = "https://tonedashboardsa.blob.core.windows.net/production-tone/"
+    static let AZURE_STORAGE_URL_STRING = "?sp=racwl&st=2025-02-22T07:54:53Z&se=2027-12-31T15:54:53Z&spr=https&sv=2022-11-02&sr=c&sig=5DK9YiV6lXnWK855jJshUAjLGQEvPBUe3W8t1%2BCabc0%3D"
     static let LOGO = "logo/"
     static let CLIENTS = "clients/"
     

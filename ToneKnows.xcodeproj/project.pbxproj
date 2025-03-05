@@ -44,22 +44,22 @@
 		9E5CB9412D0B3648008FE924 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5CB9402D0B3648008FE924 /* AudioKit */; };
 		9E6483952D70592A00EA1BD0 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9E6483942D70592A00EA1BD0 /* AlamofireImage */; };
 		9E6483982D707ECF00EA1BD0 /* ClientEntityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E6483962D707ECF00EA1BD0 /* ClientEntityModel.xcdatamodeld */; };
-		9E64839A2D70BAF300EA1BD0 /* ToneListen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6483992D70BAF300EA1BD0 /* ToneListen.xcframework */; };
-		9E64839B2D70BAF300EA1BD0 /* ToneListen.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6483992D70BAF300EA1BD0 /* ToneListen.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9E6483A32D71E83F00EA1BD0 /* SDWebImageAVIFCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 9E6483A22D71E83F00EA1BD0 /* SDWebImageAVIFCoder */; };
 		9E6483AC2D71ED0300EA1BD0 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6483AB2D71ED0300EA1BD0 /* ImageLoader.swift */; };
+		9E80B81D2D75F15A0043044D /* ToneListen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E80B81C2D75F15A0043044D /* ToneListen.xcframework */; };
+		9E80B81E2D75F15A0043044D /* ToneListen.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E80B81C2D75F15A0043044D /* ToneListen.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9ECAC9B32BBD7DAA009E42AA /* home_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ECAC9B22BBD7DAA009E42AA /* home_response.json */; };
 		DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA414C527CE5423003647B5 /* frequency_tables.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9E54B4D42D65B32E00EDF21A /* Embed Frameworks */ = {
+		9E80B81B2D75E58B0043044D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9E64839B2D70BAF300EA1BD0 /* ToneListen.xcframework in Embed Frameworks */,
+				9E80B81E2D75F15A0043044D /* ToneListen.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,8 +101,8 @@
 		9E37E2782D6F1F5A001DFC82 /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		9E37E2A82D6F5CCA001DFC82 /* NetworkRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
 		9E6483972D707ECF00EA1BD0 /* ClientEntity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClientEntity.xcdatamodel; sourceTree = "<group>"; };
-		9E6483992D70BAF300EA1BD0 /* ToneListen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ToneListen.xcframework; path = ../../../Desktop/ToneListen.xcframework; sourceTree = "<group>"; };
 		9E6483AB2D71ED0300EA1BD0 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		9E80B81C2D75F15A0043044D /* ToneListen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ToneListen.xcframework; path = ../../../Desktop/ToneListen.xcframework; sourceTree = "<group>"; };
 		9ECAC9B22BBD7DAA009E42AA /* home_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home_response.json; sourceTree = "<group>"; };
 		9ED0294C2D1E976F009E0E4B /* ToneKnows.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToneKnows.entitlements; sourceTree = "<group>"; };
 		DFA414C527CE5423003647B5 /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = frequency_tables.json; sourceTree = "<group>"; };
@@ -113,13 +113,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E64839A2D70BAF300EA1BD0 /* ToneListen.xcframework in Frameworks */,
 				9E5CB9412D0B3648008FE924 /* AudioKit in Frameworks */,
 				5B826CF027F23D4000D812D0 /* FirebaseFirestore in Frameworks */,
 				9E5CB93E2D0B35E4008FE924 /* SwiftLocation in Frameworks */,
 				5B826CF227F23D4000D812D0 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				9E6483A32D71E83F00EA1BD0 /* SDWebImageAVIFCoder in Frameworks */,
 				9E6483952D70592A00EA1BD0 /* AlamofireImage in Frameworks */,
+				9E80B81D2D75F15A0043044D /* ToneListen.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +129,7 @@
 		5B8F62C027B4790300EA84BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9E6483992D70BAF300EA1BD0 /* ToneListen.xcframework */,
+				9E80B81C2D75F15A0043044D /* ToneListen.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -285,7 +285,7 @@
 				5B9331A227A9A02700C61580 /* Sources */,
 				5B9331A327A9A02700C61580 /* Frameworks */,
 				5B9331A427A9A02700C61580 /* Resources */,
-				9E54B4D42D65B32E00EDF21A /* Embed Frameworks */,
+				9E80B81B2D75E58B0043044D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
