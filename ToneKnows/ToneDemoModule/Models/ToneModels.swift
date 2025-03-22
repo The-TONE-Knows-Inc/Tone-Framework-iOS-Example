@@ -27,6 +27,7 @@ struct Client: Codable {
     var status      : Bool?
     var logoData    : String?
     var demoImage   : String?
+    var offlineMode: Bool?
     
     enum CodingKeys: String, CodingKey {
         case id             = "id"
@@ -38,6 +39,7 @@ struct Client: Codable {
         case clientType     = "clientType"
         case clientId       = "clientId"
         case status         = "status"
+        case offlineMode    = "offlineMode"
         case logoData
         case demoImage
     }

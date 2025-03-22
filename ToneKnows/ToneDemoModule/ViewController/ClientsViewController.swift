@@ -28,8 +28,13 @@ class ClientsViewController: BaseViewController {
         clientsTableView.refreshControl     = refreshControlSegment
         searchView.searchTextField.delegate = self
         fetchClientData()
-        FeatureFlagManager.shared.getClientId { result in
-            self.handleOfflineMode(result)
+    }
+    
+    func checkOfflineMode() {
+        if let offlineMode = clientList.first(where: { $0.clientId == UserDefaults.isSelectedClientID })?.offlineMode {
+            handleOfflineMode(offlineMode)
+        } else {
+            handleOfflineMode(false)
         }
     }
     
@@ -48,6 +53,7 @@ class ClientsViewController: BaseViewController {
                 self.dismissLoadingIndicator()
                 self.clientList = self.viewModel.clients.sorted { $0.name?.localizedCaseInsensitiveCompare($1.name ?? "") == .orderedAscending }
                 self.clientsTableView.reloadData()
+                self.checkOfflineMode()
             }
         }
     }
@@ -60,12 +66,14 @@ class ClientsViewController: BaseViewController {
                 self.clientList = self.viewModel.clients.sorted { $0.name?.localizedCaseInsensitiveCompare($1.name ?? "") == .orderedAscending }
                 self.dismissLoadingIndicator()
                 self.clientsTableView.reloadData()
+                self.checkOfflineMode()
             }
         }
     }
     
     func fetchClientDatas() {
         viewModel.loadClientsFromLocalDB()
+        checkOfflineMode()
         clientsTableView.reloadData()
     }
 }
@@ -100,9 +108,7 @@ extension ClientsViewController: UITableViewDelegate, UITableViewDataSource {
         toneFramework.setClientId(clientID: clientID)
         delegate?.didSelectClientImage(selectedClient.background ?? "", selectedClient.clientId ?? "")
         headerDelegate?.didSelectClient(selectedClient.name ?? "Tone Demo")
-        FeatureFlagManager.shared.getClientId { result in
-            self.handleOfflineMode(result)
-        }
+        checkOfflineMode()
         DispatchQueue.main.async {
             self.clientsTableView.reloadData()
         }
