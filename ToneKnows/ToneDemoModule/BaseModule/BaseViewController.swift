@@ -117,7 +117,7 @@ class BaseViewController: UIViewController {
         ])
     }
     
-    @objc private func handleTraitChange() {
+    @objc func handleTraitChange() {
         DispatchQueue.main.async {
             self.clientsTableView.reloadData()
         }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,9 @@
 		5B826CF227F23D4000D812D0 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5B826CF127F23D4000D812D0 /* FirebaseFirestoreCombine-Community */; };
 		5B9331AC27A9A02700C61580 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9331AB27A9A02700C61580 /* AppDelegate.swift */; };
 		5B9331AE27A9A02900C61580 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9331AD27A9A02900C61580 /* Assets.xcassets */; };
-		9E1D25692BA0300E0047F2F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E1D25682BA0300E0047F2F0 /* GoogleService-Info.plist */; };
+		9E06C36D2D9177BC00DF6835 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E06C36C2D9177BC00DF6835 /* GoogleService-Info.plist */; };
+		9E06C42D2D93D32800DF6835 /* ToneListen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E06C42C2D93D32800DF6835 /* ToneListen.xcframework */; };
+		9E06C42E2D93D32800DF6835 /* ToneListen.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E06C42C2D93D32800DF6835 /* ToneListen.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9E3796072D7F1A57002BE85E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9E3796062D7F1A57002BE85E /* FirebaseCrashlytics */; };
 		9E37E22D2D6DB900001DFC82 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E22B2D6DB900001DFC82 /* BaseViewController.swift */; };
 		9E37E22E2D6DB900001DFC82 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37E22C2D6DB900001DFC82 /* MainViewController.swift */; };
@@ -47,11 +49,19 @@
 		9E6483982D707ECF00EA1BD0 /* ClientEntityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E6483962D707ECF00EA1BD0 /* ClientEntityModel.xcdatamodeld */; };
 		9E6483A32D71E83F00EA1BD0 /* SDWebImageAVIFCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 9E6483A22D71E83F00EA1BD0 /* SDWebImageAVIFCoder */; };
 		9E6483AC2D71ED0300EA1BD0 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6483AB2D71ED0300EA1BD0 /* ImageLoader.swift */; };
-		9E9C14582D89500500D52BF4 /* ToneListen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9C14572D89500500D52BF4 /* ToneListen.xcframework */; };
-		9E9C14592D89500500D52BF4 /* ToneListen.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9C14572D89500500D52BF4 /* ToneListen.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9ECAC9B32BBD7DAA009E42AA /* home_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ECAC9B22BBD7DAA009E42AA /* home_response.json */; };
 		DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */ = {isa = PBXBuildFile; fileRef = DFA414C527CE5423003647B5 /* frequency_tables.json */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9E06C3A42D91B10000DF6835 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B93319E27A9A02700C61580 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B9331A527A9A02700C61580;
+			remoteInfo = ToneKnows;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9E9C14502D8940BD00D52BF4 /* Embed Frameworks */ = {
@@ -60,7 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9E9C14592D89500500D52BF4 /* ToneListen.xcframework in Embed Frameworks */,
+				9E06C42E2D93D32800DF6835 /* ToneListen.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,7 +82,9 @@
 		5B9331AB27A9A02700C61580 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B9331AD27A9A02900C61580 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B9331BC27A9A27200C61580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		9E1D25682BA0300E0047F2F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E06C36C2D9177BC00DF6835 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E06C3A02D91B0FF00DF6835 /* ToneKnowsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToneKnowsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E06C42C2D93D32800DF6835 /* ToneListen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ToneListen.xcframework; path = ../../../Downloads/ToneListen.xcframework; sourceTree = "<group>"; };
 		9E37E22B2D6DB900001DFC82 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9E37E22C2D6DB900001DFC82 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9E37E2312D6DB93C001DFC82 /* ToneModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToneModels.swift; sourceTree = "<group>"; };
@@ -103,11 +115,14 @@
 		9E37E2A82D6F5CCA001DFC82 /* NetworkRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
 		9E6483972D707ECF00EA1BD0 /* ClientEntity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClientEntity.xcdatamodel; sourceTree = "<group>"; };
 		9E6483AB2D71ED0300EA1BD0 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		9E9C14572D89500500D52BF4 /* ToneListen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ToneListen.xcframework; path = ../../../Desktop/ToneListen.xcframework; sourceTree = "<group>"; };
 		9ECAC9B22BBD7DAA009E42AA /* home_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home_response.json; sourceTree = "<group>"; };
 		9ED0294C2D1E976F009E0E4B /* ToneKnows.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToneKnows.entitlements; sourceTree = "<group>"; };
 		DFA414C527CE5423003647B5 /* frequency_tables.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = frequency_tables.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9E06C3A12D91B10000DF6835 /* ToneKnowsTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ToneKnowsTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5B9331A327A9A02700C61580 /* Frameworks */ = {
@@ -116,12 +131,19 @@
 			files = (
 				9E5CB9412D0B3648008FE924 /* AudioKit in Frameworks */,
 				5B826CF027F23D4000D812D0 /* FirebaseFirestore in Frameworks */,
-				9E9C14582D89500500D52BF4 /* ToneListen.xcframework in Frameworks */,
+				9E06C42D2D93D32800DF6835 /* ToneListen.xcframework in Frameworks */,
 				9E5CB93E2D0B35E4008FE924 /* SwiftLocation in Frameworks */,
 				5B826CF227F23D4000D812D0 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				9E6483A32D71E83F00EA1BD0 /* SDWebImageAVIFCoder in Frameworks */,
 				9E3796072D7F1A57002BE85E /* FirebaseCrashlytics in Frameworks */,
 				9E6483952D70592A00EA1BD0 /* AlamofireImage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E06C39D2D91B0FF00DF6835 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +153,7 @@
 		5B8F62C027B4790300EA84BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9E9C14572D89500500D52BF4 /* ToneListen.xcframework */,
+				9E06C42C2D93D32800DF6835 /* ToneListen.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				5B9331A827A9A02700C61580 /* ToneKnows */,
+				9E06C3A12D91B10000DF6835 /* ToneKnowsTests */,
 				5B9331A727A9A02700C61580 /* Products */,
 				5B8F62C027B4790300EA84BC /* Frameworks */,
 			);
@@ -149,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				5B9331A627A9A02700C61580 /* ToneKnows.app */,
+				9E06C3A02D91B0FF00DF6835 /* ToneKnowsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,7 +186,7 @@
 				5B9331AB27A9A02700C61580 /* AppDelegate.swift */,
 				9E37E2302D6DB928001DFC82 /* ToneDemoModule */,
 				5B9331BC27A9A27200C61580 /* Info.plist */,
-				9E1D25682BA0300E0047F2F0 /* GoogleService-Info.plist */,
+				9E06C36C2D9177BC00DF6835 /* GoogleService-Info.plist */,
 				5B9331AD27A9A02900C61580 /* Assets.xcassets */,
 				9E6483962D707ECF00EA1BD0 /* ClientEntityModel.xcdatamodeld */,
 			);
@@ -307,6 +331,29 @@
 			productReference = 5B9331A627A9A02700C61580 /* ToneKnows.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9E06C39F2D91B0FF00DF6835 /* ToneKnowsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E06C3A62D91B10000DF6835 /* Build configuration list for PBXNativeTarget "ToneKnowsTests" */;
+			buildPhases = (
+				9E06C39C2D91B0FF00DF6835 /* Sources */,
+				9E06C39D2D91B0FF00DF6835 /* Frameworks */,
+				9E06C39E2D91B0FF00DF6835 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9E06C3A52D91B10000DF6835 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				9E06C3A12D91B10000DF6835 /* ToneKnowsTests */,
+			);
+			name = ToneKnowsTests;
+			packageProductDependencies = (
+			);
+			productName = ToneKnowsTests;
+			productReference = 9E06C3A02D91B0FF00DF6835 /* ToneKnowsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -314,11 +361,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					5B9331A527A9A02700C61580 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					9E06C39F2D91B0FF00DF6835 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 5B9331A527A9A02700C61580;
 					};
 				};
 			};
@@ -343,6 +394,7 @@
 			projectRoot = "";
 			targets = (
 				5B9331A527A9A02700C61580 /* ToneKnows */,
+				9E06C39F2D91B0FF00DF6835 /* ToneKnowsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -352,11 +404,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E1D25692BA0300E0047F2F0 /* GoogleService-Info.plist in Resources */,
 				DFA414C627CE5423003647B5 /* frequency_tables.json in Resources */,
 				9E37E2752D6EE4FD001DFC82 /* CustomAssets.xcassets in Resources */,
+				9E06C36D2D9177BC00DF6835 /* GoogleService-Info.plist in Resources */,
 				5B9331AE27A9A02900C61580 /* Assets.xcassets in Resources */,
 				9ECAC9B32BBD7DAA009E42AA /* home_response.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E06C39E2D91B0FF00DF6835 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +459,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9E06C39C2D91B0FF00DF6835 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9E06C3A52D91B10000DF6835 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B9331A527A9A02700C61580 /* ToneKnows */;
+			targetProxy = 9E06C3A42D91B10000DF6835 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5B9331B227A9A02900C61580 /* Debug */ = {
@@ -611,6 +685,55 @@
 			};
 			name = Release;
 		};
+		9E06C3A72D91B10000DF6835 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H2C4R2VE3A;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sampleproject.ToneKnowsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToneKnows.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToneKnows";
+			};
+			name = Debug;
+		};
+		9E06C3A82D91B10000DF6835 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H2C4R2VE3A;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sampleproject.ToneKnowsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToneKnows.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToneKnows";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -628,6 +751,15 @@
 			buildConfigurations = (
 				5B9331B527A9A02900C61580 /* Debug */,
 				5B9331B627A9A02900C61580 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9E06C3A62D91B10000DF6835 /* Build configuration list for PBXNativeTarget "ToneKnowsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E06C3A72D91B10000DF6835 /* Debug */,
+				9E06C3A82D91B10000DF6835 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

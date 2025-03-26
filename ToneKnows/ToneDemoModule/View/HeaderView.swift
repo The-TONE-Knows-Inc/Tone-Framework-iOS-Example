@@ -54,7 +54,7 @@ class HeaderView: UIView {
         super.init(coder: coder)
     }
     
-    @objc private func backButtonTapped() {
+    @objc func backButtonTapped() {
         delegate?.backButtonAction()
     }
     
@@ -104,7 +104,7 @@ class SearchTextFieldView: UIView {
         setupLayout()
     }
 
-    private func setupLayout() {
+    func setupLayout() {
         addSubview(searchTextField)
         addSubview(clearButton)
 
@@ -122,7 +122,7 @@ class SearchTextFieldView: UIView {
         ])
     }
 
-    @objc private func textFieldDidChange(_ textField: UITextField) {
+    @objc func textFieldDidChange(_ textField: UITextField) {
         clearButton.isHidden = textField.text?.isEmpty ?? true
     }
 }

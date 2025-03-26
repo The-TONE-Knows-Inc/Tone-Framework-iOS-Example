@@ -11,11 +11,11 @@ class CustomTabBarView: UIView {
     
     weak var delegate: CustomTabBarDelegate?
     
-    private lazy var clientsButton  : UIButton = createTabButton(title: "Clients", imageName: "person.2", tag: 0)
-    private lazy var tryItButton    : UIButton = createTabButton(title: "Try It", imageName: "play", tag: 1)
-    private lazy var frequencyButton: UIButton = createTabButton(title: "Frequency", imageName: "waveform", tag: 2)
+    lazy var clientsButton  : UIButton = createTabButton(title: "Clients", imageName: "person.2", tag: 0)
+    lazy var tryItButton    : UIButton = createTabButton(title: "Try It", imageName: "play", tag: 1)
+    lazy var frequencyButton: UIButton = createTabButton(title: "Frequency", imageName: "waveform", tag: 2)
     
-    private lazy var buttonStack: UIStackView = {
+    lazy var buttonStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [clientsButton, tryItButton, frequencyButton])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -33,7 +33,7 @@ class CustomTabBarView: UIView {
         setupUI()
     }
     
-    private func setupUI() {
+    func setupUI() {
         backgroundColor = .containerBackground
         addSubview(buttonStack)
         
@@ -52,7 +52,7 @@ class CustomTabBarView: UIView {
         updateSelectedTab(.clientsVC)
     }
     
-    private func createTabButton(title: String, imageName: String, tag: Int) -> UIButton {
+    func createTabButton(title: String, imageName: String, tag: Int) -> UIButton {
         let button = UIButton()
         
         if #available(iOS 15.0, *) {
@@ -80,7 +80,7 @@ class CustomTabBarView: UIView {
         return button
     }
     
-    @objc private func tabButtonTapped(_ sender: UIButton) {
+    @objc func tabButtonTapped(_ sender: UIButton) {
         let selectedTab: ViewControllers
         switch sender.tag {
         case 0: selectedTab = .clientsVC

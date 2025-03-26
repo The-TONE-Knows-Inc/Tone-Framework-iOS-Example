@@ -9,7 +9,7 @@ import UIKit
 
 class ClientsListCell: UITableViewCell {
     
-    private lazy var containerView: UIView = {
+    lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .containerBackground
         view.layer.cornerRadius = 10
@@ -123,7 +123,7 @@ class ClientsListCell: UITableViewCell {
         updateAppearance(isSelected: isSelected)
     }
     
-    private func loadImageFromPath(_ path: String) -> UIImage? {
+    func loadImageFromPath(_ path: String) -> UIImage? {
         let fileURL = URL(fileURLWithPath: path)
         if let imageData = try? Data(contentsOf: fileURL) {
             return UIImage(data: imageData)

@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
         return view
     }()
     
-    private let latLabel: UILabel = {
+     let latLabel: UILabel = {
         let label           = UILabel()
         label.textColor     = .secondary
         label.font          = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
         return label
     }()
     
-    private let longLabel: UILabel = {
+     let longLabel: UILabel = {
         let label           = UILabel()
         label.textColor     = .secondary
         label.font          = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -50,9 +50,9 @@ class MainViewController: UIViewController {
         return label
     }()
     
-    private let clientsTab      = UITabBarItem(title: "Clients", image: UIImage(systemName: "person.3"), tag: 0)
-    private let tryItTab        = UITabBarItem(title: "Try It", image: UIImage(systemName: "play.circle"), tag: 1)
-    private let frequencyTab    = UITabBarItem(title: "Frequency", image: UIImage(systemName: "waveform"), tag: 2)
+     let clientsTab      = UITabBarItem(title: "Clients", image: UIImage(systemName: "person.3"), tag: 0)
+     let tryItTab        = UITabBarItem(title: "Try It", image: UIImage(systemName: "play.circle"), tag: 1)
+     let frequencyTab    = UITabBarItem(title: "Frequency", image: UIImage(systemName: "waveform"), tag: 2)
     
     let clientsVC       = ClientsViewController()
     let tryItVC         = TryItViewController()
@@ -88,7 +88,7 @@ class MainViewController: UIViewController {
         headerView.delegate = self
     }
     
-    private func setupLayout() {
+    func setupLayout() {
         view.addSubview(headerView)
         view.addSubview(latLabel)
         view.addSubview(longLabel)

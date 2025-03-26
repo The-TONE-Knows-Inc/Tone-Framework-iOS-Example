@@ -19,6 +19,7 @@ class TryItViewController: BaseViewController {
         super.initAppearView()
         if !(UserDefaults.isFrameworkRunning ?? false) {
             toneFramework.start()
+            toneFramework.initialize(apiKey: "WaOIgO4Ccea1wk55mDZVVRBdmyh2HweXGHdOlrx2OYseIdwFcDLHmRcZiPAWegjvuytuytuy")
             enableToneFrameworkFeatures()
             UserDefaults.isFrameworkRunning = true
             configure(with: UserDefaults.isSelectedImageURL ?? "", clientID: UserDefaults.isSelectedClientID ?? "")
