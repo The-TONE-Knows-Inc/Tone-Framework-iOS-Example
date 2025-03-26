@@ -1,5 +1,5 @@
 {
-  "originHash" : "abcd9fb0f101377522707f53030692d75070402aac064a4cbe439e9c0fd721b9",
+  "originHash" : "ccb46eff2af84b855a16ba7bac7376656601f24d9563de87f267b44a69dceba9",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -8,6 +8,24 @@
       "state" : {
         "revision" : "194a6706acbd25e4ef639bcaddea16e8758a3e27",
         "version" : "1.2024011602.0"
+      }
+    },
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
+        "version" : "5.10.2"
+      }
+    },
+    {
+      "identity" : "alamofireimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/AlamofireImage.git",
+      "state" : {
+        "revision" : "1eaf3b6c6882bed10f6e7b119665599dd2329aa1",
+        "version" : "4.3.0"
       }
     },
     {
@@ -26,15 +44,6 @@
       "state" : {
         "revision" : "2ebd422855e4645d3169f83d1765d1c8196b4f46",
         "version" : "5.6.4"
-      }
-    },
-    {
-      "identity" : "fetchimage",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/nenosllc/FetchImage.git",
-      "state" : {
-        "revision" : "5f6654132d76a1529af56ed18bcaf42cd33369d2",
-        "version" : "2.0.1"
       }
     },
     {
@@ -110,6 +119,33 @@
       }
     },
     {
+      "identity" : "libaom-xcode",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/libaom-Xcode.git",
+      "state" : {
+        "revision" : "482cafbebbc5f32378b82339b7580761fab4fd23",
+        "version" : "2.0.2"
+      }
+    },
+    {
+      "identity" : "libavif-xcode",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/libavif-Xcode.git",
+      "state" : {
+        "revision" : "a158cb024166f8c599f88f8c91458c59922bcb0f",
+        "version" : "0.11.1"
+      }
+    },
+    {
+      "identity" : "libvmaf-xcode",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/libvmaf-Xcode.git",
+      "state" : {
+        "revision" : "41db5dc11d05c02d1aca7de0b572a068f528c37c",
+        "version" : "2.3.1"
+      }
+    },
+    {
       "identity" : "nanopb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/nanopb.git",
@@ -119,21 +155,30 @@
       }
     },
     {
-      "identity" : "nuke",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kean/Nuke.git",
-      "state" : {
-        "revision" : "33f7e93be5d4ec027d42af77a8ec4680d1862ad2",
-        "version" : "11.6.4"
-      }
-    },
-    {
       "identity" : "promises",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",
       "state" : {
         "revision" : "540318ecedd63d883069ae7f1ed811a2df00b6ac",
         "version" : "2.4.0"
+      }
+    },
+    {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "state" : {
+        "revision" : "cac9a55a3ae92478a2c95042dcc8d9695d2129ca",
+        "version" : "5.21.0"
+      }
+    },
+    {
+      "identity" : "sdwebimageavifcoder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImageAVIFCoder.git",
+      "state" : {
+        "revision" : "715df4ace986e1fb332c8c28b45b73dba6a40e5a",
+        "version" : "0.11.0"
       }
     },
     {
